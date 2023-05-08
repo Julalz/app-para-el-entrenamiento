@@ -29,8 +29,7 @@ CREATE TABLE IF NOT EXISTS `exercise_gym`.`workout` (
  "user_id" INT UNSIGNED NOT NULL,
  PRIMARY KEY (id),
  UNIQUE INDEX image_UNIQUE (image),
- FOREIGN KEY (user_id)
- REFERENCES users (id)
+ FOREIGN KEY (user_id) REFERENCES users (id)
  ON DELETE NO ACTION
  ON UPDATE NO ACTION
 );

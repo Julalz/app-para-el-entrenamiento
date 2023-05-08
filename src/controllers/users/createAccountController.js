@@ -43,7 +43,6 @@ async function createAccount(req, res) {
     await SendEmail(name, email, verificationCode);
 
     const userID = await createUser(userDB);
-    console.log(userID);
 
     res.status(201);
     res.send({ id: userID });
