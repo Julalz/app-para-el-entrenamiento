@@ -5,7 +5,7 @@ const joi = require("joi");
 const createJsonError = require("../../errors/createJsonError");
 const { findUserByEmail } = require("../../repositories/usersRepository");
 const throwJsonError = require("../../errors/throwJsonError");
-const { response } = require("express");
+const express = require("express");
 
 const schema = joi.object().keys({
   email: joi.string().email().required(),
@@ -18,34 +18,38 @@ async function loginUser(req, res) {
     await schema.validateAsync(body);
 
     const UserCheckByEmail = await findUserByEmail(email);
+
     if (!UserCheckByEmail) {
       throwJsonError(
         403,
-        " Este usuario y contraseña no se encuentra registrado"
+        " 1 Este usuario y contraseña no se encuentra registrado"
       );
     }
-    const { password: passwordHash, verifiedAt } = UserCheckByEmail;
+    const { password: passwordHash, verifiedAt, role, id } = UserCheckByEmail;
+
     const passwordChecked = await bcrypt.compare(password, passwordHash);
     if (!passwordChecked) {
       throwJsonError(
         403,
-        " Este usuario y contraseña no se encuentra registrado"
+        "Este usuario y contraseña no se encuentra registrado"
       );
-
-      const { JWT_SECRET } = process.env;
-
-      const tokenLoad = {
-        id,
-        email,
-        role,
-      };
-      const token = jwt.sign(tokenLoad, JWT_SECRET, {
-        expiresIn: `1m`,
-      });
-      console.log(token);
-      res.status(200);
-      res.send("ok");
     }
+    if (verifiedAt) {
+      throwJsonError(401, "Verifique su cuenta");
+    }
+
+    const JWT_SECRET = "asdf1234";
+    console.log;
+    const tokenLoad = {
+      id,
+      email,
+      role,
+    };
+    const token = jwt.sign(tokenLoad, JWT_SECRET, {
+      expiresIn: `1m`,
+    });
+    res.status(200);
+    res.json({ token });
   } catch (error) {
     createJsonError(error, res);
   }
