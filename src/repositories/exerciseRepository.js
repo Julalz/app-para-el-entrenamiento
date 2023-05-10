@@ -3,7 +3,7 @@ const getPool = require("../infrastructure/database");
 const addExercise = async (exercise) => {
   const pool = await getPool();
   const now = new Date();
-  const sql = `INSERT INTRO workout(
+  const sql = `INSERT INTO workout(
     name,
     description,
     image,

@@ -14,8 +14,8 @@ const schema = Joi.object().keys({
 
 const createExercise = async (req, res) => {
   try {
-    // const { role } = req.auth;
-    // isAdmin(role);
+    const { role } = req.auth;
+    isAdmin(role);
 
     const { body } = req;
     await schema.validateAsync(body);
@@ -23,7 +23,7 @@ const createExercise = async (req, res) => {
     const exerciseId = await addExercise(body);
 
     res.status(201);
-    res.send({ message: `Exercise ${exerciseId} created successfully. ` });
+    res.send({ message: `Exercise ${exerciseId} successfully created. ` });
   } catch (error) {
     createJsonError(error, res);
   }
