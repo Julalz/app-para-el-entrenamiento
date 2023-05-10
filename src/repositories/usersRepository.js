@@ -20,6 +20,13 @@ const createUser = async (user) => {
   return created.insertId;
 };
 
+const updateUserRole = async (email, role) => {
+  const pool = await getPool();
+  const sql = "UPDATE users SET role = ? WHERE email = ?";
+  const [user] = await pool.query(sql, [role, email]);
+  return user[0];
+};
+
 const findUserByEmail = async (email) => {
   const pool = await getPool();
   const sql =
@@ -31,4 +38,5 @@ const findUserByEmail = async (email) => {
 module.exports = {
   createUser,
   findUserByEmail,
+  updateUserRole,
 };
