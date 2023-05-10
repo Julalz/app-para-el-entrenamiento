@@ -34,11 +34,11 @@ async function loginUser(req, res) {
         "Este usuario y contraseña no se encuentra registrado"
       );
     }
-    if (verifiedAt) {
+    if (!verifiedAt) {
       throwJsonError(401, "Verifique su cuenta");
     }
 
-    const JWT_SECRET = "asdf1234";
+    const { JWT_SECRET } = process.env;
     console.log;
     const tokenLoad = {
       id,
@@ -49,7 +49,7 @@ async function loginUser(req, res) {
       expiresIn: `1m`,
     });
     res.status(200);
-    res.json({ token });
+    res.json({ token, expiresIn: "1m" });
   } catch (error) {
     createJsonError(error, res);
   }
