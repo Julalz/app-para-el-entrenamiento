@@ -5,11 +5,12 @@ const findExerciseById = require("../../repositories/exerciseRepository");
 
 const getExercises = async (req, res) => {
   try {
-    const exercise = await findExerciseById;
+    const { exerciseId } = req.params;
+    const exercise = await findExerciseById(exerciseId);
     res.status(200);
     res.send(exercise);
   } catch (error) {
-    createJsonError;
+    createJsonError(error, res);
   }
 };
 

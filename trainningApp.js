@@ -5,6 +5,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const userRouter = require("./src/routes/userRouter");
+const exerciseRouter = require("./src/routes/exerciseRouter");
 
 const app = express();
 app.use(express.json());
