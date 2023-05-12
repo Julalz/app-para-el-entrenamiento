@@ -4,7 +4,7 @@ const isAdmin = require("../../middlewares/validAdmin");
 const createJsonError = require("../../errors/createJsonError");
 
 const schema = Joi.object().keys({
-  name: Joi.string().min(2).max(20).required(),
+  name: Joi.string().min(2).max(200).required(),
   description: Joi.string().min(2).max(220).required(),
   image: Joi.string(),
   typology: Joi.string().min(2).max(220).required(),
