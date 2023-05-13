@@ -18,18 +18,12 @@ CREATE TABLE IF NOT EXISTS `exercise_gym`.`users` (
   PRIMARY KEY (`id`))
 
 CREATE TABLE IF NOT EXISTS `exercise_gym`.`workout` (
-
- "id" INT UNSIGNED NOT NULL AUTO_INCREMENT,
- "name" VARCHAR(60) NOT NULL,
- "description" VARCHAR(255),
- "image" CHAR(255) NOT NULL,
- "typology" VARCHAR(60),
- "muscle" VARCHAR(60),
- "created"_at DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
- "user_id" INT UNSIGNED NOT NULL,
- PRIMARY KEY (id),
- UNIQUE INDEX image_UNIQUE (image),
- FOREIGN KEY (user_id) REFERENCES users (id)
- ON DELETE NO ACTION
- ON UPDATE NO ACTION
+  `id` INT UNSIGNED AUTO_INCREMENT,
+  `name` VARCHAR(60) NOT NULL,
+  `description` VARCHAR(255),
+  `image` CHAR(255) NOT NULL,
+  `typology` VARCHAR(60),
+  `muscle` VARCHAR(60),
+  `user_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`)
 );

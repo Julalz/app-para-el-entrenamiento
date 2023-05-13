@@ -14,5 +14,6 @@ const { PORT } = process.env;
 const port = PORT | 3000;
 
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/exercise", exerciseRouter);
 
 app.listen(port, () => console.log(`Running ${PORT}`));
