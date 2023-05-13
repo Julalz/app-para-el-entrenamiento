@@ -9,9 +9,11 @@ const addExercise = async (exercise) => {
       image,
       typology,
       muscle,
-      created_At
-    ) VALUES (?, ?, ?, ?, ?, ?)`;
-  const { name, description, image, typology, muscle } = exercise;
+      likesCount,
+      createdAt
+    ) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  const { name, description, image, typology, muscle, likesCount, createdAt } =
+    exercise;
 
   const [created] = await pool.query(sql, [
     name,
@@ -19,6 +21,7 @@ const addExercise = async (exercise) => {
     image,
     typology,
     muscle,
+    0,
     now,
   ]);
 
@@ -43,6 +46,14 @@ const findAllExerciseByMuscle = async (muscle) => {
   return exercise;
 };
 
+
+const getExerciseById = async (workoutId) => {
+  const pool = await getPool();
+  const sql = `SELECT * FROM workout WHERE id = ?`;
+
+  const [exercise] = await pool.query(sql, [workoutId]);
+
+  return exercise[0];
 const findAllExercisesByTypology = async (typology) => {
   const pool = await getPool();
   const sql = "SELECT * FROM workout WHERE typology = ?";
@@ -75,5 +86,6 @@ module.exports = {
   findAllExerciseByMuscle,
   findAllExercisesByTypology,
   removeExerciseId,
+  getExerciseById,
   updateExerciseById,
 };
