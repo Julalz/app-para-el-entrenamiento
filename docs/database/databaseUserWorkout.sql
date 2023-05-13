@@ -1,3 +1,4 @@
+
 CREATE DATABASE exercise_gym;
 USE `exercise_gym`;
 
@@ -27,7 +28,6 @@ CREATE TABLE IF NOT EXISTS `exercise_gym`.`workout` (
   PRIMARY KEY (`id`),
 );
 
-
 CREATE TABLE IF NOT EXISTS `exercise_gym`.`likes` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` INT UNSIGNED NOT NULL,
@@ -37,4 +37,11 @@ CREATE TABLE IF NOT EXISTS `exercise_gym`.`likes` (
   FOREIGN KEY (`workout_id`) REFERENCES `workout` (`id`)
 );
 
+CREATE TABLE IF NOT EXISTS favorites (
+  id INT UNSIGNED AUTO_INCREMENT primary key,
+  user_id INT UNSIGNED NOT NULL,
+  workout_id INT UNSIGNED NOT NULL,
+  foreign key (user_id) references users(id),
+  foreign key (workout_id) references workout(id)
+  );
 

@@ -46,6 +46,7 @@ const findAllExerciseByMuscle = async (muscle) => {
   return exercise;
 };
 
+
 const getExerciseById = async (workoutId) => {
   const pool = await getPool();
   const sql = `SELECT * FROM workout WHERE id = ?`;
@@ -53,6 +54,13 @@ const getExerciseById = async (workoutId) => {
   const [exercise] = await pool.query(sql, [workoutId]);
 
   return exercise[0];
+const findAllExercisesByTypology = async (typology) => {
+  const pool = await getPool();
+  const sql = "SELECT * FROM workout WHERE typology = ?";
+
+  const [exercises] = await pool.query(sql, [typology]);
+
+  return exercises;
 };
 
 const removeExerciseId = async (id) => {
@@ -64,10 +72,20 @@ const removeExerciseId = async (id) => {
   return true;
 };
 
+const updateExerciseById = async (id, body) => {
+  const pool = await getPool();
+  const sql = "UPDATE workout SET ? WHERE id = ?";
+  const [updated] = await pool.query(sql, [body, id]);
+
+  return true;
+};
+
 module.exports = {
   addExercise,
   findAllExercise,
   findAllExerciseByMuscle,
+  findAllExercisesByTypology,
   removeExerciseId,
   getExerciseById,
+  updateExerciseById,
 };
