@@ -6,6 +6,7 @@ const validAdmin = require("../middlewares/validAdmin");
 const { userProfile } = require("../controllers/users/profileController");
 const getUserExerciseFavorites = require("../controllers/favorites/getFavoriteExerciseController");
 const addExerciseFavorites = require("../controllers/favorites/addFavoriteExerciseController");
+const removeExerciseFavorites = require("../controllers/favorites/deleteFavoriteExerciseController");
 const userRouter = express.Router();
 
 userRouter.route("/signup").post(createAccount);
@@ -16,6 +17,6 @@ userRouter
   .all(validAdmin)
   .get(getUserExerciseFavorites)
   .post(addExerciseFavorites)
-  .delete(addExerciseFavorites);
+  .delete(removeExerciseFavorites);
 
 module.exports = userRouter;
