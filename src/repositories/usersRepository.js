@@ -4,7 +4,7 @@ const createUser = async (user) => {
   const pool = await getPool();
   const now = new Date();
   const sql = `INSERT INTO users(
-    name, email, password, verificationCode, role, created_At
+    name, email, password, verificationCode, role, createdAt
     ) VALUES (?, ?, ?, ?, ?, ?)`;
 
   const { name, email, password, verificationCode } = user;
