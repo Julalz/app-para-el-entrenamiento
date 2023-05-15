@@ -45,3 +45,15 @@ CREATE TABLE IF NOT EXISTS favorites (
   foreign key (workout_id) references workout(id)
   );
 
+CREATE TABLE IF NOT EXISTS `exercise_gym`.`exerciseImages` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `principal` TINYINT NULL DEFAULT '0',
+  `idexercise` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`idExercise`)
+    REFERENCES `exercise_gym`.`exercises` (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;

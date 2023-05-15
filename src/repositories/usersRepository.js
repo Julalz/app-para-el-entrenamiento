@@ -20,6 +20,14 @@ const createUser = async (user) => {
   return created.insertId;
 };
 
+const uploadUserProfileImage = async (id, image) => {
+  const pool = await getPool();
+  const sql = "UPDATE users SET image = ? WHERE id = ?";
+  await pool.query(sql, [image, id]);
+
+  return true;
+};
+
 const updateUserRole = async (email, role) => {
   const pool = await getPool();
   const sql = "UPDATE users SET role = ? WHERE email = ?";
@@ -46,4 +54,5 @@ module.exports = {
   findUserByEmail,
   findAllExercise,
   updateUserRole,
+  uploadUserProfileImage,
 };
