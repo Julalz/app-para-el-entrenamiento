@@ -49,7 +49,7 @@ async function loginUser(req, res) {
       expiresIn: `20m`,
     });
     res.status(200);
-    res.json({ token, expiresIn: "1m" });
+    res.json({ token, expiresIn: "20m" });
   } catch (error) {
     createJsonError(error, res);
   }
