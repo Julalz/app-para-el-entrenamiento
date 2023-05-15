@@ -10,9 +10,9 @@ const isAdmin = require("../../helpers/utils");
 const uploadImage = require("../../helpers/uploadImage");
 
 const schema = Joi.number().positive().integer().required();
-const schemaBody = Joi.number().integer().min(0).max(1).required();
+const schemaBody = Joi.boolean();
 const schemaFiles = Joi.object().keys({
-  imageCar: Joi.required(),
+  imageExercise: Joi.required(),
 });
 
 const uploadExerciseImageById = async (req, res) => {
@@ -25,9 +25,9 @@ const uploadExerciseImageById = async (req, res) => {
     const { role } = req.auth; // .auth lo hemos definido nosotros así!!!!
     isAdmin(role);
 
-    const car = await findExerciseById(id);
-    if (!car) {
-      throwJsonError(400, "No existe el coche");
+    const exercise = await findExerciseById(id);
+    if (!exercise) {
+      throwJsonError(400, "No existe el ejercicio");
     }
 
     const { principal } = req.body;
@@ -59,7 +59,7 @@ const uploadExerciseImageById = async (req, res) => {
     await addImagesByIdExercise(id, randomName, principal);
 
     res.status(201);
-    res.send({ image: `${HTTP_BACKEND}/cars/${id}/${randomName}` });
+    res.send({ image: `${HTTP_BACKEND}/exercises/${id}/${randomName}` });
   } catch (error) {
     createJsonError(error, res);
   }

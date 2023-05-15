@@ -23,7 +23,7 @@ const deleteExerciseImageByImageId = async (req, res) => {
 
     const pathImage = path.join(
       __dirname,
-      "../../../public/exercises",
+      "../../..//public/exercises",
       imageExercise.idExercise.toString(),
       imageExercise.name
     );

@@ -10,7 +10,7 @@ const createJsonError = require("../../errors/createJsonError");
 
 const schema = Joi.number().positive().integer().required();
 const schemaFiles = Joi.object().keys({
-  imagesCar: Joi.required(),
+  imagesExercise: Joi.required(),
 });
 
 const uploadMultipleExerciseImagesById = async (req, res) => {
@@ -23,8 +23,8 @@ const uploadMultipleExerciseImagesById = async (req, res) => {
     const { role } = req.auth; // .auth lo hemos definido nosotros así!!!!
     isAdmin(role);
 
-    const car = await findExerciseById(id);
-    if (!car) {
+    const exercise = await findExerciseById(id);
+    if (!exercise) {
       throwJsonError(400, "No existe el ejercicio");
     }
 
@@ -37,10 +37,10 @@ const uploadMultipleExerciseImagesById = async (req, res) => {
 
     const { imagesExercise } = files;
 
-    //console.log(imagesCar);
+    //console.log(imagesExercise);
     //Promise.allSettled -- espera por el resto de las
     const uploadImages = await Promise.all(
-      imagesExercise.map(async (imgCar) => {
+      imagesExercise.map(async (imgExercise) => {
         const { data } = imgExercise;
         const randomName = await uploadImage(id, data);
 

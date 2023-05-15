@@ -46,7 +46,7 @@ async function loginUser(req, res) {
       role,
     };
     const token = jwt.sign(tokenLoad, JWT_SECRET, {
-      expiresIn: `1m`,
+      expiresIn: `20m`,
     });
     res.status(200);
     res.json({ token, expiresIn: "1m" });

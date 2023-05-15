@@ -1,13 +1,24 @@
 const deleteImg = require("../helpers/deleteImages");
 const getPool = require("../infrastructure/database");
 
-const addImagesByIdExercise = async (idExercise, imageName, principal) => {
+const addImagesByIdExercise = async (idExercise, name, principal) => {
   const pool = await getPool();
-  const aql = `INSERT INTO exerciseImages(name, principal, idExercise) VALUES (?, ?, ?)`;
+  const workoutSql = `SELECT id FROM workout WHERE id = ?`;
+  const [workout] = await pool.query(workoutSql, idExercise);
 
-  const [exercises] = await pool.query(sql, [imageName, principal, idExercise]);
+  if (workout.length === 0) {
+    return false;
+  }
 
-  return true;
+  const sql = `INSERT INTO exerciseImages(name, principal, idExercise) VALUES (?, ?, ?)`;
+
+  const principalValue = principal ? 1 : 0;
+
+  const [exercises] = await pool.query(sql, [name, principalValue, idExercise]);
+
+  const imageUrl = `http://localhost:3000/images/${name}`;
+  return imageUrl;
+  // return true;
 };
 const removePrincipalByExerciseId = async (id) => {
   const pool = await getPool();
@@ -35,7 +46,7 @@ const deleteExerciseImageById = async (id, pathImage) => {
   const sql = "DELETE FROM exerciseImages WHERE id = ?";
   await pool.query(sql, id);
 
-  // Borramos la imagen fisica del coche de la carpeta public
+  // Borramos la imagen fisica
   console.log("pathImage", pathImage);
   await deleteImg(pathImage);
 
@@ -43,7 +54,7 @@ const deleteExerciseImageById = async (id, pathImage) => {
 };
 
 const findAllImagesByIdExercise = async (idExercise) => {
-  console.log("===> IK <===");
+  // console.log("===> IK <===");
   // Conectar con base de datos
   const pool = await getPool();
   const sql = `

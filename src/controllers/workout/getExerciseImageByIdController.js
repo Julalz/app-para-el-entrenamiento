@@ -12,8 +12,9 @@ const schema = Joi.number().integer().positive().required();
 const getExerciseImagesById = async (req, res) => {
   try {
     const { exerciseId } = req.params;
-    await schema.validateAsync(carId);
-    const exerciseImages = await findAllImagesByIdExercise(carId);
+    console.log(req.params);
+    await schema.validateAsync(exerciseId);
+    const exerciseImages = await findAllImagesByIdExercise(exerciseId);
     if (!exerciseImages) {
       throwJsonError(400, "Id no válido");
     }
@@ -26,7 +27,7 @@ const getExerciseImagesById = async (req, res) => {
         principal,
       };
     });
-
+    console.log(mapperExerciseImages);
     res.status(200);
     res.send({ exerciseImages: mapperExerciseImages });
   } catch (error) {

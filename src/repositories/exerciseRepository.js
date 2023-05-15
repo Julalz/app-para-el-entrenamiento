@@ -9,9 +9,9 @@ const addExercise = async (exercise) => {
       image,
       typology,
       muscle,
-      created_at
+      createdAt
     ) VALUES (?, ?, ?, ?, ?, ?)`;
-  const { name, description, image, typology, muscle } = exercise;
+  const { name, description, image, typology, muscle, createdAt } = exercise;
 
   const [created] = await pool.query(sql, [
     name,
