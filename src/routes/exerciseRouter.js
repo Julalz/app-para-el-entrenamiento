@@ -7,8 +7,8 @@ const deleteExerciseById = require("../controllers/workout/deleteExerciseControl
 
 const addLikeWorkout = require("../controllers/workout/addLikeExerciseController");
 const removeLikeWorkout = require("../controllers/workout/removeLikeExerciseController");
-const { updateExerciseById } = require("../repositories/exerciseRepository");
 const filterExercises = require("../controllers/workout/filterExerciseBymuscleTypologyController");
+const updateExercise = require("../controllers/workout/updateExerciseController");
 const exerciseRouter = express.Router();
 
 exerciseRouter.route("/").all(validAdmin).post(createExercise);
@@ -20,7 +20,7 @@ exerciseRouter
   .all(validAdmin)
   .post(addLikeWorkout)
   .delete(removeLikeWorkout);
-exerciseRouter.route("/:id").all(validAdmin).put(updateExerciseById);
+exerciseRouter.route("/:id").all(validAdmin).patch(updateExercise);
 exerciseRouter.route("/muscle/:muscle").all(validAdmin).get(filterExercises);
 exerciseRouter
   .route("/typology/:typology")
