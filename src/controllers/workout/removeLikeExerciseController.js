@@ -1,5 +1,4 @@
 const createJsonError = require("../../errors/createJsonError");
-const validAdmin = require("../../middlewares/validAdmin");
 const { getExerciseById } = require("../../repositories/exerciseRepository");
 const {
   removeLike,
@@ -9,11 +8,11 @@ const {
 
 const removeLikeWorkout = async (req, res) => {
   try {
-    const { workoutId } = req.params;
-    const { userId } = req.body;
+    const { workout_id } = req.params;
+    const { user_id } = req.body;
 
-    const likeExists = await getLikeByWorkoutAndUser(workoutId, userId);
-    const workoutExists = await getExerciseById(workoutId);
+    const likeExists = await getLikeByWorkoutAndUser(workout_id, user_id);
+    const workoutExists = await getExerciseById(workout_id);
 
     if (!likeExists) {
       return res.status(400).json({
@@ -25,8 +24,8 @@ const removeLikeWorkout = async (req, res) => {
       return res.status(400).json({ error: "Este ejercicio no existe" });
     }
 
-    await removeLike(userId, workoutId);
-    await updateLikesCount(workoutId);
+    await removeLike(user_id, workout_id);
+    await updateLikesCount(workout_id);
 
     res.status(200);
     res.send({ message: "Like eliminado correctamente" });

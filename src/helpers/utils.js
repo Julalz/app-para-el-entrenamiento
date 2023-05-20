@@ -8,4 +8,4 @@ const isAdmin = (role) => {
   return true;
 };
 
-module.exports = isAdmin;
+module.exports = { isAdmin };

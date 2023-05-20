@@ -16,16 +16,17 @@ CREATE TABLE IF NOT EXISTS `exercise_gym`.`users` (
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `exercise_gym`.`workout` (
-  `id` INT UNSIGNED AUTO_INCREMENT,
-  `name` VARCHAR(60) NOT NULL,
-  `description` VARCHAR(255),
-  `image` CHAR(255) NOT NULL,
-  `typology` VARCHAR(60),
-  `muscle` VARCHAR(60),
-  `likes_count` INT UNSIGNED NOT NULL DEFAULT 0,
-  `createdAt` DATETIME NOT NULL,
-  PRIMARY KEY (`id`),
+CREATE TABLE IF NOT EXISTS exercise_gym.workout (
+  id INT UNSIGNED AUTO_INCREMENT,
+  name VARCHAR(60) NOT NULL,
+  description VARCHAR(255),
+  image CHAR(255) NOT NULL,
+  typology VARCHAR(60),
+  muscle VARCHAR(60),
+  likesCount INT UNSIGNED NOT NULL DEFAULT 0,
+  user_id INT UNSIGNED NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
 CREATE TABLE IF NOT EXISTS `exercise_gym`.`likes` (
@@ -49,11 +50,7 @@ CREATE TABLE IF NOT EXISTS `exercise_gym`.`exerciseImages` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `principal` TINYINT NULL DEFAULT '0',
-  `idexercise` INT NOT NULL,
+  `idExercise` INT NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`idExercise`)
-    REFERENCES `exercise_gym`.`exercises` (`id`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 1
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+    REFERENCES `exercise_gym`.`workout` (`id`));

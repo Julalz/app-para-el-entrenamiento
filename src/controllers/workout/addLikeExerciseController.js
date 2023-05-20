@@ -1,5 +1,4 @@
 const createJsonError = require("../../errors/createJsonError");
-const validAdmin = require("../../middlewares/validAdmin");
 const { getExerciseById } = require("../../repositories/exerciseRepository");
 const {
   addLike,
@@ -9,11 +8,13 @@ const {
 
 const addLikeWorkout = async (req, res) => {
   try {
-    const { workoutId } = req.params;
-    const { userId } = req.body;
+    const { workout_id } = req.params;
+    console.log(req.params);
+    const { user_id } = req.body;
+    console.log(user_id);
 
-    const likeExists = await getLikeByWorkoutAndUser(workoutId, userId);
-    const workoutExists = await getExerciseById(workoutId);
+    const likeExists = await getLikeByWorkoutAndUser(workout_id, user_id);
+    const workoutExists = await getExerciseById(workout_id);
 
     if (likeExists) {
       return res
@@ -25,8 +26,8 @@ const addLikeWorkout = async (req, res) => {
       return res.status(400).json({ error: "Este ejercicio no existe" });
     }
 
-    await addLike(userId, workoutId);
-    await updateLikesCount(workoutId);
+    await addLike(user_id, workout_id);
+    await updateLikesCount(workout_id);
 
     res.status(200);
     res.send({ message: "Like añadido correctamente" });

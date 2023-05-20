@@ -3,15 +3,12 @@ const {
   findAllExerciseByMuscle,
 } = require("../../repositories/exerciseRepository");
 const createJsonError = require("../../errors/createJsonError");
-const isAdmin = require("../../middlewares/validAdmin");
 const throwJsonError = require("../../errors/throwJsonError");
 
 const filterExercises = async (req, res) => {
   try {
     const { muscle, typology } = req.params;
     console.log(req.params);
-    const { role } = req.auth;
-    isAdmin(role);
 
     let exercises;
     if (typology) {

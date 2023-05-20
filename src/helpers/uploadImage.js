@@ -5,11 +5,9 @@ const { ensureDir } = require("fs-extra");
 
 const uploadImage = async (id, imageData) => {
   const uploadDirectory = path.join(__dirname, "../../public/images", id);
-  //console.log(uploadDirectory);
   ensureDir(uploadDirectory);
   const image = sharp(imageData);
   const randomName = randomstring.generate(20) + ".png";
-  console.log(randomName);
 
   await image
     .resize(600, 600)

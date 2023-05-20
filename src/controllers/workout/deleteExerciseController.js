@@ -1,27 +1,25 @@
 const Joi = require("joi");
 const createJsonError = require("../../errors/createJsonError");
-const validAdmin = require("../../middlewares/validAdmin");
 const {
-  findAllExerciseByMuscle,
   removeExerciseId,
+  findExerciseById,
 } = require("../../repositories/exerciseRepository");
 const throwJsonError = require("../../errors/throwJsonError");
+const { isAdmin } = require("../../helpers/utils");
 
 const schema = Joi.number().integer().positive().required();
 
 const deleteExerciseById = async (req, res) => {
   try {
     const { role } = req.auth;
-    validAdmin(role);
-
+    isAdmin(role);
     const { id } = req.params;
-    await schema.validateAsync(id);
+    const exercise = await findExerciseById(id);
 
-    const exercise = await findAllExerciseByMuscle(id);
+    await schema.validateAsync(id);
     if (!exercise) {
       throwJsonError(400, "Ejercicio no existente");
     }
-    console.log("exercise", exercise);
 
     await removeExerciseId(id);
 

@@ -36,6 +36,14 @@ const findAllExercise = async () => {
 
   return exercise;
 };
+const findExerciseById = async (id) => {
+  const pool = await getPool();
+  const sql = "SELECT * FROM workout WHERE id = ?";
+
+  const [exercise] = await pool.query(sql, id);
+
+  return exercise[0];
+};
 
 const findAllExerciseByMuscle = async (muscle) => {
   const pool = await getPool();
@@ -46,11 +54,11 @@ const findAllExerciseByMuscle = async (muscle) => {
   return exercise;
 };
 
-const getExerciseById = async (workoutId) => {
+const getExerciseById = async (workout_id) => {
   const pool = await getPool();
   const sql = `SELECT * FROM workout WHERE id = ?`;
 
-  const [exercise] = await pool.query(sql, [workoutId]);
+  const [exercise] = await pool.query(sql, [workout_id]);
 
   return exercise[0];
 };
@@ -80,7 +88,13 @@ const updateExerciseById = async (id, body) => {
 
   return true;
 };
+const updateExerciseImagesById = async (id, name) => {
+  const pool = await getPool();
+  const sql = "UPDATE workout SET image = ? WHERE id = ?";
+  const [updated] = await pool.query(sql, [name, id]);
 
+  return true;
+};
 module.exports = {
   addExercise,
   findAllExercise,
@@ -89,4 +103,6 @@ module.exports = {
   removeExerciseId,
   getExerciseById,
   updateExerciseById,
+  findExerciseById,
+  updateExerciseImagesById,
 };

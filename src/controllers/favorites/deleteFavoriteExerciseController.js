@@ -1,5 +1,4 @@
 const createJsonError = require("../../errors/createJsonError");
-const isAdmin = require("../../middlewares/validAdmin");
 const {
   removeExerciseFromFavoritesByid,
 } = require("../../repositories/favoritesRepository");
@@ -7,8 +6,6 @@ const {
 const removeExerciseFavorites = async (req, res) => {
   try {
     const { id } = req.body;
-    const { role } = req.auth;
-    isAdmin(role);
 
     await removeExerciseFromFavoritesByid(id);
 

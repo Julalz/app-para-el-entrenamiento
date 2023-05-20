@@ -19,6 +19,21 @@ const createUser = async (user) => {
 
   return created.insertId;
 };
+const findUserVerificationCode = async (verificationCode) => {
+  const pool = await getPool();
+  const sql =
+    "SELECT id, name, email, password, role, verifiedAt FROM users WHERE verificationCode = ?";
+  const [user] = await pool.query(sql, verificationCode);
+  console.log("hola2");
+  return user[0];
+};
+const atVerificationDate = async (id) => {
+  const pool = await getPool();
+  const now = new Date();
+  const sql = "UPDATE users SET  verifiedAt = ? WHERE id = ?";
+
+  const [created] = await pool.query(sql, [now, id]);
+};
 
 const uploadUserProfileImage = async (id, image) => {
   const pool = await getPool();
@@ -54,5 +69,7 @@ module.exports = {
   findUserByEmail,
   findAllExercise,
   updateUserRole,
+  findUserVerificationCode,
+  atVerificationDate,
   uploadUserProfileImage,
 };
