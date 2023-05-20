@@ -1,5 +1,5 @@
 const createJsonError = require("../../errors/createJsonError");
-const isAdmin = require("../../middlewares/validAdmin");
+const isAdmin = require("../../middlewares/validAuth");
 const {
   getAllFavoritesExercise,
 } = require("../../repositories/favoritesRepository");

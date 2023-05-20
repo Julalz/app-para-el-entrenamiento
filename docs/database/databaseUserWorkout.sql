@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS exercise_gym.workout (
   image CHAR(255) NOT NULL,
   typology VARCHAR(60),
   muscle VARCHAR(60),
-  likes_count INT UNSIGNED NOT NULL DEFAULT 0,
+  likesCount INT UNSIGNED NOT NULL DEFAULT 0,
   user_id INT UNSIGNED NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users (id)
@@ -46,3 +46,12 @@ CREATE TABLE IF NOT EXISTS favorites (
   foreign key (user_id) references users(id),
   foreign key (workout_id) references workout(id)
   );
+
+  CREATE TABLE IF NOT EXISTS `exercise_gym`.`exerciseImages` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `principal` TINYINT NULL DEFAULT '0',
+  `idexercise` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`idExercise`)
+    REFERENCES `exercise_gym`.`exercises` (`id`));

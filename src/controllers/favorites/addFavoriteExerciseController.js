@@ -1,5 +1,5 @@
 const createJsonError = require("../../errors/createJsonError");
-const isAdmin = require("../../middlewares/validAdmin");
+
 const {
   addExerciseToFavorites,
 } = require("../../repositories/favoritesRepository");
@@ -8,8 +8,6 @@ const addExerciseFavorites = async (req, res) => {
   try {
     const { user_id, workout_id } = req.body;
     const { userId } = req.params;
-    const { role } = req.auth;
-    isAdmin(role);
 
     const ResponseFavoritesExercise = await addExerciseToFavorites(
       userId,

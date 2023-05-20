@@ -1,7 +1,7 @@
 const Joi = require("joi");
 const { addExercise } = require("../../repositories/exerciseRepository");
-const isAdmin = require("../../middlewares/validAdmin");
 const createJsonError = require("../../errors/createJsonError");
+const { isAdmin } = require("../../helpers/utils");
 
 const schema = Joi.object().keys({
   name: Joi.string().min(2).max(200).required(),
@@ -14,6 +14,8 @@ const schema = Joi.object().keys({
 const createExercise = async (req, res) => {
   try {
     const { body } = req;
+    const { role } = req.auth;
+    isAdmin(role);
     await schema.validateAsync(body);
 
     const exerciseId = await addExercise(body);

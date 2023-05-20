@@ -11,9 +11,10 @@ const accessToken = (headers) => {
 };
 const { JWT_SECRET } = process.env;
 
-const validAdmin = (req, res, next) => {
+const validAuth = (req, res, next) => {
   try {
     const { headers } = req;
+
     const token = accessToken(headers);
 
     const decodedToken = jwt.verify(token, JWT_SECRET);
@@ -26,4 +27,4 @@ const validAdmin = (req, res, next) => {
   }
 };
 
-module.exports = validAdmin;
+module.exports = validAuth;

@@ -1,14 +1,10 @@
 const createJsonError = (error, res) => {
+  console.log("ERROR", error);
   const { status, message } = error;
-
-  if (res && typeof res === "object") {
-    res.status(status || (error.details ? 422 : 500));
-    res.send({
-      error: message,
-    });
-  } else {
-    console.error("Error: 'res' is not a valid object");
-  }
+  res.status(status);
+  res.send({
+    error: message,
+  });
 };
 
 module.exports = createJsonError;
