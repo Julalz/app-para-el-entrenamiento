@@ -32,7 +32,7 @@ const updateExercise = async (req, res) => {
     await updateExerciseById(id, body);
 
     res.status(200);
-    res.send("Ejercicio actualizado satisfactoriamente");
+    res.send({ message: `Ejercicio ${id} actualizado correctamente` });
   } catch (error) {
     createJsonError(error, res);
   }

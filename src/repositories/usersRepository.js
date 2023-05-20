@@ -35,6 +35,14 @@ const atVerificationDate = async (id) => {
   const [created] = await pool.query(sql, [now, id]);
 };
 
+const uploadUserProfileImage = async (id, image) => {
+  const pool = await getPool();
+  const sql = "UPDATE users SET image = ? WHERE id = ?";
+  await pool.query(sql, [image, id]);
+
+  return true;
+};
+
 const updateUserRole = async (email, role) => {
   const pool = await getPool();
   const sql = "UPDATE users SET role = ? WHERE email = ?";
@@ -63,4 +71,5 @@ module.exports = {
   updateUserRole,
   findUserVerificationCode,
   atVerificationDate,
+  uploadUserProfileImage,
 };

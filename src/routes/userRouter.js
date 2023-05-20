@@ -7,6 +7,7 @@ const getUserExerciseFavorites = require("../controllers/favorites/getFavoriteEx
 const addExerciseFavorites = require("../controllers/favorites/addFavoriteExerciseController");
 const activationAccount = require("../controllers/users/accountActivation");
 const validAuth = require("../middlewares/validAuth");
+const removeExerciseFavorites = require("../controllers/favorites/deleteFavoriteExerciseController");
 const userRouter = express.Router();
 
 userRouter.route("/signup").post(createAccount);
@@ -18,6 +19,6 @@ userRouter
   .all(validAuth)
   .get(getUserExerciseFavorites)
   .post(addExerciseFavorites)
-  .delete(addExerciseFavorites);
+  .delete(removeExerciseFavorites);
 
 module.exports = userRouter;
