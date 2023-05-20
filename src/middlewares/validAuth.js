@@ -19,8 +19,8 @@ const validAuth = (req, res, next) => {
 
     const decodedToken = jwt.verify(token, JWT_SECRET);
 
-    const { name, email, role } = decodedToken;
-    req.auth = { name, email, role };
+    const { id, email, role } = decodedToken;
+    req.auth = { id, email, role };
     next();
   } catch (error) {
     createJsonError(error, res);

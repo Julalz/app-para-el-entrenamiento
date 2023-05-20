@@ -51,14 +51,14 @@ const findAllExerciseByMuscle = async (muscle) => {
 
   const [exercise] = await pool.query(sql, [muscle]);
 
-  return exercise[0];
+  return exercise;
 };
 
-const getExerciseById = async (workoutId) => {
+const getExerciseById = async (workout_id) => {
   const pool = await getPool();
   const sql = `SELECT * FROM workout WHERE id = ?`;
 
-  const [exercise] = await pool.query(sql, [workoutId]);
+  const [exercise] = await pool.query(sql, [workout_id]);
 
   return exercise[0];
 };
@@ -88,7 +88,13 @@ const updateExerciseById = async (id, body) => {
 
   return true;
 };
+const updateExerciseImagesById = async (id, name) => {
+  const pool = await getPool();
+  const sql = "UPDATE workout SET image = ? WHERE id = ?";
+  const [updated] = await pool.query(sql, [name, id]);
 
+  return true;
+};
 module.exports = {
   addExercise,
   findAllExercise,
@@ -98,4 +104,5 @@ module.exports = {
   getExerciseById,
   updateExerciseById,
   findExerciseById,
+  updateExerciseImagesById,
 };

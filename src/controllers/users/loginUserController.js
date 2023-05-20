@@ -46,10 +46,10 @@ async function loginUser(req, res) {
       role,
     };
     const token = jwt.sign(tokenLoad, JWT_SECRET, {
-      expiresIn: `20m`,
+      expiresIn: `1y`,
     });
     res.status(200);
-    res.json({ token, expiresIn: "20m" });
+    res.json({ token, expiresIn: "1y" });
   } catch (error) {
     createJsonError(error, res);
   }

@@ -1,12 +1,14 @@
 const Joi = require("joi");
+const path = require("path");
 const createJsonError = require("../../errors/createJsonError");
 const throwJsonError = require("../../errors/throwJsonError");
-const isAdmin = require("../../helpers/utils");
+const { isAdmin } = require("../../helpers/utils");
 const {
   findImageById,
+  deleteExerciseImageById,
 } = require("../../repositories/exerciseImagesRepository");
 
-const schema = Joi.number().integer().positive().requires();
+const schema = Joi.number().positive().integer().required();
 
 const deleteExerciseImageByImageId = async (req, res) => {
   try {
@@ -15,7 +17,7 @@ const deleteExerciseImageByImageId = async (req, res) => {
 
     const { id } = req.params;
     await schema.validateAsync(id);
-
+    console.log(id);
     const imageExercise = await findImageById(id);
     if (!imageExercise) {
       throwJsonError(400, "ejercicio no existe");
@@ -27,12 +29,11 @@ const deleteExerciseImageByImageId = async (req, res) => {
       imageExercise.idExercise.toString(),
       imageExercise.name
     );
-    console.log(pathImage);
 
-    await deleteExerciseImageByImageId(id, pathImage);
+    await deleteExerciseImageById(id, pathImage);
 
     res.status(200);
-    res.send({ message: "Image ejercicio eliminada" });
+    res.send({ message: "Imagen del ejercicio eliminada" });
   } catch (error) {
     createJsonError(error, res);
   }

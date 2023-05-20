@@ -13,9 +13,9 @@ const deleteExerciseById = async (req, res) => {
   try {
     const { role } = req.auth;
     isAdmin(role);
-
-    const exercise = await findExerciseById(id);
     const { id } = req.params;
+    const exercise = await findExerciseById(id);
+
     await schema.validateAsync(id);
     if (!exercise) {
       throwJsonError(400, "Ejercicio no existente");

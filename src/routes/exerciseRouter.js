@@ -1,27 +1,22 @@
 "use strict";
 const express = require("express");
 const createExercise = require("../controllers/workout/createExerciseController");
-const getAllExercise = require("../controllers/workout/getAllExerciseController");
 const { updateExerciseById } = require("../repositories/exerciseRepository");
 const filterExercises = require("../controllers/workout/filterExerciseBymuscleTypologyController");
 const deleteExerciseById = require("../controllers/workout/deleteExerciseController");
-
 const addLikeWorkout = require("../controllers/workout/addLikeExerciseController");
 const removeLikeWorkout = require("../controllers/workout/removeLikeExerciseController");
-const filterExercises = require("../controllers/workout/filterExerciseBymuscleTypologyController");
 const updateExercise = require("../controllers/workout/updateExerciseController");
 const getAllExercise = require("../controllers/workout/getAllExercisesController");
 
-const updateExercise = require("../controllers/workout/updateExerciseController");
 const validAuth = require("../middlewares/validAuth");
-const deleteExerciseById = require("../controllers/workout/deleteExerciseController");
 
 const exerciseRouter = express.Router();
 
 exerciseRouter.route("/").all(validAuth).post(createExercise);
 exerciseRouter.route("/getall").all(validAuth).get(getAllExercise);
 exerciseRouter
-  .route("/like/:workoutId")
+  .route("/like/:workout_id")
   .all(validAuth)
   .post(addLikeWorkout)
   .delete(removeLikeWorkout);

@@ -1,30 +1,175 @@
 {
 	"info": {
-		"_postman_id": "87664b4f-67a2-4831-91cf-bd352b6e52c9",
-		"name": "App-entrenamiento",
+		"_postman_id": "efc00106-b889-4aa7-a4dc-f9013d66e130",
+		"name": "TrainningApp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "27209660"
+		"_exporter_id": "27023473"
 	},
 	"item": [
 		{
-			"name": "Users",
+			"name": "users",
 			"item": [
 				{
-					"name": "Privados",
+					"name": "SignUP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"julian alzate\",\r\n\"email\": \"Julian942@hotmail.com\",\r\n\"password\":\"1234\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"pm.environment.set(\"token\", response.token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoiSnVsaWFuOTQyQGhvdG1haWwuY29tIiwicm9sZSI6InJlYWRlciIsImlhdCI6MTY4MzczMTk1OCwiZXhwIjoxNjgzNzMyMDE4fQ.PBUCLoQWD-UtvFge1IRzqUnnZRSxd_TUgCAwW29awUc",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"email\": \"Julian942@hotmail.com\",\r\n\"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODIyMzcsImV4cCI6MTY4NDU4MzQzN30.aMMBfWtT5sS5O1mCFtj3R0ZzZCxIVyYrfnmci9bBq40",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"email\": \"Julian942@hotmail.com\",\r\n\"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "exercise",
+			"item": [
+				{
+					"name": "favoritesExercises",
 					"item": [
 						{
-							"name": "Ver Perfil del User",
+							"name": "GetFavoriteExercise",
 							"request": {
 								"method": "GET",
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQxNTM1NTUsImV4cCI6MTY4NDE1NDc1NX0.un_Vap96YikjG6okFlj9bmK8ybJZgQFMZzhL04o-n9U",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODMyMzYsImV4cCI6MTY4NDU4NDQzNn0.A4H-bP4rJwWPV5BhxFy9CmRTvERXTIsD71Fo7Gpwn0I",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:3000/api/v1/users/profile",
+									"raw": "http://localhost:3000/api/v1/users/profile/1/favorites",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -34,26 +179,28 @@
 										"api",
 										"v1",
 										"users",
-										"profile"
+										"profile",
+										"1",
+										"favorites"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Guardar ejercicio favoritos",
+							"name": "Create FavoriteExercise",
 							"request": {
 								"method": "POST",
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQxNjMxNTYsImV4cCI6MTY4NDE2NDM1Nn0.5Dqk4_J_a6VcpLkNv48QVqLrnFZtxj06UGJSXF77C6U",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODMyMzYsImV4cCI6MTY4NDU4NDQzNn0.A4H-bP4rJwWPV5BhxFy9CmRTvERXTIsD71Fo7Gpwn0I",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"user_id\":\"1\",\r\n    \"workout_id\":\"2\"\r\n}",
+									"raw": "{\r\n  \"user_id\": \"1\",\r\n  \"workout_id\": \"3\"\r\n\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -80,49 +227,19 @@
 							"response": []
 						},
 						{
-							"name": "Ver ejercicios favoritos",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQxNjQ0MDYsImV4cCI6MTY4NDE2NTYwNn0.90V5r9xXKuPZBPzxJTj8VIHW04j2ocF7skCJp8oLa7k",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "http://localhost:3000/api/v1/users/profile/1/favorites",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"v1",
-										"users",
-										"profile",
-										"1",
-										"favorites"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Eliminar ejercicio favoritos",
+							"name": "Delete FavoriteExercise Copy",
 							"request": {
 								"method": "DELETE",
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQxNjQ0MDYsImV4cCI6MTY4NDE2NTYwNn0.90V5r9xXKuPZBPzxJTj8VIHW04j2ocF7skCJp8oLa7k",
+										"value": "Bearer {{token}}",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"user_id\":\"1\",\r\n    \"workout_id\":\"1\"\r\n}",
+									"raw": "{\r\n  \"id\": 4\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -151,24 +268,21 @@
 					]
 				},
 				{
-					"name": "Publicos",
+					"name": "images",
 					"item": [
 						{
-							"name": "Registro",
+							"name": "Getimages",
 							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"name\": \"Alvaras2prueba\",\r\n    \"email\": \"alvarokavprueba@yopmail.com\",\r\n    \"password\": \"1234\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
 									}
-								},
+								],
 								"url": {
-									"raw": "http://localhost:3000/api/v1/users/signup",
+									"raw": "http://localhost:3000/api/v1/images/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -177,29 +291,26 @@
 									"path": [
 										"api",
 										"v1",
-										"users",
-										"signup"
+										"images",
+										"1"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Login",
+							"name": "Deleteimages",
 							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "\r\n{\r\n\"email\": \"Julian942@hotmail.com\",\r\n\"password\": \"1234\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
 									}
-								},
+								],
 								"url": {
-									"raw": "http://localhost:3000/api/v1/users/login",
+									"raw": "http://localhost:3000/api/v1/images/4",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -208,88 +319,62 @@
 									"path": [
 										"api",
 										"v1",
-										"users",
-										"login"
+										"images",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Upload images",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "imageExercise",
+											"type": "file",
+											"src": "/C:/Users/User/OneDrive/Documentos/proyecto-2-entrenamiento/docs/images/pressDeBanca.png"
+										},
+										{
+											"key": "principal",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/images/1/uplaod",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"images",
+										"1",
+										"uplaod"
 									]
 								}
 							},
 							"response": []
 						}
 					]
-				}
-			]
-		},
-		{
-			"name": "Exercises",
-			"item": [
+				},
 				{
-					"name": "Privados",
+					"name": "Likes/Deslikes",
 					"item": [
-						{
-							"name": "Crear Ejercicio",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQxNjMxNTYsImV4cCI6MTY4NDE2NDM1Nn0.5Dqk4_J_a6VcpLkNv48QVqLrnFZtxj06UGJSXF77C6U",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\"name\": \"Prueba ejercicio 2\",\r\n\"description\": \"Esta es la descripción de prueba ejercicio 2\",\r\n\"image\":\"prueba2.jpg\",\r\n\"typology\":\"prueba 2 typologia\",\r\n\"muscle\":\"test 2 musculo\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/api/v1/exercise/",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"v1",
-										"exercise",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Eliminar ejercicio",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQxNjMxNTYsImV4cCI6MTY4NDE2NDM1Nn0.5Dqk4_J_a6VcpLkNv48QVqLrnFZtxj06UGJSXF77C6U",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "http://localhost:3000/api/v1/exercise/5",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"v1",
-										"exercise",
-										"5"
-									]
-								}
-							},
-							"response": []
-						},
 						{
 							"name": "Poner LIKE",
 							"request": {
@@ -297,13 +382,13 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQxNTM1NTUsImV4cCI6MTY4NDE1NDc1NX0.un_Vap96YikjG6okFlj9bmK8ybJZgQFMZzhL04o-n9U",
+										"value": "Bearer {{token}}",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"userId\": 2\r\n}",
+									"raw": "{\r\n    \"user_id\": \"1\"\r\n    \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -311,7 +396,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/v1/exercise/like/4",
+									"raw": "http://localhost:3000/api/v1/exercise/like/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -322,7 +407,7 @@
 										"v1",
 										"exercise",
 										"like",
-										"4"
+										"1"
 									]
 								}
 							},
@@ -335,13 +420,13 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQxNTM1NTUsImV4cCI6MTY4NDE1NDc1NX0.un_Vap96YikjG6okFlj9bmK8ybJZgQFMZzhL04o-n9U",
+										"value": "Bearer {{token}}",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"userId\": 2\r\n}",
+									"raw": "{\r\n    \"user_id\": 1\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -349,7 +434,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/v1/exercise/like/4",
+									"raw": "http://localhost:3000/api/v1/exercise/like/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -360,102 +445,7 @@
 										"v1",
 										"exercise",
 										"like",
-										"4"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Actualizar ejercicio",
-							"request": {
-								"method": "PATCH",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQxNjMxNTYsImV4cCI6MTY4NDE2NDM1Nn0.5Dqk4_J_a6VcpLkNv48QVqLrnFZtxj06UGJSXF77C6U",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\"name\":\"Ej: Press de Banca\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:3000/api/v1/exercise/1",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"v1",
-										"exercise",
 										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Filtrar ejercicio: musculo",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQxNjMxNTYsImV4cCI6MTY4NDE2NDM1Nn0.5Dqk4_J_a6VcpLkNv48QVqLrnFZtxj06UGJSXF77C6U",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "http://localhost:3000/api/v1/exercise/muscle/triceps",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"v1",
-										"exercise",
-										"muscle",
-										"triceps"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Filtrar ejercicio: tipologia",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQxNjMxNTYsImV4cCI6MTY4NDE2NDM1Nn0.5Dqk4_J_a6VcpLkNv48QVqLrnFZtxj06UGJSXF77C6U",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "http://localhost:3000/api/v1/exercise/typology/strength",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"v1",
-										"exercise",
-										"typology",
-										"strength"
 									]
 								}
 							},
@@ -464,31 +454,171 @@
 					]
 				},
 				{
-					"name": "Publicos",
-					"item": [
-						{
-							"name": "Mostrar todos los ejercicios",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "http://localhost:3000/api/v1/exercise/getall",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"v1",
-										"exercise",
-										"getall"
-									]
+					"name": "create Exercise",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODIyMzcsImV4cCI6MTY4NDU4MzQzN30.aMMBfWtT5sS5O1mCFtj3R0ZzZCxIVyYrfnmci9bBq40",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\": \"prueba  ultima crear \",\r\n\"description\": \"deberás ponerte de pie. Coordina la siguiente secuencia de movimientos: abre tanto tus brazos como tus piernas en el primer gesto, y ciérralos acto seguido.\",\r\n\"image\":\"prueba update.jpg\",\r\n\"typology\":\"aerobic\",\r\n\"muscle\":\"abdomen\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							},
-							"response": []
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/exercise",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"exercise"
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Exercise",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODIyMzcsImV4cCI6MTY4NDU4MzQzN30.aMMBfWtT5sS5O1mCFtj3R0ZzZCxIVyYrfnmci9bBq40",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/exercise/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"exercise",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Exercise",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODIyMzcsImV4cCI6MTY4NDU4MzQzN30.aMMBfWtT5sS5O1mCFtj3R0ZzZCxIVyYrfnmci9bBq40",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"description\": \" patatahuevovacio\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/exercise/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"exercise",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Exercise",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/exercise/getall",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"exercise",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter by Muscle/Typology",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODIyMzcsImV4cCI6MTY4NDU4MzQzN30.aMMBfWtT5sS5O1mCFtj3R0ZzZCxIVyYrfnmci9bBq40",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/exercise/typology/aerobic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"exercise",
+								"typology",
+								"aerobic"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

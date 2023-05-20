@@ -10,7 +10,7 @@ const addImagesByIdExercise = async (idExercise, name, principal) => {
     return false;
   }
 
-  const sql = `INSERT INTO exerciseImages(name, principal, idExercise) VALUES (?, ?, ?)`;
+  const sql = `INSERT INTO exerciseImages(name, idExercise) VALUES (?, ?, ?)`;
 
   const principalValue = principal ? 1 : 0;
 
@@ -18,7 +18,6 @@ const addImagesByIdExercise = async (idExercise, name, principal) => {
 
   const imageUrl = `http://localhost:3000/images/${name}`;
   return imageUrl;
-  // return true;
 };
 const removePrincipalByExerciseId = async (id) => {
   const pool = await getPool();
@@ -32,7 +31,6 @@ const removePrincipalByExerciseId = async (id) => {
 };
 
 const findImageById = async (id) => {
-  // Conectar con base de datos
   const pool = await getPool();
   const sql = `SELECT * FROM exerciseImages WHERE id = ?`;
   const [exercises] = await pool.query(sql, id);
@@ -46,7 +44,6 @@ const deleteExerciseImageById = async (id, pathImage) => {
   const sql = "DELETE FROM exerciseImages WHERE id = ?";
   await pool.query(sql, id);
 
-  // Borramos la imagen fisica
   console.log("pathImage", pathImage);
   await deleteImg(pathImage);
 
@@ -54,8 +51,6 @@ const deleteExerciseImageById = async (id, pathImage) => {
 };
 
 const findAllImagesByIdExercise = async (idExercise) => {
-  // console.log("===> IK <===");
-  // Conectar con base de datos
   const pool = await getPool();
   const sql = `
       SELECT * FROM exerciseImages WHERE idExercise = ?
