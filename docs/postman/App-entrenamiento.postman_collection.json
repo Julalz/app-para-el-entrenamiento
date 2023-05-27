@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"name\": \"julian alzate\",\r\n\"email\": \"Julian942@hotmail.com\",\r\n\"password\":\"1234\"\r\n}\r\n",
+							"raw": "{\r\n\"name\": \"Alberto\",\r\n\"email\": \"Julian-942+6-@hotmail.com\",\r\n\"password\":\"1234\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -144,6 +144,29 @@
 								"v1",
 								"users",
 								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Codeverification",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/activation/faE1HEgdLNOF3SNyO0QMEgjaS5QdM4x6RjhNY0wPrhqDrtyldM7wCpr8CwrpEUG5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"activation",
+								"faE1HEgdLNOF3SNyO0QMEgjaS5QdM4x6RjhNY0wPrhqDrtyldM7wCpr8CwrpEUG5"
 							]
 						}
 					},

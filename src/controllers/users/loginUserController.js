@@ -6,6 +6,8 @@ const createJsonError = require("../../errors/createJsonError");
 const { findUserByEmail } = require("../../repositories/usersRepository");
 const throwJsonError = require("../../errors/throwJsonError");
 const express = require("express");
+const SendEmailVerificationRemember = require("../../helpers/RememberActivation");
+const SendEmail = require("../../helpers/mailSmtp");
 
 const schema = joi.object().keys({
   email: joi.string().email().required(),
@@ -25,7 +27,14 @@ async function loginUser(req, res) {
         " 1 Este usuario y contraseña no se encuentra registrado"
       );
     }
-    const { password: passwordHash, verifiedAt, role, id } = UserCheckByEmail;
+    const {
+      name,
+      password: passwordHash,
+      verifiedAt,
+      role,
+      id,
+      verificationCode,
+    } = UserCheckByEmail;
 
     const passwordChecked = await bcrypt.compare(password, passwordHash);
     if (!passwordChecked) {
@@ -35,11 +44,11 @@ async function loginUser(req, res) {
       );
     }
     if (!verifiedAt) {
-      throwJsonError(401, "Verifique su cuenta");
+      await SendEmailVerificationRemember(name, email, verificationCode);
     }
+    console.log(verifiedAt);
 
     const { JWT_SECRET } = process.env;
-    console.log;
     const tokenLoad = {
       id,
       email,

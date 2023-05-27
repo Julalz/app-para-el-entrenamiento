@@ -10,7 +10,7 @@ async function activationAccount(req, res) {
     const { code } = req.params;
 
     const userData = await findUserVerificationCode(code);
-    const { id, verifiedAt } = userData;
+    const { name, id, verifiedAt } = userData;
     if (verifiedAt) {
       throwJsonError(400, "usuario ya ha sido verificado");
     }
@@ -19,7 +19,7 @@ async function activationAccount(req, res) {
 
     console.log(userData);
     res.status(200);
-    res.send("ok");
+    res.send(`${name} Bienvenido! Su cuenta ha sido Verificada`);
   } catch (error) {
     createJsonError(error, res);
   }

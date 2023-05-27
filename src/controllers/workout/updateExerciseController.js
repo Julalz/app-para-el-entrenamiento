@@ -31,8 +31,13 @@ const updateExercise = async (req, res) => {
 
     await updateExerciseById(id, body);
 
+    const updateExercise = await findExerciseById(id);
+
     res.status(200);
-    res.send({ message: `Ejercicio ${id} actualizado correctamente` });
+    res.send({
+      message: `Ejercicio ${id} actualizado correctamente`,
+      exercise: updateExercise,
+    });
   } catch (error) {
     createJsonError(error, res);
   }

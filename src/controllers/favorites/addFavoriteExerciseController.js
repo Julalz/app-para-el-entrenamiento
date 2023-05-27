@@ -7,12 +7,12 @@ const {
 
 const addExerciseFavorites = async (req, res) => {
   try {
-    const { user_id, workout_id } = req.body;
-    console.log(req.body);
+    const { workout_id } = req.body;
+
     const { userId } = req.params;
-    console.log(req.params);
+
     const { id } = req.auth;
-    console.log(req.auth);
+
     if (id !== +userId) {
       throwJsonError(403, "usuario incorrecto");
     }

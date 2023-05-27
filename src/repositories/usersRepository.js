@@ -52,7 +52,7 @@ const updateUserRole = async (email, role) => {
 const findUserByEmail = async (email) => {
   const pool = await getPool();
   const sql =
-    "SELECT id, name, email, password, role, verifiedAt FROM users WHERE email = ?";
+    "SELECT id, name, email, password, role, verifiedAt, verificationCode, createdAt  FROM users WHERE email = ?";
   const [user] = await pool.query(sql, email);
   return user[0];
 };
