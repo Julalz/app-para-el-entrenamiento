@@ -5,11 +5,12 @@ const {
 } = require("../../repositories/exerciseRepository");
 const createJsonError = require("../../errors/createJsonError");
 const { isAdmin } = require("../../helpers/utils");
+const uploadImage = require("../../helpers/uploadImage");
+const deleteImg = require("../../helpers/deleteImages");
 
 const schema = Joi.object().keys({
   name: Joi.string().min(2).max(20),
   description: Joi.string().min(2).max(220),
-  image: Joi.string(),
   typology: Joi.string().min(2).max(220),
   muscle: Joi.string().min(2).max(220),
 });
@@ -28,6 +29,11 @@ const updateExercise = async (req, res) => {
 
     const { body } = req;
     await schema.validateAsync(body);
+
+    if (req.files?.image) {
+      exercise.image && deleteImg(exercise.image);
+      req.body.image = await uploadImage(req.files.image.data);
+    }
 
     await updateExerciseById(id, body);
 

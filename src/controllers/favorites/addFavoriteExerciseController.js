@@ -3,29 +3,26 @@ const throwJsonError = require("../../errors/throwJsonError");
 
 const {
   addExerciseToFavorites,
+  getFavoriteByWorkoutAndUser,
 } = require("../../repositories/favoritesRepository");
 
 const addExerciseFavorites = async (req, res) => {
   try {
-    const { workout_id } = req.body;
+    const { workoutId } = req.params;
+    const { id: idUserLog } = req.auth;
 
-    const { userId } = req.params;
+    const favorite = await getFavoriteByWorkoutAndUser(workoutId, idUserLog);
 
-    const { id } = req.auth;
-
-    if (id !== +userId) {
-      throwJsonError(403, "usuario incorrecto");
+    if (favorite) {
+      throwJsonError(403, `El ejercicio ${workoutId} ya esta en favoritos`);
     }
 
-    const ResponseFavoritesExercise = await addExerciseToFavorites(
-      id,
-      workout_id
-    );
+    const favoriteId = await addExerciseToFavorites(idUserLog, workoutId);
 
     res.status(201);
     res.send({
-      message: "Ejercicio agregado a favoritos correctamente",
-      favoriteId: ResponseFavoritesExercise,
+      message: `Ejercicio ${workoutId} agregado a favoritos correctamente`,
+      data: { id: favoriteId, workout_id: workoutId, user_id: idUserLog },
     });
   } catch (error) {
     createJsonError(error, res);

@@ -24,7 +24,7 @@ async function loginUser(req, res) {
     if (!UserCheckByEmail) {
       throwJsonError(
         403,
-        " 1 Este usuario y contraseña no se encuentra registrado"
+        "Este usuario y contraseña no se encuentra registrado"
       );
     }
     const {
@@ -58,7 +58,12 @@ async function loginUser(req, res) {
       expiresIn: `1y`,
     });
     res.status(200);
-    res.json({ token, expiresIn: "1y" });
+    res.json({
+      message: `${email} se ha logeado correctamente`,
+      data: { verificationCode: verificationCode },
+      token,
+      expiresIn: "1y",
+    });
   } catch (error) {
     createJsonError(error, res);
   }

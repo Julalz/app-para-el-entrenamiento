@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"name\": \"Alberto\",\r\n\"email\": \"Julian-942+6-@hotmail.com\",\r\n\"password\":\"1234\"\r\n}\r\n",
+							"raw": "{\r\n\"name\": \"Alberto\",\r\n\"email\": \"Julian942@hotmail.com\",\r\n\"password\":\"1234\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -119,18 +119,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODIyMzcsImV4cCI6MTY4NDU4MzQzN30.aMMBfWtT5sS5O1mCFtj3R0ZzZCxIVyYrfnmci9bBq40",
+								"value": "Bearer {{token}}",
 								"type": "text"
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\"email\": \"Julian942@hotmail.com\",\r\n\"password\":\"1234\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"mode": "formdata",
+							"formdata": []
 						},
 						"url": {
 							"raw": "http://localhost:3000/api/v1/users/profile",
@@ -155,7 +150,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/v1/users/activation/faE1HEgdLNOF3SNyO0QMEgjaS5QdM4x6RjhNY0wPrhqDrtyldM7wCpr8CwrpEUG5",
+							"raw": "http://localhost:3000/api/v1/users/activation/lzrgyv7HKw1YNnWcOAoGBpvQsceQA25Z3rGa1fU4GqLhdGWbmJlYt9cKVeBMOdUW",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -166,7 +161,7 @@
 								"v1",
 								"users",
 								"activation",
-								"faE1HEgdLNOF3SNyO0QMEgjaS5QdM4x6RjhNY0wPrhqDrtyldM7wCpr8CwrpEUG5"
+								"lzrgyv7HKw1YNnWcOAoGBpvQsceQA25Z3rGa1fU4GqLhdGWbmJlYt9cKVeBMOdUW"
 							]
 						}
 					},
@@ -187,12 +182,12 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODMyMzYsImV4cCI6MTY4NDU4NDQzNn0.A4H-bP4rJwWPV5BhxFy9CmRTvERXTIsD71Fo7Gpwn0I",
+										"value": "Bearer {{token}}",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "http://localhost:3000/api/v1/users/profile/1/favorites",
+									"raw": "http://localhost:3000/api/v1/users/profile/favorites",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -203,7 +198,6 @@
 										"v1",
 										"users",
 										"profile",
-										"1",
 										"favorites"
 									]
 								}
@@ -217,13 +211,13 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODMyMzYsImV4cCI6MTY4NDU4NDQzNn0.A4H-bP4rJwWPV5BhxFy9CmRTvERXTIsD71Fo7Gpwn0I",
+										"value": "Bearer {{token}}",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"user_id\": \"1\",\r\n  \"workout_id\": \"3\"\r\n\r\n}\r\n",
+									"raw": "",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -260,17 +254,8 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"id\": 4\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
-									"raw": "http://localhost:3000/api/v1/users/profile/1/favorites",
+									"raw": "http://localhost:3000/api/v1/users/profile/3/favorites",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -281,7 +266,7 @@
 										"v1",
 										"users",
 										"profile",
-										"1",
+										"3",
 										"favorites"
 									]
 								}
@@ -305,7 +290,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:3000/api/v1/images/1",
+									"raw": "http://localhost:3000/api/v1/images/2",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -315,7 +300,7 @@
 										"api",
 										"v1",
 										"images",
-										"1"
+										"2"
 									]
 								}
 							},
@@ -332,8 +317,12 @@
 										"type": "text"
 									}
 								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
 								"url": {
-									"raw": "http://localhost:3000/api/v1/images/4",
+									"raw": "http://localhost:3000/api/v1/images/8",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -343,7 +332,7 @@
 										"api",
 										"v1",
 										"images",
-										"4"
+										"8"
 									]
 								}
 							},
@@ -366,7 +355,7 @@
 										{
 											"key": "imageExercise",
 											"type": "file",
-											"src": "/C:/Users/User/OneDrive/Documentos/proyecto-2-entrenamiento/docs/images/pressDeBanca.png"
+											"src": "/C:/Users/User/OneDrive/Documentos/proyecto-2-entrenamiento/docs/images/gemelos.png"
 										},
 										{
 											"key": "principal",
@@ -376,7 +365,7 @@
 									]
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/v1/images/1/uplaod",
+									"raw": "http://localhost:3000/api/v1/images/4/uplaod",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -386,7 +375,7 @@
 										"api",
 										"v1",
 										"images",
-										"1",
+										"4",
 										"uplaod"
 									]
 								}
@@ -411,7 +400,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"user_id\": \"1\"\r\n    \r\n}",
+									"raw": "",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -419,7 +408,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/v1/exercise/like/1",
+									"raw": "http://localhost:3000/api/v1/exercise/like/2",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -430,7 +419,7 @@
 										"v1",
 										"exercise",
 										"like",
-										"1"
+										"2"
 									]
 								}
 							},
@@ -449,7 +438,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"user_id\": 1\r\n}",
+									"raw": "",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -457,7 +446,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:3000/api/v1/exercise/like/1",
+									"raw": "http://localhost:3000/api/v1/exercise/like/7",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -468,7 +457,7 @@
 										"v1",
 										"exercise",
 										"like",
-										"1"
+										"7"
 									]
 								}
 							},
@@ -483,18 +472,39 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODIyMzcsImV4cCI6MTY4NDU4MzQzN30.aMMBfWtT5sS5O1mCFtj3R0ZzZCxIVyYrfnmci9bBq40",
+								"value": "Bearer {{token}}",
 								"type": "text"
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\"name\": \"prueba  ultima crear \",\r\n\"description\": \"deberás ponerte de pie. Coordina la siguiente secuencia de movimientos: abre tanto tus brazos como tus piernas en el primer gesto, y ciérralos acto seguido.\",\r\n\"image\":\"prueba update.jpg\",\r\n\"typology\":\"aerobic\",\r\n\"muscle\":\"abdomen\"\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "patatapatatastrength",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "descripcionprueba",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/User/OneDrive/Documentos/proyecto-2-entrenamiento/docs/images/pressDeBanca.png"
+								},
+								{
+									"key": "typology",
+									"value": "strength",
+									"type": "text"
+								},
+								{
+									"key": "muscle",
+									"value": "patata",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "http://localhost:3000/api/v1/exercise",
@@ -519,50 +529,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODIyMzcsImV4cCI6MTY4NDU4MzQzN30.aMMBfWtT5sS5O1mCFtj3R0ZzZCxIVyYrfnmci9bBq40",
+								"value": "Bearer {{token}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/v1/exercise/6",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"exercise",
-								"6"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Exercise",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODIyMzcsImV4cCI6MTY4NDU4MzQzN30.aMMBfWtT5sS5O1mCFtj3R0ZzZCxIVyYrfnmci9bBq40",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\"description\": \" patatahuevovacio\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -581,6 +554,54 @@
 								"v1",
 								"exercise",
 								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Exercise",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "pressBanca",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/User/OneDrive/Documentos/proyecto-2-entrenamiento/docs/images/pressDeBanca.png"
+								},
+								{
+									"key": "description",
+									"value": "huevopatata",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/exercise/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"exercise",
+								"6"
 							]
 						}
 					},
@@ -621,12 +642,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJKdWxpYW45NDJAaG90bWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODQ1ODIyMzcsImV4cCI6MTY4NDU4MzQzN30.aMMBfWtT5sS5O1mCFtj3R0ZzZCxIVyYrfnmci9bBq40",
+								"value": "Bearer {{token}}",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/api/v1/exercise/typology/aerobic",
+							"raw": "http://localhost:3000/api/v1/exercise/typology/strength",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -637,7 +658,7 @@
 								"v1",
 								"exercise",
 								"typology",
-								"aerobic"
+								"strength"
 							]
 						}
 					},

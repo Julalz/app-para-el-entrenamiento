@@ -43,9 +43,13 @@ async function createAccount(req, res) {
     await SendEmail(name, email, verificationCode);
 
     const userID = await createUser(userDB);
+    console.log();
 
     res.status(201);
-    res.send({ id: userID });
+    res.send({
+      message: "Usuario creado correctamente",
+      data: { id: userID, name, email, verificationCode },
+    });
   } catch (error) {
     createJsonError(error, res);
   }

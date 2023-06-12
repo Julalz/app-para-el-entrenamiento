@@ -1,4 +1,6 @@
 const createJsonError = require("../../errors/createJsonError");
+const throwJsonError = require("../../errors/throwJsonError");
+const { findExerciseById } = require("../../repositories/exerciseRepository");
 
 const {
   getAllFavoritesExercise,
@@ -6,12 +8,12 @@ const {
 
 const getUserExerciseFavorites = async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { id: userId } = req.auth;
 
-    const responseFavoritesExercise = await getAllFavoritesExercise(userId);
+    const favoritesExercises = await getAllFavoritesExercise(userId);
 
     res.status(200);
-    res.send(responseFavoritesExercise);
+    res.send({ data: favoritesExercises });
   } catch (error) {
     createJsonError(error, res);
   }

@@ -15,9 +15,12 @@ userRouter.route("/activation/:code").get(activationAccount);
 userRouter.route("/login").post(loginUser);
 userRouter.route("/profile").all(validAuth).get(userProfile);
 userRouter
-  .route("/profile/:userId/favorites")
+  .route("/profile/favorites")
   .all(validAuth)
-  .get(getUserExerciseFavorites)
+  .get(getUserExerciseFavorites);
+userRouter
+  .route("/profile/:workoutId/favorites")
+  .all(validAuth)
   .post(addExerciseFavorites)
   .delete(removeExerciseFavorites);
 

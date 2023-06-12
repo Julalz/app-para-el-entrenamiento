@@ -14,15 +14,23 @@ const addExerciseToFavorites = async (user_id, workout_id) => {
 
 const getAllFavoritesExercise = async (userId) => {
   const pool = await getPool();
-  const sql = "SELECT * FROM favorites WHERE user_id = ?";
-  const [FavExercises] = await pool.query(sql, [userId]);
-  return FavExercises;
+  const sql =
+    "SELECT w.* FROM favorites f INNER JOIN workout w ON f.workout_id = w.id WHERE f.user_id = ?";
+  const [favExercises] = await pool.query(sql, [userId]);
+  return favExercises;
+};
+const getFavoriteByWorkoutAndUser = async (workoutId, userId) => {
+  const pool = await getPool();
+  const sql = `SELECT * FROM favorites WHERE workout_id = ? AND user_id = ?`;
+  const [[favorite]] = await pool.query(sql, [workoutId, userId]);
+
+  return favorite;
 };
 
-const removeExerciseFromFavoritesByid = async (id) => {
+const removeFavoriteByWorkoutAndUser = async (workoutId, userId) => {
   const pool = await getPool();
-  const sql = "DELETE FROM favorites WHERE id = ?";
-  const [deleteFav] = await pool.query(sql, [id]);
+  const sql = "DELETE FROM favorites WHERE workout_id = ? AND user_id = ?";
+  const [deleteFav] = await pool.query(sql, [workoutId, userId]);
 
   return deleteFav;
 };
@@ -30,5 +38,6 @@ const removeExerciseFromFavoritesByid = async (id) => {
 module.exports = {
   getAllFavoritesExercise,
   addExerciseToFavorites,
-  removeExerciseFromFavoritesByid,
+  removeFavoriteByWorkoutAndUser,
+  getFavoriteByWorkoutAndUser,
 };
