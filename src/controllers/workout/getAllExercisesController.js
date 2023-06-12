@@ -3,10 +3,10 @@ const { findAllExercise } = require("../../repositories/exerciseRepository");
 
 async function getAllExercise(req, res) {
   try {
-    const Exercise = await findAllExercise();
+    const exercises = await findAllExercise();
 
     res.status(200);
-    res.send(Exercise);
+    res.send({ data: exercises });
   } catch (error) {
     createJsonError(error, res);
   }

@@ -9,11 +9,9 @@ const addExercise = async (exercise) => {
       image,
       typology,
       muscle,
-      likesCount,
       createdAt
-    ) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-  const { name, description, image, typology, muscle, likesCount, createdAt } =
-    exercise;
+    ) VALUES (?, ?, ?, ?, ?, ?)`;
+  const { name, description, image, typology, muscle, createdAt } = exercise;
 
   const [created] = await pool.query(sql, [
     name,
@@ -21,7 +19,6 @@ const addExercise = async (exercise) => {
     image,
     typology,
     muscle,
-    0,
     now,
   ]);
 
@@ -30,7 +27,8 @@ const addExercise = async (exercise) => {
 
 const findAllExercise = async () => {
   const pool = await getPool();
-  const sql = "SELECT * FROM workout";
+  const sql =
+    "SELECT w.*, COUNT(l.id) likes FROM workout w LEFT JOIN likes l ON w.id = l.workout_id GROUP BY w.id  ";
 
   const [exercise] = await pool.query(sql);
 
@@ -88,13 +86,29 @@ const updateExerciseById = async (id, body) => {
 
   return true;
 };
-const updateExerciseImagesById = async (id, name) => {
+const updateExerciseImagesByIdWorkout = async (id, name) => {
   const pool = await getPool();
   const sql = "UPDATE workout SET image = ? WHERE id = ?";
   const [updated] = await pool.query(sql, [name, id]);
 
   return true;
 };
+const pool = require("../infrastructure/database");
+
+const deleteExerciseImageFromWorkoutById = async (exerciseId) => {
+  const pool = await getPool();
+  const sql = "UPDATE workout SET image = 0 WHERE id = ?";
+  await pool.query(sql, [exerciseId]);
+  return true;
+};
+const getWorkoutImageById = async (idExercise) => {
+  const pool = await getPool();
+  const sql = "SELECT image FROM workout WHERE id = ?";
+  const [result] = await pool.query(sql, [idExercise]);
+
+  return result[0].image;
+};
+
 module.exports = {
   addExercise,
   findAllExercise,
@@ -104,5 +118,7 @@ module.exports = {
   getExerciseById,
   updateExerciseById,
   findExerciseById,
-  updateExerciseImagesById,
+  updateExerciseImagesByIdWorkout,
+  deleteExerciseImageFromWorkoutById,
+  getWorkoutImageById,
 };

@@ -6,6 +6,7 @@ const {
 } = require("../../repositories/exerciseRepository");
 const throwJsonError = require("../../errors/throwJsonError");
 const { isAdmin } = require("../../helpers/utils");
+const deleteImg = require("../../helpers/deleteImages");
 
 const schema = Joi.number().integer().positive().required();
 
@@ -22,9 +23,10 @@ const deleteExerciseById = async (req, res) => {
     }
 
     await removeExerciseId(id);
+    deleteImg(exercise.image);
 
     res.status(200);
-    res.send({ message: "Ejercicio eliminado correctamente" });
+    res.send({ message: "Ejercicio eliminado correctamente", data: exercise });
   } catch (error) {
     createJsonError(error, res);
   }

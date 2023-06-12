@@ -8,12 +8,12 @@ const userProfile = async (req, res) => {
   try {
     const { email } = req.auth;
     const user = await findUserByEmail(email);
-    const { name, role } = user;
+    const { role, id, name, verifiedAt, verificationCode, createdAt } = user;
 
     res.status(200);
-    res.send({ name, role, email });
+    res.send({ data: role, id, name, verifiedAt, verificationCode, createdAt });
   } catch (error) {
-    createJsonError;
+    createJsonError(error, res);
   }
 };
 const resquestAdminRole = async (req, res) => {

@@ -1,12 +1,12 @@
 const Joi = require("joi");
 const {
   findExerciseById,
-  updateExerciseImagesById,
+  findAllExercise,
+  updateExerciseImagesByIdWorkout,
 } = require("../../repositories/exerciseRepository");
 const throwJsonError = require("../../errors/throwJsonError");
 const {
-  removePrincipalByExerciseId,
-  addImagesByIdExercise,
+  AddImageToExerciseTable,
 } = require("../../repositories/exerciseImagesRepository");
 const createJsonError = require("../../errors/createJsonError");
 const { isAdmin } = require("../../helpers/utils");
@@ -21,13 +21,12 @@ const schemaFiles = Joi.object().keys({
 const uploadExerciseImageById = async (req, res) => {
   try {
     const { HTTP_SERVER } = process.env;
-
     const { id } = req.params;
+    console.log(id, "idExcercise");
 
-    console.log(req.params);
     await schema.validateAsync(id);
-    const { role } = req.auth;
-    isAdmin(role);
+    const { role, email } = req.auth;
+    isAdmin(role, email);
 
     const exercise = await findExerciseById(id);
     if (!exercise) {
@@ -56,8 +55,10 @@ const uploadExerciseImageById = async (req, res) => {
     if (principal === "1") {
       await removePrincipalByExerciseId(id);
     }
-    // await addImagesByIdExercise(id, randomName, principal);
-    await updateExerciseImagesById(id, randomName);
+
+    const imageWorkout = await updateExerciseImagesByIdWorkout(id, randomName);
+    const imageTabla = await AddImageToExerciseTable(randomName, principal, id);
+    console.log(imageWorkout, imageTabla, "imagenes");
 
     res.status(201);
     res.send({ image: `${HTTP_SERVER}/images/${id}/${randomName}` });
