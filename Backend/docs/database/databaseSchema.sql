@@ -1,0 +1,1 @@
+INSERT INTO `users` (`id`,`name`,`email`,`password`,`role`,`image`,`createdAt`,`updatedAt`,`verificationCode`,`verifiedAt`) VALUES (1,'Admin','julian942@hotmail.com','$2a$10$cRlNLuF9ySIA6rW.DpwZmunEdUTzKcoGpdIcXyAstPhkOR.LvDDDC','admin',NULL,'2021-04-22 01:11:14',NULL,'88af7ec004103d086b596021a91c25d25c6336da5c012c078031b51acd3d2860','2021-04-22 01:11:14');
