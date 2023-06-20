@@ -1,0 +1,18 @@
+.Ejercicios-container-home {
+  display: flex;
+  justify-content: space-between;
+  height: 955px;
+  background-color: black;
+  margin-top: -4px;
+  color: white;
+}
+section {
+  justify-content: space-between;
+  width: 50%;
+}
+video {
+  height: 100%;
+  width: 100%;
+  opacity: 0.6;
+  object-fit: cover;
+}
