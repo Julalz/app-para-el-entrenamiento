@@ -1,0 +1,35 @@
+header {
+  width: 100%;
+  color: white;
+  font-family: "Lowvetica", sans-serif;
+  padding: 45px;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+}
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+h1 {
+  font-size: 45px;
+  padding-left: 56px;
+}
+.x-text {
+  color: #0aaa92;
+}
+nav {
+  font-size: 20px;
+  position: relative;
+}
+nav li {
+  transition: background-color 0.2s ease, color 0.3s ease;
+}
+nav li:hover {
+  color: #0aaa92;
+}
+nav ul {
+  display: flex;
+  gap: 15px;
+  list-style-type: none;
+}
