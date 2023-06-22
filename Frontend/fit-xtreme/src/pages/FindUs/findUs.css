@@ -1,0 +1,112 @@
+.findUs-container {
+  background-color: black;
+  display: flex;
+  position: relative;
+}
+
+.Encuentra-container {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.Encuentra-container p {
+  font-size: 78px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+p:hover {
+  color: #0aaa92;
+  transition: all 0.2s;
+  text-shadow: black 8px;
+}
+
+.video-map {
+  filter: contrast(100%) saturate(0%) grayscale(100%);
+}
+.Button-FindUs {
+  width: 180px;
+  background-color: #0aaa92;
+  border: none;
+  padding: 20px;
+  margin: 5px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 5px;
+}
+
+.Button-FindUs span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.Button-FindUs span:after {
+  content: "\00bb";
+  color: black;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.Button-FindUs:hover span {
+  padding-right: 25px;
+}
+.Button-FindUs:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.cities-container {
+  color: #0aaa92;
+  font-family: "Roboto";
+  font-size: 19px;
+  font-style: oblique;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cities-container span {
+  opacity: 0;
+  animation: fadeIn 4s infinite;
+}
+
+.cities-container span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.cities-container span:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.cities-container span:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+.cities-container span:nth-child(4) {
+  animation-delay: 2s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

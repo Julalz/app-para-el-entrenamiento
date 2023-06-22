@@ -1,14 +1,12 @@
-import { Link } from "react-router-dom";
-import "./header.css";
 import NavigationMenu from "../NavigationMenu";
+import NameXtreme from "./NameXtreme/NameXtreme";
+import "./header.css";
 
 function Header() {
   return (
     <header>
       <h1>
-        <Link to={"/"}>
-          Fit<span className="x-text">X</span>treme
-        </Link>
+        <NameXtreme />
       </h1>
 
       <nav>

@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap");
 @font-face {
   font-family: "Lowvetica";
   src: url("../public/fonts/LowveticaBold.ttf") format("truetype");
 }
+
 * {
   margin: 0;
   padding: 0;
