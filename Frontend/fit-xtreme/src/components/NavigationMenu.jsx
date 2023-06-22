@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Menuhamburguesa from "./Header/Menuhamburguesa/Menuhamburguesa";
 
 function NavigationMenu() {
   return (
@@ -13,9 +14,10 @@ function NavigationMenu() {
         <Link to={"/register"}>Register</Link>
       </li>
       <li>
-        <li>
-          <Link to={"/login"}>Login</Link>
-        </li>
+        <Link to={"/login"}>Login</Link>
+      </li>
+      <li>
+        <Menuhamburguesa />
       </li>
     </ul>
   );

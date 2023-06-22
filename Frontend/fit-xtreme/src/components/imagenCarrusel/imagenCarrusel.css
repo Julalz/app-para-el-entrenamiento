@@ -1,9 +1,0 @@
-.home-container {
-  position: relative;
-  height: 100vh; /* Ocupa toda la altura de la pantalla */
-}
-
-.content {
-  position: relative;
-  z-index: 1; /* Coloca el contenido encima del carrusel */
-}
