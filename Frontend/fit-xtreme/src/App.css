@@ -1,8 +1,11 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap");
 @font-face {
   font-family: "Lowvetica";
   src: url("../public/fonts/LowveticaBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Blackout Sunrise";
+  src: url("../public/fonts/Blackout\ Sunrise.ttf") format("truetype");
 }
 
 * {
