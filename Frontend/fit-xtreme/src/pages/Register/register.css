@@ -1,0 +1,186 @@
+/* "input-animated" class refers to input where text moves/changes on focus */
+
+:root {
+  /*  MAIN COLOURS  */
+  --primary-dark: #111111;
+  --primary-light: #ffffff;
+
+  /*  STATUS COLOURS  */
+  --error: #ff3366;
+  --default: #d6edff;
+  --success: #81e979;
+}
+
+.register-section {
+  font-family: "Roboto";
+  color: white;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: black;
+}
+
+.register-title {
+  font-size: 60px;
+  padding: 0;
+}
+
+.Form {
+  display: block;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.Form div {
+  position: relative;
+}
+
+input,
+textarea {
+  background-color: transparent;
+}
+
+.Form .input-animated input {
+  display: block;
+  border: none;
+  padding: 1.25rem 1rem 0.75rem 1rem;
+  margin-bottom: 2.5rem;
+  width: 100%;
+  outline: none;
+}
+
+.Form .input-animated input::placeholder {
+  color: transparent;
+}
+
+.Form .input-animated input,
+.Form .input-animated label {
+  color: var(--primary-light);
+}
+
+.Form .input-animated label {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid var(--primary-light);
+}
+
+.Form .input-animated label:after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-bottom: 2px solid var(--primary-light);
+  left: 0px;
+  bottom: -2px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.Form .input-animated label span {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+/* + only works for adjacent elements below the initial element */
+.Form .input-animated input:not(:placeholder-shown) + label:after {
+  border-color: var(--error);
+}
+
+.Form .input-animated input:not(:placeholder-shown) + .label-name .content-name,
+.Form
+  .input-animated
+  input:not(:placeholder-shown)
+  + .label-email
+  .content-email,
+.Form
+  .input-animated
+  input:not(:placeholder-shown)
+  + .label-password
+  .content-password {
+  color: var(--error);
+}
+
+.Form .input-animated input:valid + .label-name .content-name,
+.Form .input-animated input:valid + .label-email .content-email,
+.Form .input-animated input:valid + .label-password .content-password {
+  color: var(--success);
+}
+
+.Form .input-animated input:valid + label:after {
+  border-color: var(--success);
+}
+
+.Form .input-animated input:focus + label span,
+.Form .input-animated input:valid + label span,
+.Form .input-animated input:not(:placeholder-shown) + label span {
+  transform: translateY(-150%);
+  font-size: 0.75rem;
+}
+
+.Form .input-animated input:focus + label:after,
+.Form .input-animated input:valid + label:after,
+.Form .input-animated input:not(:placeholder-shown) + label:after {
+  transform: translateX(0%);
+}
+
+.Form input:invalid {
+  box-shadow: none;
+}
+
+/* TEXTAREA ONLY */
+.Form textarea {
+  margin-top: 2rem;
+  border: 1px solid var(--primary-light);
+}
+
+.Form textarea:focus {
+  box-shadow: inset 0px 0px 1px 1px var(--primary-light);
+  outline: none;
+}
+
+.Form textarea:not(:placeholder-shown) {
+  box-shadow: inset 0px 0px 1px 1px var(--error);
+}
+
+.Form textarea:valid {
+  box-shadow: inset 0px 0px 1px 1px var(--success);
+}
+
+.Form textarea:invalid {
+  box-shadow: none;
+}
+
+.Form textarea {
+  color: var(--primary-light);
+  padding: 0.75rem 1rem;
+}
+
+.Form textarea::placeholder {
+  color: var(--primary-light);
+  font-size: 0.75rem;
+}
+
+.register-button {
+  width: 140px;
+  background-color: #0aaa92;
+  border: none;
+  padding: 20px;
+  margin: 0px;
+  text-align: center;
+  font-family: "Roboto";
+  font-size: medium;
+  font-weight: bold;
+}
+
+.button-container {
+  text-align: center;
+}
