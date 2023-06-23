@@ -11,10 +11,7 @@ function NavigationMenu() {
         <Link to={"/Ejercicios"}>Ejercicios</Link>
       </li>
       <li>
-        <Link to={"/register"}>Register</Link>
-      </li>
-      <li>
-        <Link to={"/login"}>Login</Link>
+        <Link to={"/join"}>Acceso</Link>
       </li>
       <li>
         <Menuhamburguesa />
