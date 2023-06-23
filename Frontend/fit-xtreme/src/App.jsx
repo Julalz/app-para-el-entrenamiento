@@ -1,11 +1,11 @@
 import "./App.css";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import HomePages from "./pages/Home/HomePages";
 import JoinNow from "./pages/JoinNow/JoinNow";
 import Register from "./pages/Register/Register";
+import Ejercicios from "./pages/EjerciciosHome/EjerciciosHome";
 
 function App() {
   return (
@@ -16,8 +16,11 @@ function App() {
         <Route path="/join" element={<JoinNow />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        {/* <Route path="/profile" element={<ProfilePages />} />
+        <Route path="/favorites" element={<FavoritesPages />} />
+        <Route path="/*" element={<NotFoundPages />} /> */}
+        <Route path="/Ejercicios" element={<Ejercicios />} />
       </Routes>
-      <Footer />
     </main>
   );
 }

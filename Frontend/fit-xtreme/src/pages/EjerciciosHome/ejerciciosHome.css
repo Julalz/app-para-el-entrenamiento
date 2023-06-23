@@ -1,0 +1,33 @@
+.Ejercicios-container-home {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: black;
+  margin-top: -4px;
+  color: white;
+}
+section {
+  width: 50%;
+}
+.video-container-ejercicios-home-description {
+  position: absolute;
+  gap: 35px;
+  left: 455px;
+  padding: 45px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+}
+.video-container-ejercicios-home-description div {
+  background-color: white;
+  width: 200px;
+  height: 200px;
+}
+video {
+  height: 100%;
+  width: 100%;
+  opacity: 0.6;
+  object-fit: cover;
+}

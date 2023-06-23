@@ -1,0 +1,15 @@
+.h1 {
+  display: flex;
+
+  align-items: center;
+  text-decoration: none;
+  text-align: center;
+  font-family: "Lowvetica", sans-serif;
+  font-size: 45px;
+  padding-left: 56px;
+}
+
+.x-text {
+  text-shadow: 2px 2px 5px #0ad7b9;
+  color: #0aaa92;
+}

@@ -1,0 +1,35 @@
+header {
+  width: 100%;
+  color: white;
+  font-family: "Lowvetica", sans-serif;
+  padding: 45px;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav {
+  font-size: 23px;
+  position: relative;
+}
+
+nav li {
+  transition: background-color 0.2s ease, color 0.3s ease;
+}
+
+nav li:hover {
+  color: #0aaa92;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  list-style-type: none;
+}
