@@ -1,0 +1,40 @@
+.join-section {
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  font-family: "Roboto";
+}
+
+.gif-div {
+  width: 50%;
+}
+
+.join-gif {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.text-and-buttons {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.text-and-buttons p {
+  color: #0aaa92;
+  font-size: 20px;
+}
+
+.text-and-buttons h1 {
+  color: white;
+  font-size: xx-large;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+}
