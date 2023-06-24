@@ -42,7 +42,7 @@ p:hover {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.5s;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 .Button-FindUs span {

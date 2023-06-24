@@ -16,9 +16,9 @@ function Ejercicios() {
                   src="../../../public/images/iconos/icons8-gym-64.png"
                   alt="gymhouse"
                 ></img>
-                <h3>4 gym en toda españa</h3>
+                <h3>4 FitXtreme en toda españa</h3>
                 <p>
-                  Con tu suscripcion Premiun puedes entrenar en cualquier
+                  Con tu suscripción Premiun puedes entrenar en cualquier
                   gymnasio
                 </p>
               </li>
@@ -38,15 +38,15 @@ function Ejercicios() {
                   src="../../../public/images/iconos/icons8-gym-66.png"
                   alt="gymhouse"
                 ></img>
-                <h3>Ultima generacion</h3>
+                <h3>Última generación</h3>
                 <p>
-                  Entrena con maquinaria de ultima generacion de Matrix y
+                  Entrena con maquinaria de última generación de Matrix y
                   Technogym
                 </p>
               </li>
               <li>
                 <img
-                  src="../../../public/images/iconos/icons8-gym-49.png"
+                  src="../../../public/images/iconos/icons8-teléfono-64.png"
                   alt="gymhouse"
                 ></img>
                 <h3>app 360</h3>
@@ -57,7 +57,7 @@ function Ejercicios() {
               </li>
               <li>
                 <img
-                  src="../../../public/images/iconos/icons8-teléfono-64.png"
+                  src="../../../public/images/iconos/icons8-hand-sanitizer-64.png"
                   alt="gymhouse"
                 ></img>
                 <h3>App 360</h3>
@@ -70,7 +70,7 @@ function Ejercicios() {
             </ul>
           </div>{" "}
           <div className="apuntateAhora">
-            <Button />
+            <Button text={"Solicita tu demo ya"} />
           </div>
         </section>
         <section className="video-container-ejercicios-home">

@@ -7,7 +7,10 @@
   font-family: "Blackout Sunrise";
   src: url("../public/fonts/Blackout\ Sunrise.ttf") format("truetype");
 }
-
+@font-face {
+  font-family: "Brush-king";
+  src: url("../public/fonts/Brush\ King.otf") format("truetype");
+}
 * {
   margin: 0;
   padding: 0;
