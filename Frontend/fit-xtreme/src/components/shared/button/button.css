@@ -36,3 +36,6 @@
   opacity: 1;
   right: 0;
 }
+.button:hover {
+  background-color: #088d79;
+}

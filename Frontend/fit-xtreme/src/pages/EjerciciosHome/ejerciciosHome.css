@@ -87,6 +87,10 @@ section {
   display: flex;
   justify-content: center;
 }
+.apuntateAhora a {
+  color: inherit;
+  text-decoration: none;
+}
 .apuntateAhora button {
   display: flex;
   justify-content: center;
