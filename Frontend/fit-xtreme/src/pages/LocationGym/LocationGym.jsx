@@ -10,9 +10,8 @@ function LocationGym() {
             alt="MadridXtreme"
           ></img>
           <h3>MADRID</h3>
-          <p>
-            <Button text={"Reserva"} />
-          </p>
+          <p>Calle Principe 45, 36205</p>
+          <Button text={"Reserva"} />
         </li>
         <li>
           <img
@@ -20,9 +19,8 @@ function LocationGym() {
             alt="MadridXtreme"
           ></img>
           <h3>VIGO</h3>
-          <p>
-            <Button text={"Reserva"} />
-          </p>
+          <p>Calle Principe 45, 36205</p>
+          <Button text={"Reserva"} />
         </li>
         <li>
           <img
@@ -30,9 +28,8 @@ function LocationGym() {
             alt="MadridXtreme"
           ></img>
           <h3>BARCELONA</h3>
-          <p>
-            <Button text={"Reserva"} />
-          </p>
+          <p>Calle Principe 45, 36205</p>
+          <Button text={"Reserva"} />
         </li>
         <li>
           <img
@@ -40,9 +37,8 @@ function LocationGym() {
             alt="MadridXtreme"
           ></img>
           <h3>MALAGA</h3>
-          <p>
-            <Button text={"Reserva"} />
-          </p>
+          <p>Calle Principe 45, 36205</p>
+          <Button text={"Reserva"} />
         </li>
       </ul>
     </div>
