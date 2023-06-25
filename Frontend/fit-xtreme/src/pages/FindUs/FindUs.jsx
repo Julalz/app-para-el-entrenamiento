@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import map from "../../../public/videos/map.mp4";
 import "./findUs.css";
 function FindUs() {
@@ -15,7 +16,9 @@ function FindUs() {
           </div>
 
           <button className="Button-FindUs">
-            <span>FitXtreme </span>
+            <Link to={"/LocationGym"}>
+              <span>FitXtreme </span>
+            </Link>
           </button>
         </div>
       </div>

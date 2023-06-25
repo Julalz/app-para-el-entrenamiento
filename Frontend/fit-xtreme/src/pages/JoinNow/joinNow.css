@@ -1,7 +1,7 @@
 .join-section {
   background-color: black;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -19,6 +19,7 @@
 }
 
 .text-and-buttons {
+  text-align: center;
   width: 50%;
   display: flex;
   flex-direction: column;

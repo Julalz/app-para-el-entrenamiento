@@ -9,8 +9,8 @@ const uploadImage = require("../../helpers/uploadImage");
 const deleteImg = require("../../helpers/deleteImages");
 
 const schema = Joi.object().keys({
-  name: Joi.string().min(2).max(20),
-  description: Joi.string().min(2).max(220),
+  name: Joi.string().min(2).max(60),
+  description: Joi.string().min(2).max(500),
   typology: Joi.string().min(2).max(220),
   muscle: Joi.string().min(2).max(220),
 });

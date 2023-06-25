@@ -10,6 +10,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: all 0.5s;
+  border-radius: 20px;
 }
 
 .button span {
@@ -35,4 +36,7 @@
 .button:hover span:after {
   opacity: 1;
   right: 0;
+}
+.button:hover {
+  background-color: #088d79;
 }

@@ -6,6 +6,7 @@ import HomePages from "./pages/Home/HomePages";
 import JoinNow from "./pages/JoinNow/JoinNow";
 import Register from "./pages/Register/Register";
 import Ejercicios from "./pages/EjerciciosHome/EjerciciosHome";
+import LocationGym from "./pages/LocationGym/LocationGym";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/favorites" element={<FavoritesPages />} />
         <Route path="/*" element={<NotFoundPages />} /> */}
         <Route path="/Ejercicios" element={<Ejercicios />} />
+        <Route path="/LocationGym" element={<LocationGym />} />
       </Routes>
     </main>
   );

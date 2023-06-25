@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ejerciciosVideo from "../../../public/videos/ejercicios-home.mp4";
 import Button from "../../components/shared/button/Button";
 import "./ejerciciosHome.css";
@@ -60,7 +61,7 @@ function Ejercicios() {
                   src="../../../public/images/iconos/icons8-hand-sanitizer-64.png"
                   alt="gymhouse"
                 ></img>
-                <h3>App 360</h3>
+                <h3>Desinfeccion Total</h3>
                 <p>
                   Entrena seguro en Fit-Xtreme, desinfectamos el gimnasio a
                   menudo. Ademas contamos con estaciones de higiene para limpiar
@@ -70,7 +71,9 @@ function Ejercicios() {
             </ul>
           </div>{" "}
           <div className="apuntateAhora">
-            <Button text={"Solicita tu demo ya"} />
+            <Link to={"/register"}>
+              <Button text={"Solicita tu demo ya"} />
+            </Link>
           </div>
         </section>
         <section className="video-container-ejercicios-home">

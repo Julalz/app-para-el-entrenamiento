@@ -6,10 +6,10 @@
 
 .Encuentra-container {
   position: absolute;
-  top: 50%;
+  top: 30%;
   width: 100%;
   display: flex;
-  text-align: center;
+
   flex-direction: column;
   align-items: center;
   gap: 16px;
@@ -20,8 +20,7 @@
   font-weight: bold;
   color: white;
 }
-
-p:hover {
+.Encuentra-container p:hover {
   color: #0aaa92;
   transition: all 0.2s;
   text-shadow: black 8px;
@@ -44,8 +43,11 @@ p:hover {
   transition: all 0.5s;
   border-radius: 20px;
 }
-
+.Button-FindUs a {
+  color: inherit;
+}
 .Button-FindUs span {
+  text-decoration: none;
   cursor: pointer;
   display: inline-block;
   position: relative;

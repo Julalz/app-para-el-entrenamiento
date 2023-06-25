@@ -1,3 +1,22 @@
+.Background-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Polvo-container {
+  color: #0aaa92;
+  font-family: "Brush King";
+  padding: 100px;
+  text-align: center;
+  font-size: 65px;
+  position: absolute;
+  z-index: 1;
+}
+.FitXtremeHome {
+  font-size: 25px;
+  text-shadow: 5px 14px 0px rgba(16, 16, 16, 0.16);
+}
 img {
   object-fit: cover;
 }

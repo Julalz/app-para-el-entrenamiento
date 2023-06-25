@@ -6,17 +6,26 @@ header {
   position: fixed;
   display: flex;
   justify-content: space-between;
-  z-index: 1;
+  z-index: 9999;
 }
 
 header a {
   text-decoration: none;
   color: inherit;
 }
-
+.nav-iconUser-container {
+  display: flex;
+}
 nav {
   font-size: 23px;
   position: relative;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+nav.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 nav li {
@@ -32,4 +41,13 @@ nav ul {
   align-items: center;
   gap: 15px;
   list-style-type: none;
+}
+.User-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.User-icon img {
+  width: 30px;
+  height: 30px;
 }

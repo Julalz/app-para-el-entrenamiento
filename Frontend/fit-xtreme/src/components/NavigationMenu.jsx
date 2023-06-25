@@ -8,10 +8,10 @@ function NavigationMenu() {
         <Link to={"/"}>Home</Link>
       </li>
       <li>
-        <Link to={"/Ejercicios"}>Ejercicios</Link>
+        <Link to={"/Ejercicios"}>¿Porque somos Xtreme?</Link>
       </li>
       <li>
-        <Link to={"/join"}>Acceso</Link>
+        <Link to={"/join"}>Registrate</Link>
       </li>
       <li>
         <Menuhamburguesa />
