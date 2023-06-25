@@ -9,7 +9,7 @@ const uploadImage = require("../../helpers/uploadImage");
 
 const schema = Joi.object().keys({
   name: Joi.string().min(2).max(200).required(),
-  description: Joi.string().min(2).max(220).required(),
+  description: Joi.string().min(2).max(500).required(),
   typology: Joi.string().min(2).max(220).required(),
   muscle: Joi.string().min(2).max(220).required(),
 });
