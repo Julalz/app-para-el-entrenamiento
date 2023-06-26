@@ -1,0 +1,136 @@
+
+.main {
+    width: 100%;
+    height: 100vh;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+
+.border {
+    position: absolute;
+    top: 20px;
+    font-family: 'open sans', sans-serif;
+    color: #0AAA92;
+    font-size: 7rem;
+    text-align: center;
+    color: white;
+    text-shadow: -1px -1px 0 white,
+    1px -1px 0 white,
+    1 px 1px 0 white,
+    -1px 1px 0 white
+}
+
+.wave {
+    position: absolute;
+    top: 20px;
+    font-family: 'open sans', sans-serif;
+    color: #0AAA92;
+    font-size: 7rem;
+    text-align: center;
+    color: #0AAA92;
+    animation: wave 3s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% {
+        clip-path: polygon(
+            0% 47%,
+            10% 48%,
+            33% 54%,
+            54% 60%,
+            70% 61%,
+            84% 59%,
+            100% 52%,
+            100% 100%,
+            0% 100%
+        );
+    }
+
+    50% {
+        clip-path: polygon(
+            0% 60%,
+            15% 65%,
+            34% 66%,
+            51% 62%,
+            67% 50%,
+            84% 45%,
+            100% 46%,
+            100% 100%,
+            0% 100%
+        );
+    }
+}
+
+.sentadillas {
+    font-family: 'lowvetica', sans-serif;
+    padding-bottom: 50px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.texto {
+    font-family: 'lowvetica', sans-serif;
+    padding: 30px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.regreso {
+    color: #0AAA92;
+    font-size: 20px;
+    text-decoration: none;
+    border-bottom: none; /* Agrega esta línea para quitar el borde lineal */
+  }
+  
+  .regreso:hover {
+    transition: background-color 0.3s, font-size 0.3s;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    font-size: 34px;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .wave {
+      font-size: 4rem;
+    }
+
+    .border {
+      font-size: 4rem;
+    }
+  
+    .sentadillas {
+      font-size: 40px;
+    }
+  
+    .texto {
+      font-size: 24px;
+    }
+  }
+  
