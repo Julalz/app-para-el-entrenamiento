@@ -7,6 +7,8 @@ import JoinNow from "./pages/JoinNow/JoinNow";
 import Register from "./pages/Register/Register";
 import Ejercicios from "./pages/EjerciciosHome/EjerciciosHome";
 import LocationGym from "./pages/LocationGym/LocationGym";
+import Profile from "./pages/Profile/Profile";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -17,9 +19,8 @@ function App() {
         <Route path="/join" element={<JoinNow />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/profile" element={<ProfilePages />} />
-        <Route path="/favorites" element={<FavoritesPages />} />
-        <Route path="/*" element={<NotFoundPages />} /> */}
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/*" element={<NotFound />} />
         <Route path="/Ejercicios" element={<Ejercicios />} />
         <Route path="/LocationGym" element={<LocationGym />} />
       </Routes>
