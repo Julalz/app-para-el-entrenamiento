@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { signup } from "../../services/authService";
 import Button from "../../components/shared/button/Button";
 import "./register.css";
@@ -8,6 +9,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [password, setPass] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -15,8 +17,18 @@ const Register = () => {
 
     try {
       await signup(name, email, password);
+      navigate("/login");
     } catch (error) {
-      setError(error.message);
+      if (error.response && error.response.data) {
+        const errorMessage = Array.isArray(error.response.data)
+          ? error.response.data[0]
+          : error.response.data;
+
+        console.log(errorMessage);
+        setError(errorMessage);
+      } else {
+        setError("Error de conexión");
+      }
     }
   };
 
@@ -64,7 +76,7 @@ const Register = () => {
         </div>
         <div className="button-container">
           <Button text="Registrar" />
-          {error ? <p>{error}</p> : null}
+          {error ? <p>{error.error}</p> : null}
         </div>
       </form>
     </section>

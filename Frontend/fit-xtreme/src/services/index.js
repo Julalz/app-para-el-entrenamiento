@@ -8,7 +8,6 @@ const isBearerTokenRequired = (url) => {
 axios.interceptors.request.use(
   function (config) {
     if (!isBearerTokenRequired(config.url)) {
-      console.log(config.url);
     }
     return config;
   },
@@ -19,10 +18,10 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   function (response) {
-    return response;
+    return response.data;
   },
   function (error) {
-    return Promise.reject(message);
+    return Promise.reject(error);
   }
 );
 
