@@ -16,16 +16,15 @@ const Register = () => {
     setError("");
 
     try {
-      await signup(name, email, password);
+      const response = await signup(name, email, password);
+      setError(response.data.data.message);
+      console.log(response);
+
       navigate("/login");
     } catch (error) {
-      if (error.response && error.response.data) {
-        const errorMessage = Array.isArray(error.response.data)
-          ? error.response.data[0]
-          : error.response.data;
-
-        console.log(errorMessage);
-        setError(errorMessage);
+      console.log(error);
+      if (error.response.data.status === 409) {
+        setError(error.response.data.error);
       } else {
         setError("Error de conexión");
       }
@@ -76,7 +75,7 @@ const Register = () => {
         </div>
         <div className="button-container">
           <Button text="Registrar" />
-          {error ? <p>{error.error}</p> : null}
+          {error && <p>{error}</p>}
         </div>
       </form>
     </section>

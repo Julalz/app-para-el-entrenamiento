@@ -1,0 +1,38 @@
+.backgroundCreateExercise-container {
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto";
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../../public/images/20230627232920_[fpdl.in]_vitrina-productos-foco-fondo-sala-estudio-negro-utilizar-como-montaje-exhibicion-productos-estudio-maquetas_545612-241_large.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #0aaa92;
+}
+.createExercise-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 45px;
+  margin: 0px 34px;
+  height: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+}
+.FormCreateExercise {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  text-align: center;
+}
+.FormCreateExercise > * {
+  margin-bottom: 20px;
+}
+.imgCreate {
+  width: 600px;
+  height: 600px;
+}
+.buttonCreate {
+  display: flex;
+  align-items: center;
+}

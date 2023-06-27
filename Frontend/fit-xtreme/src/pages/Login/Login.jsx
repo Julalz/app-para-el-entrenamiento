@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
-import "./login.css";
+
 import Button from "../../components/shared/button/Button";
+import "./login.css";
 
 const Login = () => {
   const { register } = useForm();
