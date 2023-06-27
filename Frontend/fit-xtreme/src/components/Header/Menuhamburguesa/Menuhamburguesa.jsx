@@ -1,7 +1,15 @@
+import { useState } from "react";
+import classnames from "classnames";
 import "./menuhamburguesa.css";
+
 function Menuhamburguesa() {
+  const [active, setActive] = useState();
+
   return (
-    <div className="container" onClick={() => this.classList.toggle("active")}>
+    <div
+      className={classnames("container", { active })}
+      onClick={() => setActive(!active)}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="48"

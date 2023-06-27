@@ -9,6 +9,7 @@ import Ejercicios from "./pages/EjerciciosHome/EjerciciosHome";
 import LocationGym from "./pages/LocationGym/LocationGym";
 import Profile from "./pages/Profile/Profile";
 import NotFound from "./pages/NotFound/NotFound";
+import CreateExercise from "./pages/CreateExercise/CreateExercise";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/Ejercicios" element={<Ejercicios />} />
+        <Route path="/CreateExercise" element={<CreateExercise />} />
         <Route path="/LocationGym" element={<LocationGym />} />
       </Routes>
     </main>
