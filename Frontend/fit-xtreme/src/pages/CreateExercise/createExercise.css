@@ -25,14 +25,25 @@
   width: 400px;
   text-align: center;
 }
+.FormCreateExercise input {
+  outline: none;
+  box-shadow: 0 0 5px #0aaa92;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  transition: box-shadow 0.3s ease;
+}
+.FormCreateExercise input:not(:placeholder-shown) {
+  background-color: transparent;
+}
 .FormCreateExercise > * {
   margin-bottom: 20px;
 }
 .imgCreate {
   width: 600px;
   height: 600px;
+  box-shadow: 0 0 45px #0aaa92;
 }
 .buttonCreate {
-  display: flex;
-  align-items: center;
+  text-align: center;
 }
