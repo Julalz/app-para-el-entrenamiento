@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const accessToken = (headers) => {
   const { authorization } = headers;
   if (!authorization || !authorization.startsWith("Bearer "))
-    throwJsonError(403, "Autorización Requerida");
+    throwJsonError(403, "No eres Admin, ponte en contacto con tu superior");
 
   return authorization.split(" ")[1];
 };
