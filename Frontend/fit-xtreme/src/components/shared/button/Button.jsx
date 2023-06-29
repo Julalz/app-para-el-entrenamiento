@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Button = ({ text }) => {
   return (
-    <button className="button" method>
+    <button className="button">
       <span>{text}</span>
     </button>
   );
