@@ -1,12 +1,13 @@
 import Button from "../../components/shared/button/Button";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import "./createExercise.css";
+import imageDefault from "../../../public/images/locationGym/recuerdaImagen.png";
 import { createEjercicios } from "../../services/ejerciciosService";
+import "./createExercise.css";
 
 function CreateExercise() {
   const { register } = useForm();
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(imageDefault);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [typology, setTypology] = useState("");
@@ -49,7 +50,7 @@ function CreateExercise() {
       <div className="createExercise-container">
         <img src={selectedImage} className="imgCreate" alt="Imagen" />
         <form className="FormCreateExercise" onSubmit={handleForm}>
-          <h2>Crear Ejercicio</h2>
+          <h2>Crear Ejercicio, crea salud</h2>
 
           <label>Nombre</label>
           <input
