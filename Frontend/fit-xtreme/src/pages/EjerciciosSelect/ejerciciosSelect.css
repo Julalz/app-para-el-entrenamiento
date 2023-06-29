@@ -1,0 +1,41 @@
+.EjerciciosBackground-container {
+  font-family: "roboto";
+  font-size: 25px;
+
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+}
+.EjerciciosBackground-container h2 {
+  color: transparent;
+  -webkit-text-stroke: 1px #ffffff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: color 0.2s;
+}
+.EjerciciosBackground-container h2:hover {
+  color: #0aaa92;
+}
+
+.lis-container-ejercicio {
+  padding: 57px;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 160px;
+  text-align: center;
+}
+.ul-container-ejercicios {
+  text-align: center;
+  position: absolute;
+}
+.ul-container-ejercicios button {
+  width: 200px;
+}

@@ -9,3 +9,7 @@ export function createEjercicios(name, description, image, typology, muscle) {
     muscle,
   });
 }
+
+export function GetExercisebyMuscle(muscle) {
+  return axios.get(`http://localhost:3000/api/v1/exercise/muscle/${muscle}`);
+}
