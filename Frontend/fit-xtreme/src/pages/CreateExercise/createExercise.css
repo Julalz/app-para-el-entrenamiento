@@ -36,6 +36,13 @@
 .FormCreateExercise input:not(:placeholder-shown) {
   background-color: transparent;
 }
+
+.file-input {
+  /* Establece la opacidad del input en 0 para ocultarlo */
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
 .FormCreateExercise > * {
   margin-bottom: 20px;
 }

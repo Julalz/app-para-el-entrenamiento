@@ -1,4 +1,4 @@
-import Ejercicios from "../EjerciciosHome/EjerciciosHome";
+import EjerciciosHome from "../EjerciciosHome/EjerciciosHome";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import FindUs from "../FindUs/FindUs";
@@ -8,7 +8,7 @@ function HomePages() {
     <>
       <Header />
       <BackgroundHome />
-      <Ejercicios />
+      <EjerciciosHome />
       <FindUs />
       <Footer />
     </>

@@ -5,11 +5,12 @@ import Login from "./pages/Login/Login";
 import HomePages from "./pages/Home/HomePages";
 import JoinNow from "./pages/JoinNow/JoinNow";
 import Register from "./pages/Register/Register";
-import Ejercicios from "./pages/EjerciciosHome/EjerciciosHome";
+import Ejercicios from "./pages/Ejercicios/Ejercicios";
 import LocationGym from "./pages/LocationGym/LocationGym";
 import Profile from "./pages/Profile/Profile";
 import NotFound from "./pages/NotFound/NotFound";
 import CreateExercise from "./pages/CreateExercise/CreateExercise";
+import EjerciciosHome from "./pages/EjerciciosHome/EjerciciosHome";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/Ejercicios" element={<Ejercicios />} />
+        <Route path="/EjerciciosHome" element={<EjerciciosHome />} />
         <Route path="/CreateExercise" element={<CreateExercise />} />
         <Route path="/LocationGym" element={<LocationGym />} />
       </Routes>

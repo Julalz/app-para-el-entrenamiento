@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import ejerciciosVideo from "../../../public/videos/ejercicios-home.mp4";
 import Button from "../../components/shared/button/Button";
 import "./ejerciciosHome.css";
-function Ejercicios() {
+function EjerciciosHome() {
   return (
     <>
       <div className="Ejercicios-container-home">
@@ -84,4 +84,4 @@ function Ejercicios() {
   );
 }
 
-export default Ejercicios;
+export default EjerciciosHome;
