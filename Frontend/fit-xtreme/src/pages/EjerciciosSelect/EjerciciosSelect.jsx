@@ -4,6 +4,7 @@ import Button from "../../components/shared/button/Button";
 import EjerciciosLis from "./../../../public/videos/EjerciciosLis.mp4";
 import { GetExercisebyMuscle } from "../../services/ejerciciosService";
 import "./ejerciciosselect.css";
+import ExerciseByMuscle from "../ExerciseByMuscle/ExerciseByMuscle";
 function EjerciciosSelect() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -63,6 +64,9 @@ function EjerciciosSelect() {
                 onClick={() => handleClick("abdominales")}
               />
             </Link>
+            <div>
+              <ExerciseByMuscle />
+            </div>
           </li>
         </ul>
         {error && <p>{error}</p>}
