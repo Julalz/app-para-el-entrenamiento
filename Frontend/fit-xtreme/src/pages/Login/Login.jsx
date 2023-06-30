@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../services/authService";
+import { login } from "../../services";
 import Button from "../../components/shared/button/Button";
 import "./login.css";
 
@@ -16,7 +16,7 @@ function Login() {
 
     try {
       const response = await login(email, password);
-      setError(response.data.data.message);
+      setError(response.data.message);
       console.log(response);
       navigate("/profile");
     } catch (error) {
