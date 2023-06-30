@@ -4,7 +4,7 @@ import { signup } from "../../services/authService";
 import Button from "../../components/shared/button/Button";
 import "./register.css";
 
-const Register = () => {
+function Register() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPass] = useState("");
@@ -80,6 +80,6 @@ const Register = () => {
       </form>
     </section>
   );
-};
+}
 
 export default Register;

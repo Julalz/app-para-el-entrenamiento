@@ -1,3 +1,4 @@
+import { login } from "./authService";
 import axios from "axios";
 
 const isBearerTokenRequired = (url) => {
@@ -25,4 +26,4 @@ axios.interceptors.response.use(
   }
 );
 
-export { singup };
+export { login };
