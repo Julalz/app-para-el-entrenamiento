@@ -1,14 +1,17 @@
 import axios from "axios";
 import { LOCAL_STORAGE_USER } from "../utils/constanst";
 import { login, signup } from "./authService";
+import { createEjercicios } from "./ejerciciosService";
+import { getProfile } from "./profile";
 
 const currentUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
-const token = currentUser?.token;
+const token = currentUser?.data.token;
 
+console.log(currentUser);
 const isBearerTokenRequired = (url) => {
-  const parseUrl = new URL(url);
-  const publicRoutes = ["api/v1/users/login", "api/v1/users/register"];
-  if (publicRoutes.includes(parseUrl.pathname + parseUrl.search)) {
+  const parsedUrl = new URL(url);
+  const publicRoutes = ["/login", "/register"];
+  if (publicRoutes.includes(parsedUrl.pathname)) {
     return false;
   } else {
     return true;
@@ -19,7 +22,9 @@ axios.interceptors.request.use(
   function (config) {
     if (token && isBearerTokenRequired(config.url)) {
       config.headers["Authorization"] = `Bearer ${token}`;
+      console.log(config.headers);
     }
+
     return config;
   },
   function (error) {
@@ -30,6 +35,7 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   function (response) {
     if (response?.data?.token) {
+      console.log(response);
       localStorage.setItem(LOCAL_STORAGE_USER, JSON.stringify(response));
     }
     return response;
@@ -43,4 +49,4 @@ axios.interceptors.response.use(
   }
 );
 
-export { login, signup };
+export { login, signup, createEjercicios, getProfile };

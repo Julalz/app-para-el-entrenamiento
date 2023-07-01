@@ -1,9 +1,24 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import humo from "../../../public/videos/humo.mp4";
 import "./profile.css";
 
 function Profile() {
   const [carouselImages, setCarouselImages] = useState([]);
+  const navigate = useNavigate();
+
+  // const isAuthenticated = true;
+  // const token = localStorage.getItem("token");
+  // console.log(token);
+
+  // const handleProfileClick = () => {
+  //   if (isAuthenticated && token) {
+  //     navigate("/profile");
+  //   } else {
+  //     navigate("/login");
+  //   }
+  // };
+
   useEffect(() => {
     // Lógica para cargar las imágenes desde el backend y actualizar el estado 'carouselImages'
 

@@ -17,11 +17,10 @@ function Login() {
     try {
       const response = await login(email, password);
       setError(response.data.message);
-      console.log(response);
+      setError(null);
       navigate("/profile");
     } catch (error) {
       console.log(error);
-
       setError(error.response.data.error);
     }
   };
