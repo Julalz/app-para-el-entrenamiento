@@ -5,6 +5,7 @@ import {
   createEjercicios,
   getProfile,
   getFavoriteExercise,
+  deletFavoriteExercise,
 } from "../services/ejerciciosService";
 
 const currentUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
@@ -51,4 +52,11 @@ axios.interceptors.response.use(
   }
 );
 console.log("finalindex");
-export { login, signup, createEjercicios, getProfile, getFavoriteExercise };
+export {
+  login,
+  signup,
+  createEjercicios,
+  getProfile,
+  getFavoriteExercise,
+  deletFavoriteExercise,
+};

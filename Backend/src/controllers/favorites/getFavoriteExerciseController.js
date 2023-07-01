@@ -5,6 +5,7 @@ const { findExerciseById } = require("../../repositories/exerciseRepository");
 const {
   getAllFavoritesExercise,
 } = require("../../repositories/favoritesRepository");
+const { HTTP_SERVER } = process.env;
 
 const getUserExerciseFavorites = async (req, res) => {
   try {
@@ -12,6 +13,10 @@ const getUserExerciseFavorites = async (req, res) => {
     console.log(userId, "id usuario");
 
     const favoritesExercises = await getAllFavoritesExercise(userId);
+    favoritesExercises.map((exercise) => {
+      const url = `${HTTP_SERVER}images/${exercise.image}`;
+      exercise.imageUrl = url;
+    });
 
     res.status(200);
     res.send({ data: favoritesExercises });

@@ -6,6 +6,9 @@ const {
 const createJsonError = require("../../errors/createJsonError");
 const { isAdmin } = require("../../helpers/utils");
 const uploadImage = require("../../helpers/uploadImage");
+// const {
+//   default: Button,
+// } = require("../../../../Frontend/fit-xtreme/src/components/shared/button/Button");
 
 const schema = Joi.object().keys({
   name: Joi.string().min(2).max(200).required(),
@@ -22,6 +25,7 @@ const createExercise = async (req, res) => {
   try {
     const { body, files } = req;
     const { role } = req.auth;
+    console.log(body, files);
     isAdmin(role);
     await schema.validateAsync(body);
     await schemaFiles.validateAsync(files);

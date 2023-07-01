@@ -1,6 +1,64 @@
-.principal-profile-container {
-  width: 100vh;
-  height: 100px;
+.profile-container {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  color: #0aaa92;
   display: flex;
+  flex-direction: column;
   position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.AllInfoProfile-container {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+}
+
+.AllInfoProfile-container img {
+  width: 250px;
+  height: 200px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.AllInfoProfile-container img:hover {
+  transform: scale(1.1);
+}
+
+.carrousel-container {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 14px;
+}
+.carrousel-container li {
+  font-family: "Roboto";
+  letter-spacing: 2px;
+  line-height: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 400px;
+  height: 400px;
+  list-style-type: none;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 0 5px rgba(10, 170, 146, 0.3);
+  background-color: rgba(224, 224, 224, 0.1);
+}
+
+.carrousel-container li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 45px rgba(10, 170, 146, 0.3);
+  background-color: rgba(10, 170, 146, 0.3);
 }
