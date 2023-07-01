@@ -64,9 +64,6 @@ function EjerciciosSelect() {
                 onClick={() => handleClick("abdominales")}
               />
             </Link>
-            <div>
-              <ExerciseByMuscle />
-            </div>
           </li>
         </ul>
         {error && <p>{error}</p>}

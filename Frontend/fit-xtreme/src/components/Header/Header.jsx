@@ -1,11 +1,15 @@
 import React, { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavigationMenu from "../NavigationMenu";
 import NameXtreme from "./NameXtreme/NameXtreme";
+import { LOCAL_STORAGE_USER } from "../../utils/constanst";
 import "./header.css";
 
 function Header() {
   const navHidden = useRef(null);
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
+  const token = user?.data.token;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +27,18 @@ function Header() {
     };
   });
 
+  const handleProfileClick = () => {
+    if (token) {
+      setTimeout(() => {
+        navigate("/profile");
+      }, 0);
+    } else {
+      setTimeout(() => {
+        navigate("/login");
+      }, 0);
+    }
+  };
+
   return (
     <header>
       <h1>
@@ -34,7 +50,7 @@ function Header() {
         </nav>
 
         <div className="User-icon">
-          <Link to="/login">
+          <Link onClick={handleProfileClick}>
             <img
               src="../../../public/images/iconos/users.png"
               alt="User Icon"

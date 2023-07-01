@@ -57,10 +57,9 @@ async function loginUser(req, res) {
     const token = jwt.sign(tokenLoad, JWT_SECRET, {
       expiresIn: `1y`,
     });
+    console.log(token);
     res.status(200);
     res.json({
-      message: `${email} se ha logeado correctamente`,
-      data: { verificationCode: verificationCode },
       token,
       expiresIn: "1y",
     });

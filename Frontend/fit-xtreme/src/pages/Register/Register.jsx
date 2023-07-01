@@ -17,7 +17,7 @@ function Register() {
 
     try {
       const response = await signup(name, email, password);
-      setError(response.data.data.message);
+      setError(response.data.message);
       console.log(response);
 
       navigate("/login");

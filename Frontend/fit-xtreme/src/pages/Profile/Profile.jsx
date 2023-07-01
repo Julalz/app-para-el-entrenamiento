@@ -1,46 +1,87 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import humo from "../../../public/videos/humo.mp4";
+import { LOCAL_STORAGE_USER } from "../../utils/constanst";
+import {
+  getProfile,
+  getFavoriteExercise,
+} from "../../services/ejerciciosService";
+import Button from "../../components/shared/button/Button";
 import "./profile.css";
+import CardCarrusel from "../../components/shared/Carrusel/Carrusel";
 
 function Profile() {
   const [carouselImages, setCarouselImages] = useState([]);
-  useEffect(() => {
-    // Lógica para cargar las imágenes desde el backend y actualizar el estado 'carouselImages'
+  const [data, setData] = useState(null);
+  const [error, setError] = useState("");
 
-    // Ejemplo:
-    fetch("/api/images") // Reemplaza '/api/images' con la ruta correcta para obtener las imágenes desde el backend
-      .then((response) => response.json())
-      .then((data) => setCarouselImages(data.images));
-  }, []);
+  const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
+  const token = user?.data.token;
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        if (token) {
+          const responseProfile = await getProfile();
+          setData(responseProfile.data);
+        }
+      } catch (error) {
+        setError("Error fetching profile");
+      }
+    };
+
+    fetchProfile();
+  }, [token]);
+
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      try {
+        if (token) {
+          const response = await getFavoriteExercise();
+          setCarouselImages(response.data);
+        }
+      } catch (error) {
+        setError("Error fetching favorite exercises");
+      }
+    };
+
+    fetchFavorites();
+  }, [token]);
+
   return (
     <>
-      <div className="overlay"></div>
-      <div className="main">
+      <div className="principal-profile-container">
         <video src={humo} autoPlay loop muted />
-      </div>
-      <div className="principal-profile">
         <section className="avatar">
           <img
             src="../../../public/images/iconos/pesa.png"
             alt="imagen de avatar"
             className="my-photo"
           />
-          <h1 className="name">mi nombre</h1>
+          <h1 className="name">Hey! Bienvenido {data?.name}</h1>
+          {data?.data === "admin" && (
+            <div>
+              <p>Eres Admin</p>
+              <div>
+                <Link to="/CreateExercise">
+                  <Button
+                    className="ButtonCreateEjercicio"
+                    text={"Crear Ejercicio"}
+                  />
+                </Link>
+              </div>
+            </div>
+          )}
         </section>
         <section className="description">
           <p className="frase-777">
             Aquí encontrarás todos los ejercicios que te han interesado.
           </p>
           <p className="porTodas">¡A POR TODAS!</p>
-          {/* aquí iría el contenido del carrusel de fotos de favoritos */}
-          <div className="carousel">
-            {carouselImages.map((image, index) => (
-              <img
-                key={index}
-                src={image.url}
-                alt={image.alt}
-                className="carousel-image"
-              />
+
+          <div className="carrousel-container">
+            {carouselImages.map((exercise, index) => (
+              <CardCarrusel key={index} exercise={exercise} />
             ))}
           </div>
         </section>
