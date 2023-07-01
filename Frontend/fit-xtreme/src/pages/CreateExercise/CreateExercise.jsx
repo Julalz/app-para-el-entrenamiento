@@ -6,8 +6,8 @@ import { createEjercicios } from "../../services/ejerciciosService";
 import "./createExercise.css";
 
 function CreateExercise() {
-  const { register } = useForm();
-  const [selectedImage, setSelectedImage] = useState(imageDefault);
+  const { register, handleSubmit } = useForm();
+  const [image, setImage] = useState(imageDefault);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [typology, setTypology] = useState("");
@@ -20,24 +20,30 @@ function CreateExercise() {
   const onChangeMuscle = (e) => setMuscle(e.target.value);
   const onChangeImagen = (e) => {
     const file = e.target.files[0];
-    setSelectedImage(URL.createObjectURL(file));
+    setImage(URL.createObjectURL(file));
   };
-  const handleForm = async (e) => {
-    e.preventDefault();
+  const handleForm = async (data) => {
     setError("");
-    console.log(e);
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
+
+    formData.append("name", name);
+    formData.append("typology", typology);
+    formData.append("muscle", muscle);
+    formData.append("description", description);
+
+    const config = {
+      header: {
+        "Content-type": "multipart/form-data",
+      },
+    };
+
     try {
-      const response = await createEjercicios(
-        name,
-        description,
-        selectedImage,
-        typology,
-        muscle
-      );
+      const response = await createEjercicios(formData, config);
 
       setError(response.data.data.message);
     } catch (error) {
-      console.log(error.response.data.error);
+      console.log(error);
       if (error.response.data.status === 409) {
         setError(error.response.data.error);
       } else {
@@ -48,8 +54,11 @@ function CreateExercise() {
   return (
     <div className="backgroundCreateExercise-container">
       <div className="createExercise-container">
-        <img src={selectedImage} className="imgCreate" alt="Imagen" />
-        <form className="FormCreateExercise" onSubmit={handleForm}>
+        <img src={image} className="imgCreate" alt="Imagen" />
+        <form
+          className="FormCreateExercise"
+          onSubmit={handleSubmit(handleForm)}
+        >
           <h2>Crear Ejercicio, crea salud</h2>
 
           <label>Nombre</label>
@@ -68,22 +77,18 @@ function CreateExercise() {
             onChange={onChangeDescription}
           />
           <label>Imagen</label>
-          <input
-            type="file"
-            {...register("imagen")}
-            onChange={onChangeImagen}
-          />
+          <input type="file" {...register("image")} onChange={onChangeImagen} />
           <label>Tipología</label>
           <input
             type="text"
-            {...register("typologia")}
+            {...register("typology")}
             value={typology}
             onChange={onChangeTypolgy}
           />
           <label>Músculo</label>
           <input
             type="text"
-            {...register("musculo")}
+            {...register("muscle")}
             value={muscle}
             onChange={onChangeMuscle}
           />
