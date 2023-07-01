@@ -9,6 +9,7 @@ const {
 const getUserExerciseFavorites = async (req, res) => {
   try {
     const { id: userId } = req.auth;
+    console.log(userId, "id usuario");
 
     const favoritesExercises = await getAllFavoritesExercise(userId);
 
