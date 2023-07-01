@@ -10,7 +10,6 @@ function Header() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
   const token = user?.data.token;
-  console.log(token);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +28,6 @@ function Header() {
   });
 
   const handleProfileClick = () => {
-    console.log(token);
     if (token) {
       setTimeout(() => {
         navigate("/profile");

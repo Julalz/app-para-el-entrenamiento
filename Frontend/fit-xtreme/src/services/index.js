@@ -1,8 +1,11 @@
 import axios from "axios";
 import { LOCAL_STORAGE_USER } from "../utils/constanst";
 import { login, signup } from "./authService";
-import { createEjercicios } from "./ejerciciosService";
-import { getProfile } from "./profile";
+import {
+  createEjercicios,
+  getProfile,
+  getFavoriteExercise,
+} from "../services/ejerciciosService";
 
 const currentUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
 const token = currentUser?.data.token;
@@ -22,7 +25,6 @@ axios.interceptors.request.use(
   function (config) {
     if (token && isBearerTokenRequired(config.url)) {
       config.headers["Authorization"] = `Bearer ${token}`;
-      console.log(config.headers);
     }
 
     return config;
@@ -48,5 +50,5 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-export { login, signup, createEjercicios, getProfile };
+console.log("finalindex");
+export { login, signup, createEjercicios, getProfile, getFavoriteExercise };
