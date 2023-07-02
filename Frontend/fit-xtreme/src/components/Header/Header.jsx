@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import NavigationMenu from "../NavigationMenu";
 import NameXtreme from "./NameXtreme/NameXtreme";
@@ -8,6 +8,8 @@ import "./header.css";
 function Header() {
   const navHidden = useRef(null);
   const navigate = useNavigate();
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+
   const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
   const token = user?.data.token;
 
@@ -26,7 +28,10 @@ function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   });
-
+  const handleLogout = () => {
+    localStorage.removeItem(LOCAL_STORAGE_USER);
+    navigate("/");
+  };
   const handleProfileClick = () => {
     if (token) {
       setTimeout(() => {
@@ -39,6 +44,14 @@ function Header() {
     }
   };
 
+  const handleMouseEnter = () => {
+    setIsSubMenuOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsSubMenuOpen(false);
+  };
+
   return (
     <header>
       <h1>
@@ -49,13 +62,27 @@ function Header() {
           <NavigationMenu />
         </nav>
 
-        <div className="User-icon">
+        <div
+          className="User-icon"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <Link onClick={handleProfileClick}>
             <img
               src="../../../public/images/iconos/users.png"
               alt="User Icon"
             />
           </Link>
+          {
+            (isSubMenuOpen,
+            token && (
+              <div className="submenu">
+                <Link to="/profile">Perfil</Link>
+                <Link to="/configuracion">Configuración</Link>
+                <button onClick={handleLogout}>Cerrar sesión</button>
+              </div>
+            ))
+          }
         </div>
       </div>
     </header>

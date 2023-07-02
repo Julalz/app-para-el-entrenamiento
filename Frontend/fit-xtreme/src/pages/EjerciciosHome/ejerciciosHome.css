@@ -49,9 +49,17 @@ section {
   height: 100%;
 }
 .video-container-ejercicios-home-description h2 {
-  font-family: "Blackout Sunrise";
+  font-family: "Poppins";
   font-size: 65px;
   margin-bottom: 56px;
+  letter-spacing: 1px;
+  line-height: 49px;
+  color: transparent;
+  -webkit-text-stroke: 2px #fff8f8d3;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .video-container-ejercicios-home-description h2:hover {
   color: #0aaa92;
