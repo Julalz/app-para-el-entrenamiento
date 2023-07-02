@@ -13,8 +13,9 @@ function EjerciciosSelect() {
   useEffect(() => {
     const loadExercises = async () => {
       try {
+        console.log("seteando");
         const response = await GetExercisebyMuscle(muscle);
-        setEjercicios(response.data);
+        setEjercicios(response);
         console.log("response");
       } catch (error) {
         setError(error.response.data.error);
@@ -29,9 +30,76 @@ function EjerciciosSelect() {
   };
 
   return (
-    <div className="EjerciciosBackground-container">
-      <video src={EjerciciosLis} autoPlay loop muted></video>
-      <div className="ul-container-ejercicios">
+    <section className="ejercicios-container">
+      <video
+        className="video-ejercicios"
+        src={EjerciciosLis}
+        autoPlay
+        loop
+        muted
+      ></video>
+      <h2>¡Hola, Xtremer! Selecciona qué músculos quieres trabajar</h2>
+      <div className="muscle-container">
+        <ul>
+          <Link
+            to={`/ejercicios/pectorales`}
+            className="link-muscle"
+            onClick={() => handleClick("pectorales")}
+          >
+            <li>Pectorales</li>
+          </Link>
+          <Link
+            to="/ejercicios/lumbar"
+            className="link-muscle"
+            onClick={() => handleClick("lumbar")}
+          >
+            <li>Lumbar</li>
+          </Link>
+          <Link
+            to="/ejercicios/biceps"
+            className="link-muscle"
+            onClick={() => handleClick("biceps")}
+          >
+            <li>Biceps</li>
+          </Link>
+          <Link
+            to="/ejercicios/triceps"
+            className="link-muscle"
+            onClick={() => handleClick("triceps")}
+          >
+            <li>Triceps</li>
+          </Link>
+          <Link
+            to="/ejercicios/abdominales"
+            className="link-muscle"
+            onClick={() => handleClick("abdominales")}
+          >
+            <li>Abdominales</li>
+          </Link>
+          <Link
+            to="/ejercicios/cuadriceps"
+            className="link-muscle"
+            onClick={() => handleClick("cuadriceps")}
+          >
+            <li>Cuádriceps</li>
+          </Link>
+          <Link
+            to="/ejercicios/gemelos"
+            className="link-muscle"
+            onClick={() => handleClick("gemelos")}
+          >
+            <li>Gemelos</li>
+          </Link>
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export default EjerciciosSelect;
+
+{
+  /* <div className="ul-container-ejercicios">
         <h2>¡Hola, Xtremer! Selecciona qué músculos quieres trabajar</h2>
         <ul className="lis-container-ejercicio">
           <li>
@@ -59,17 +127,16 @@ function EjerciciosSelect() {
           </li>
           <li>
             <Link to="/ejercicios/abdominales">
-              <Button
-                text="Abdominales"
-                onClick={() => handleClick("abdominales")}
-              />
+            <Button
+              text="Abdominales"
+              onClick={() => handleClick("abdominales")}
+            />
             </Link>
+            <div>
+              <ExerciseByMuscle />
+            </div>
           </li>
         </ul>
         {error && <p>{error}</p>}
-      </div>
-    </div>
-  );
+      </div> */
 }
-
-export default EjerciciosSelect;

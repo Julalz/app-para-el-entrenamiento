@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS users (
   verificationCode VARCHAR(64) NULL DEFAULT NULL,
   verifiedAt DATETIME NULL DEFAULT NULL,
   PRIMARY KEY (id)
-
+  
 );
 
 CREATE TABLE IF NOT EXISTS workout (
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS workout (
   muscle VARCHAR(60),
   createdAt DATETIME,
   PRIMARY KEY (id),
-  FOREIGN KEY (id) REFERENCES users (id)
+  
 );
 
 CREATE TABLE IF NOT EXISTS favorites (

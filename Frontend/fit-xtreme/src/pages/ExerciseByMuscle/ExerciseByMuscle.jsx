@@ -1,16 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { GetExercisebyMuscle } from "../../services/ejerciciosService";
+import {
+  GetExercisebyMuscle,
+  getProfile,
+} from "../../services/ejerciciosService";
 import "./exerciseByMuscle.css";
+import { Link, useParams } from "react-router-dom";
+import Button from "../../components/shared/button/Button";
+import { LOCAL_STORAGE_USER } from "../../utils/constanst";
 
 function ExerciseByMuscle() {
+  const { muscle } = useParams();
   const [error, setError] = useState("");
   const [ejercicios, setEjercicios] = useState([]);
+  const [data, setData] = useState(null);
+
+  const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
+  const token = user?.data.token;
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        if (token) {
+          const responseProfile = await getProfile();
+          setData(responseProfile.data);
+        }
+      } catch (error) {
+        setError("Error fetching profile");
+      }
+    };
+
+    fetchProfile();
+  }, [token]);
 
   useEffect(() => {
     const loadExercises = async () => {
       try {
-        const response = await GetExercisebyMuscle();
+        const response = await GetExercisebyMuscle(muscle);
         setEjercicios(response.data);
+        console.log(response.data);
       } catch (error) {
         setError(error.response.data.error);
         console.log(error.response.data.error);
@@ -18,17 +45,39 @@ function ExerciseByMuscle() {
     };
 
     loadExercises();
-  }, []);
-
+  }, [muscle]);
   return (
-    <div className="div-container-ByMuscle">
-      <ul>
+    <section className="all-muscle-exercise-container">
+      <div className="title-muscle">
+        <h3>¡Ha llegado el momento Xtreme!</h3>
+      </div>
+      <div className="exercise-container">
         {ejercicios.map((ejercicio) => (
-          <li key={ejercicio.name}>{ejercicio.name}</li>
+          <li className="exercise-li" key={ejercicio?.id}>
+            <img
+              className="exercise-image"
+              src={ejercicio?.image}
+              alt={ejercicio?.name}
+            />
+            <h6>{ejercicio?.name}</h6>
+            <p>{ejercicio?.description}</p>
+            <p>{ejercicio?.typology}</p>
+
+            <div>
+              {data?.data === "admin" && (
+                <Link to="/updateExercise">
+                  <Button
+                    className="button-update-exercise"
+                    text={"Actualizar"}
+                  />
+                </Link>
+              )}
+            </div>
+          </li>
         ))}
-      </ul>
-      {error && <p>{error}</p>}
-    </div>
+        {error && <p>{error}</p>}
+      </div>
+    </section>
   );
 }
 

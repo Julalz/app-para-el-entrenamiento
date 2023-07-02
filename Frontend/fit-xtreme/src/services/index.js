@@ -5,6 +5,7 @@ import {
   createEjercicios,
   getProfile,
   getFavoriteExercise,
+  GetExercisebyMuscle,
   deletFavoriteExercise,
 } from "../services/ejerciciosService";
 
@@ -58,5 +59,6 @@ export {
   createEjercicios,
   getProfile,
   getFavoriteExercise,
+  GetExercisebyMuscle,
   deletFavoriteExercise,
 };
