@@ -1,54 +1,40 @@
-const path = require("path");
+const Joi = require("joi");
 const fs = require("fs").promises;
-const randomstring = require("randomstring");
+
 const createJsonError = require("../../errors/createJsonError");
 const throwJsonError = require("../../errors/throwJsonError");
 const {
   findUserByEmail,
   uploadUserProfileImage,
 } = require("../../repositories/usersRepository");
+const { isAdmin } = require("../../helpers/utils");
+const uploadImage = require("../../helpers/uploadImage");
+const { findExerciseById } = require("../../repositories/exerciseRepository");
 
-const validExtension = [".jpeg", ".jpg", ".png"];
+const schemaFiles = Joi.object()
+  .keys({ image: Joi.required() })
+  .messages({ "object.base": "la imagen es obligatoria" });
 
 const uploadImageProfile = async (req, res) => {
   try {
-    // Obtenemos el email del JWT
-    const { email } = req.auth;
+    const { id, role } = req.auth;
+    console.log(req.auth);
     const { files } = req;
+    isAdmin(role);
+
     if (!files) {
       throwJsonError(400, "No se ha seleccionado fichero");
     }
+    await schemaFiles.validateAsync(files);
 
-    const { avatar } = files;
-    const extension = path.extname(avatar.name);
+    req.body.image = await uploadImage(req.files.image.data);
 
-    const { HTTP_BACKEND } = process.env;
+    const imageUpdated = await uploadUserProfileImage(id, image);
 
-    if (!validExtension.includes(extension)) {
-      throwJsonError(400, "Formato no válido");
-    }
-
-    const user = await findUserByEmail(email);
-    const { id, image } = user;
-
-    // Generamos la ruta completa de la carpeta donde situamos la image.
-    const pathAvatar = path.join(__dirname, "/../../../public/avatars");
-
-    //Borrar imagen inicial si existe
-    if (image) {
-      await fs.unlink(`${pathAvatar}/${image}`);
-    }
-
-    const random = randomstring.generate(10);
-    const imageName = `${id}-${random}${extension}`;
-    const pathImage = `${pathAvatar}/${imageName}`;
-
-    avatar.mv(pathImage, async function (err) {
-      if (err) return res.status(500).send(err);
-      // Guardamos nombre imagen en base datos.
-      await uploadUserProfileImage(id, imageName);
-
-      res.send({ url: `${HTTP_BACKEND}/avatars/${imageName}` });
+    res.status(200);
+    res.send({
+      data: imageUpdated,
+      url: `${HTTP_BACKEND}/avatars/${imageName}`,
     });
   } catch (error) {
     createJsonError(error, res);
