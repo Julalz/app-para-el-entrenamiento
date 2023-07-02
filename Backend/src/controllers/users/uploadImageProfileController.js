@@ -4,7 +4,6 @@ const fs = require("fs").promises;
 const createJsonError = require("../../errors/createJsonError");
 const throwJsonError = require("../../errors/throwJsonError");
 const {
-  findUserByEmail,
   uploadUserProfileImage,
 } = require("../../repositories/usersRepository");
 const { isAdmin } = require("../../helpers/utils");
@@ -18,7 +17,7 @@ const schemaFiles = Joi.object()
 const uploadImageProfile = async (req, res) => {
   try {
     const { id, role } = req.auth;
-    console.log(req.auth);
+
     const { files } = req;
     isAdmin(role);
 
@@ -29,12 +28,12 @@ const uploadImageProfile = async (req, res) => {
 
     req.body.image = await uploadImage(req.files.image.data);
 
-    const imageUpdated = await uploadUserProfileImage(id, image);
+    await uploadUserProfileImage(id, req.body.image);
 
     res.status(200);
     res.send({
-      data: imageUpdated,
-      url: `${HTTP_BACKEND}/avatars/${imageName}`,
+      data: req.body.image,
+      message: "Avatar subido",
     });
   } catch (error) {
     createJsonError(error, res);
