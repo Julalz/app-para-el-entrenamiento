@@ -1,13 +1,7 @@
 import axios from "axios";
 
-export function createEjercicios(name, description, image, typology, muscle) {
-  return axios.post("http://localhost:3000/api/v1/exercise", {
-    name,
-    description,
-    image,
-    typology,
-    muscle,
-  });
+export function createEjercicios(formData, config) {
+  return axios.post("http://localhost:3000/api/v1/exercise", formData, config);
 }
 
 export async function GetExercisebyMuscle(muscle) {
@@ -36,4 +30,13 @@ export async function getFavoriteExercise() {
   } catch (error) {
     throw new Error("Error fetching Favorites", error);
   }
+}
+
+export function deletFavoriteExercise(idWorkout) {
+  try {
+    const response = axios.delete(
+      `http://localhost:3000/api/v1/users/profile/${idWorkout}/favorites`
+    );
+    return response;
+  } catch (error) {}
 }

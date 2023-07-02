@@ -6,6 +6,7 @@ import {
   getProfile,
   getFavoriteExercise,
   GetExercisebyMuscle,
+  deletFavoriteExercise,
 } from "../services/ejerciciosService";
 
 const currentUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
@@ -59,4 +60,5 @@ export {
   getProfile,
   getFavoriteExercise,
   GetExercisebyMuscle,
+  deletFavoriteExercise,
 };

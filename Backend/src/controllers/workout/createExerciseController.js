@@ -22,6 +22,7 @@ const createExercise = async (req, res) => {
   try {
     const { body, files } = req;
     const { role } = req.auth;
+    console.log(body, files);
     isAdmin(role);
     await schema.validateAsync(body);
     await schemaFiles.validateAsync(files);
