@@ -8,7 +8,7 @@ function EjerciciosHome() {
       <div className="Ejercicios-container-home">
         <section className="video-container-ejercicios-home-description">
           <h2>
-            Porque somos <br></br> Xtreme
+            PORQUE SOMOS <br></br> Xtreme
           </h2>
           <div>
             <ul className="container-tarjetas">

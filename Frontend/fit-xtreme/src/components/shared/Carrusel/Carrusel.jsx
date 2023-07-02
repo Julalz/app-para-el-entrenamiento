@@ -1,4 +1,5 @@
-import iconoDelete from "../../../../public/images/locationGym/3834568.png";
+import iconoDelete from "../../../../public/images/iconos/icons8-basura-64.png";
+import "./carrusel.css";
 
 function CardCarrusel({ exercise, onDeleteFavorite }) {
   const handleDeleteFavorite = () => {
@@ -14,7 +15,20 @@ function CardCarrusel({ exercise, onDeleteFavorite }) {
       <h6>{exercise?.name}</h6>
       <p>{exercise?.description}</p>
       <p>{exercise?.typology}</p>
-      <button onClick={handleDeleteFavorite}></button>
+      <button
+        className="button-container"
+        onClick={handleDeleteFavorite}
+        style={{
+          backgroundColor: "transparent",
+          border: "none",
+        }}
+      >
+        <img
+          src={iconoDelete}
+          alt="Icono Eliminar"
+          style={{ width: "50px", height: "50px" }}
+        />
+      </button>
     </li>
   );
 }

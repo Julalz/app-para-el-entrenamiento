@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { LOCAL_STORAGE_USER } from "../../utils/constanst";
 import {
@@ -20,6 +20,19 @@ function Profile() {
   const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
   const token = user?.data.token;
 
+  const handleFormAvatar = async (data) => {
+    setError("");
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
+
+    try {
+      const response = await formData;
+    } catch (error) {}
+
+    // Aquí puedes timplementar la lógica para enviar la imagen al servidor
+    // utilizando formData, por ejemplo: axios.post('/upload', formData)
+  };
+
   const handleDeleteFavorite = async (id) => {
     try {
       if (token) {
@@ -32,6 +45,12 @@ function Profile() {
     } catch (error) {
       setError("Error deleting favorite exercise");
     }
+  };
+
+  const inputRef = useRef(null);
+
+  const handleAvatarClick = () => {
+    inputRef.current.click();
   };
 
   useEffect(() => {
@@ -65,19 +84,33 @@ function Profile() {
     fetchFavorites();
   }, [token]);
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    // Aquí puedes implementar la lógica para actualizar la imagen de avatar
+    setAvatar(URL.createObjectURL(file));
+  };
+
   return (
     <>
       <div className="profile-container">
         <div className="AllInfoProfile-container">
           <section className="avatar-container">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              ref={inputRef}
+              style={{ display: "none" }}
+            />
             <img
               className="avatar"
-              src={AvatarDefault}
+              src={avatar}
               alt="imagen de avatar"
+              onClick={handleAvatarClick}
             />
             <h1>Hey! Bienvenido {data?.name}</h1>
             {data?.data === "admin" && (
-              <div className="Lis-Container-Profile">
+              <div className="ifAdminButton">
                 <p>Eres Admin</p>
                 <div>
                   <Link to="/CreateExercise">
@@ -86,13 +119,16 @@ function Profile() {
                       text={"Crear Ejercicio"}
                     />
                   </Link>
+                  <Link to="/Ejercicios">
+                    <Button text="Actualizar ejercicios" />
+                  </Link>
                 </div>
               </div>
             )}
           </section>
           <section className="FavoriteExercise-container">
-            <p>Aquí encontrarás todos los ejercicios que te han interesado.</p>
-            <p>¡A POR TODAS!</p>
+            <p> ¿Quieres repetir un ejercicio y darle caña?</p>
+            <p>TU LISTA DE FAVORITOS</p>
 
             <div className="carrousel-container">
               {carouselImages.map((exercise, index) => (
