@@ -10,8 +10,15 @@ export function createEjercicios(name, description, image, typology, muscle) {
   });
 }
 
-export function GetExercisebyMuscle(muscle) {
-  return axios.get(`http://localhost:3000/api/v1/exercise/muscle/${muscle}`);
+export async function GetExercisebyMuscle(muscle) {
+  try {
+    const response = await axios.get(
+      `http://localhost:3000/api/v1/exercise/muscle/${muscle}`
+    );
+    return response;
+  } catch (error) {
+    throw new Error("Error fetching exercise by muscle", error);
+  }
 }
 
 export function getProfile() {

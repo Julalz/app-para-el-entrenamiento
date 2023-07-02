@@ -1,12 +1,51 @@
-.div-container-ByMuscle {
+.all-muscle-exercise-container {
+  background-color: black;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100vh;
-  background-color: black;
+  color: #0aaa92;
+  font-family: "Roboto", sans-serif;
 }
 
-.div-container-ByMuscle p {
-  color: white;
+.title-muscle {
+  margin-top: 8rem;
+  margin-bottom: 2rem;
+  font-size: 50px;
+  text-align: center;
+}
+.exercise-container {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.exercise-container li {
+  letter-spacing: 2px;
+  line-height: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 400px;
+  height: 400px;
+  list-style-type: none;
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 0 5px rgba(10, 170, 146, 0.3);
+  background-color: rgba(224, 224, 224, 0.1);
+}
+
+.exercise-container li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 45px rgba(10, 170, 146, 0.3);
+  background-color: rgba(10, 170, 146, 0.3);
 }
