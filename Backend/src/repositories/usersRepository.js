@@ -36,6 +36,7 @@ const atVerificationDate = async (id) => {
 };
 
 const uploadUserProfileImage = async (id, image) => {
+  console.log("dsfd");
   const pool = await getPool();
   const sql = "UPDATE users SET image = ? WHERE id = ?";
   await pool.query(sql, [image, id]);

@@ -8,12 +8,17 @@ const addExerciseFavorites = require("../controllers/favorites/addFavoriteExerci
 const activationAccount = require("../controllers/users/accountActivation");
 const validAuth = require("../middlewares/validAuth");
 const removeExerciseFavorites = require("../controllers/favorites/deleteFavoriteExerciseController");
+const uploadImageProfile = require("../controllers/users/uploadImageProfileController");
 const userRouter = express.Router();
 
 userRouter.route("/signup").post(createAccount);
 userRouter.route("/activation/:code").get(activationAccount);
 userRouter.route("/login").post(loginUser);
-userRouter.route("/profile").all(validAuth).get(userProfile);
+userRouter
+  .route("/profile")
+  .all(validAuth)
+  .get(userProfile)
+  .put(uploadImageProfile);
 userRouter
   .route("/profile/favorites")
   .all(validAuth)

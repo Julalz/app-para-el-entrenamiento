@@ -28,9 +28,6 @@ function Profile() {
     try {
       const response = await formData;
     } catch (error) {}
-
-    // Aquí puedes timplementar la lógica para enviar la imagen al servidor
-    // utilizando formData, por ejemplo: axios.post('/upload', formData)
   };
 
   const handleDeleteFavorite = async (id) => {
@@ -86,7 +83,7 @@ function Profile() {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    // Aquí puedes implementar la lógica para actualizar la imagen de avatar
+
     setAvatar(URL.createObjectURL(file));
   };
 
