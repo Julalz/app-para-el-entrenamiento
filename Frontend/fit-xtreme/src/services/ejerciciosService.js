@@ -4,6 +4,18 @@ export function createEjercicios(formData, config) {
   return axios.post("http://localhost:3000/api/v1/exercise", formData, config);
 }
 
+export async function updateEjercicios(exerciseId, exerciseData) {
+  try {
+    const response = await axios.put(
+      `http://localhost:3000/api/v1/exercise/${exerciseId}`,
+      exerciseData
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Error fetching exercise by ID", error);
+  }
+}
+
 export async function GetExercisebyMuscle(muscle) {
   try {
     const response = await axios.get(

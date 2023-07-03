@@ -37,7 +37,7 @@ function ExerciseByMuscle() {
       try {
         const response = await GetExercisebyMuscle(muscle);
         setEjercicios(response.data);
-        console.log(response.data);
+        console.log("Ejercicios:", response.data);
       } catch (error) {
         setError(error.response.data.error);
         console.log(error.response.data.error);
@@ -46,6 +46,7 @@ function ExerciseByMuscle() {
 
     loadExercises();
   }, [muscle]);
+
   return (
     <section className="all-muscle-exercise-container">
       <div className="title-muscle">
@@ -54,6 +55,7 @@ function ExerciseByMuscle() {
       <div className="exercise-container">
         {ejercicios.map((ejercicio) => (
           <li className="exercise-li" key={ejercicio?.id}>
+            {console.log("Ejersisio::", ejercicio)}
             <img
               className="exercise-image"
               src={ejercicio?.image}
@@ -62,10 +64,9 @@ function ExerciseByMuscle() {
             <h6>{ejercicio?.name}</h6>
             <p>{ejercicio?.description}</p>
             <p>{ejercicio?.typology}</p>
-
             <div>
               {data?.data === "admin" && (
-                <Link to="/updateExercise">
+                <Link to={`/updateExercise/${ejercicio?.id}`}>
                   <Button
                     className="button-update-exercise"
                     text={"Actualizar"}

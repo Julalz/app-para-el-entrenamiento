@@ -1,0 +1,55 @@
+.backgroundUpdateExercise-container {
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto";
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../../public/images/20230627232920_[fpdl.in]_vitrina-productos-foco-fondo-sala-estudio-negro-utilizar-como-montaje-exhibicion-productos-estudio-maquetas_545612-241_large.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #0aaa92;
+}
+.updateExercise-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 45px;
+  margin: 0px 34px;
+  height: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+}
+.FormUpdateExercise {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  text-align: center;
+}
+.FormUpdateExercise input {
+  outline: none;
+  box-shadow: 0 0 5px #0aaa92;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  transition: box-shadow 0.3s ease;
+}
+.FormUpdateExercise input:not(:placeholder-shown) {
+  background-color: transparent;
+}
+
+.file-input {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+.FormCreateExercise > * {
+  margin-bottom: 20px;
+}
+.imgUpdate {
+  width: 600px;
+  height: 600px;
+  box-shadow: 0 0 45px #0aaa92;
+}
+.buttonCreate {
+  text-align: center;
+}
