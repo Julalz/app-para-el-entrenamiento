@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../../services";
 import Button from "../../components/shared/button/Button";
 import "./login.css";
+import { LOCAL_STORAGE_USER } from "../../utils/constanst";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -16,11 +17,13 @@ function Login() {
 
     try {
       const response = await login(email, password);
-      setError(response.data.message);
-      setError(null);
+      //setError(response.data.message);
+      //setError(null);
+      localStorage.setItem(LOCAL_STORAGE_USER, JSON.stringify(response.data));
       navigate("/profile");
     } catch (error) {
       console.log(error);
+      localStorage.removeItem(LOCAL_STORAGE_USER);
       setError(error.response.data.error);
     }
   };
