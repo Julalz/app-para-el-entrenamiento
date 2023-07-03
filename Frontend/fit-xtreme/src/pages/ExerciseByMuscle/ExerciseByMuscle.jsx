@@ -15,13 +15,13 @@ function ExerciseByMuscle() {
   const [data, setData] = useState(null);
 
   const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
-  const token = user?.data.token;
+  const token = user?.token;
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         if (token) {
-          const responseProfile = await getProfile();
+          const responseProfile = await getProfile(token);
           setData(responseProfile.data);
         }
       } catch (error) {
@@ -35,9 +35,10 @@ function ExerciseByMuscle() {
   useEffect(() => {
     const loadExercises = async () => {
       try {
-        const response = await GetExercisebyMuscle(muscle);
+        const response = await GetExercisebyMuscle(muscle, token);
         setEjercicios(response.data);
-        console.log("Ejercicios:", response.data);
+        console.log("Filtrando");
+        console.log(response);
       } catch (error) {
         setError(error.response.data.error);
         console.log(error.response.data.error);
@@ -58,7 +59,7 @@ function ExerciseByMuscle() {
             {console.log("Ejersisio::", ejercicio)}
             <img
               className="exercise-image"
-              src={ejercicio?.image}
+              src={ejercicio?.imageUrl}
               alt={ejercicio?.name}
             />
             <h6>{ejercicio?.name}</h6>

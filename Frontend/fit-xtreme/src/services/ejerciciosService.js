@@ -1,8 +1,12 @@
 import axios from "axios";
 
-export function createEjercicios(formData, config) {
-  return axios.post("http://localhost:3000/api/v1/exercise", formData, config);
+export function createEjercicios(formData, config, token) {
+  return axios.post("http://localhost:3000/api/v1/exercise", formData, {
+    ...config,
+    headers: { Authorization: `Bearer ${token}` },
+  });
 }
+
 
 export async function updateEjercicios(exerciseId, exerciseData) {
   try {
@@ -16,26 +20,34 @@ export async function updateEjercicios(exerciseId, exerciseData) {
   }
 }
 
-export async function GetExercisebyMuscle(muscle) {
+
+export async function GetExercisebyMuscle(muscle, token) {
+
   try {
     const response = await axios.get(
-      `http://localhost:3000/api/v1/exercise/muscle/${muscle}`
+      `http://localhost:3000/api/v1/exercise/muscle/${muscle}`,
+      { headers: { Authorization: `Bearer ${token}` } }
     );
+    console.log("backend", response);
     return response;
   } catch (error) {
     throw new Error("Error fetching exercise by muscle", error);
   }
 }
 
-export function getProfile() {
-  const response = axios.get("http://localhost:3000/api/v1/users/profile");
+export function getProfile(token) {
+  const response = axios.get(
+    "http://localhost:3000/api/v1/users/profile",
+    token ? { headers: { Authorization: `Bearer ${token}` } } : {}
+  );
   return response;
 }
 
-export async function getFavoriteExercise() {
+export async function getFavoriteExercise(token) {
   try {
     const response = await axios.get(
-      "http://localhost:3000/api/v1/users/profile/favorites"
+      "http://localhost:3000/api/v1/users/profile/favorites",
+      token ? { headers: { Authorization: `Bearer ${token}` } } : {}
     );
     console.log(response.data);
     return response.data;
@@ -44,11 +56,18 @@ export async function getFavoriteExercise() {
   }
 }
 
-export function deletFavoriteExercise(idWorkout) {
+export async function deletFavoriteExercise(idWorkout, token) {
   try {
-    const response = axios.delete(
-      `http://localhost:3000/api/v1/users/profile/${idWorkout}/favorites`
+    const response = await axios.delete(
+      `http://localhost:3000/api/v1/users/profile/${idWorkout}/favorites`,
+      token ? { headers: { Authorization: `Bearer ${token}` } } : {}
     );
     return response;
   } catch (error) {}
 }
+
+// export async function UploadAvatar(token) {
+//   await axios.put("http://localhost:3000/api/v1/users/profile", formData, {
+//     headers: { Authorization: `Bearer ${token}` },
+//   });
+// }

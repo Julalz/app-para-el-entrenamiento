@@ -1,0 +1,10 @@
+.VideoNoAdmin {
+  position: relative;
+}
+.NoAdminParrafo {
+  font-family: "Roboto";
+  font-size: 45px;
+  top: 40%;
+  left: 20%;
+  position: absolute;
+}
