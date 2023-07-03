@@ -16,7 +16,6 @@ import UpdateExercise from "./pages/updateExercise/updateExercise";
 import AdminRoute from "./utils/AdminRoute/AdminRoute";
 import AuthRoute from "./utils/AuthRoute/AuthRoute";
 
-
 function App() {
   return (
     <main>
@@ -40,6 +39,7 @@ function App() {
         <Route
           path="/updateExercise/:exerciseId"
           element={<UpdateExercise />}
+        />
         <Route
           path="/CreateExercise"
           element={
