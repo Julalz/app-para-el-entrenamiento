@@ -12,8 +12,10 @@ import NotFound from "./pages/NotFound/NotFound";
 import CreateExercise from "./pages/CreateExercise/CreateExercise";
 import EjerciciosHome from "./pages/EjerciciosHome/EjerciciosHome";
 import ExerciseByMuscle from "./pages/ExerciseByMuscle/ExerciseByMuscle";
+import UpdateExercise from "./pages/updateExercise/updateExercise";
 import AdminRoute from "./utils/AdminRoute/AdminRoute";
 import AuthRoute from "./utils/AuthRoute/AuthRoute";
+
 
 function App() {
   return (
@@ -35,6 +37,9 @@ function App() {
         />
         <Route path="/Ejercicios/:muscle" element={<ExerciseByMuscle />} />
         <Route path="/EjerciciosHome" element={<EjerciciosHome />} />
+        <Route
+          path="/updateExercise/:exerciseId"
+          element={<UpdateExercise />}
         <Route
           path="/CreateExercise"
           element={
