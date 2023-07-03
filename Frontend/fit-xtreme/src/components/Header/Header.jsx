@@ -11,7 +11,7 @@ function Header() {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
   const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
-  const token = user?.data.token;
+  const token = user?.token;
 
   useEffect(() => {
     const handleScroll = () => {

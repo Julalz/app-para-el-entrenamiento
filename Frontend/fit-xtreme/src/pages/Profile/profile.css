@@ -16,8 +16,14 @@
   align-items: center;
   justify-content: center;
   margin-top: 9rem;
+  margin-bottom: 34px;
 }
-
+.FavoriteExercise-container {
+  font-family: "Roboto";
+}
+.FavoriteExercise-container:nth-child(2) {
+  font-family: "Poppins";
+}
 .FavoriteExercise-container img {
   width: 250px;
   /* height: 200px; */

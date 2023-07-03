@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import imageDefault from "../../../public/images/locationGym/recuerdaImagen.png";
 import { createEjercicios } from "../../services/ejerciciosService";
 import "./createExercise.css";
+import { LOCAL_STORAGE_USER } from "../../utils/constanst";
 
 function CreateExercise() {
   const { register, handleSubmit } = useForm();
@@ -13,6 +14,9 @@ function CreateExercise() {
   const [typology, setTypology] = useState("");
   const [muscle, setMuscle] = useState("");
   const [error, setError] = useState("");
+
+  const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
+  const token = user?.token;
 
   const onChangeName = (e) => setName(e.target.value);
   const onChangeDescription = (e) => setDescription(e.target.value);
@@ -39,7 +43,7 @@ function CreateExercise() {
     };
 
     try {
-      const response = await createEjercicios(formData, config);
+      const response = await createEjercicios(formData, config, token);
 
       setError(response.data.data.message);
     } catch (error) {
