@@ -7,6 +7,18 @@ export function createEjercicios(formData, config, token) {
   });
 }
 
+export async function deleteExercise(exerciseId, config, token) {
+  try {
+    const response = await axios.delete(
+      `http://localhost:3000/api/v1/exercise/${exerciseId}`,
+      { ...config, headers: { Authorization: `Bearer ${token}` } }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Error fetching exercise by ID");
+  }
+}
+
 export async function updateEjercicios(
   exerciseId,
   exerciseData,
