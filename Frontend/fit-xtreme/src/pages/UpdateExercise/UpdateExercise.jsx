@@ -4,6 +4,7 @@ import Button from "../../components/shared/button/Button";
 import { updateEjercicios } from "../../services/ejerciciosService";
 import imageDefault from "../../../public/images/locationGym/recuerdaImagen.png";
 import "./updateExercise.css";
+import { LOCAL_STORAGE_USER } from "../../utils/constanst";
 
 function UpdateExercise() {
   const { exerciseId } = useParams();
@@ -15,6 +16,9 @@ function UpdateExercise() {
   const [previewImage, setPreviewImage] = useState(imageDefault);
   const [error, setError] = useState("");
 
+  const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
+  const token = user?.token;
+
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     setImage(file);
@@ -23,6 +27,12 @@ function UpdateExercise() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const config = {
+      header: {
+        "Content-type": "multipart/form-data",
+      },
+    };
 
     try {
       const formData = new FormData();
@@ -44,7 +54,12 @@ function UpdateExercise() {
         formData.append("image", image);
       }
 
-      const updateExercise = await updateEjercicios(exerciseId, formData);
+      const updateExercise = await updateEjercicios(
+        exerciseId,
+        formData,
+        config,
+        token
+      );
       console.log("Ejercicio actualizado:", updateExercise);
     } catch (error) {
       setError(error.message);

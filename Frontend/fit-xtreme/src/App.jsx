@@ -38,7 +38,11 @@ function App() {
         <Route path="/EjerciciosHome" element={<EjerciciosHome />} />
         <Route
           path="/updateExercise/:exerciseId"
-          element={<UpdateExercise />}
+          element={
+            <AdminRoute>
+              <UpdateExercise />
+            </AdminRoute>
+          }
         />
         <Route
           path="/CreateExercise"
