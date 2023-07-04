@@ -135,7 +135,7 @@ function Profile() {
             <div className="ifAdminButton">
               <p>Eres administrador</p>
               <div>
-                <Link to="/CrearEjercicio">
+                <Link to="/createExercise">
                   <Button
                     className="ButtonCrearEjercicio"
                     text={"Crear Ejercicio"}

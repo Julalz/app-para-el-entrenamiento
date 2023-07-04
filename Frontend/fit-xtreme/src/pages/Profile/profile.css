@@ -26,7 +26,6 @@
 }
 .FavoriteExercise-container img {
   width: 250px;
-  /* height: 200px; */
   padding: 15px;
   border-radius: 25px;
 }
@@ -76,4 +75,8 @@
   transform: scale(1.05);
   box-shadow: 0 0 45px rgba(10, 170, 146, 0.3);
   background-color: rgba(10, 170, 146, 0.3);
+}
+
+.avatar {
+  border-radius: 5px;
 }
