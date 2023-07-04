@@ -5,7 +5,7 @@ import {
 } from "../../services/ejerciciosService";
 import "./exerciseByMuscle.css";
 import { Link, useParams } from "react-router-dom";
-import Button from "../../components/shared/button/Button";
+import iconoActualizar from "../../../public/images/iconos/icono-actualizar.png";
 import { LOCAL_STORAGE_USER } from "../../utils/constanst";
 
 function ExerciseByMuscle() {
@@ -47,14 +47,16 @@ function ExerciseByMuscle() {
 
     loadExercises();
   }, [muscle]);
+
   return (
     <section className="all-muscle-exercise-container">
       <div className="title-muscle">
-        <h3>¡Ha llegado el momento Xtreme!</h3>
+        <h3>Ha llegado el momento Xtreme</h3>
       </div>
       <div className="exercise-container">
         {ejercicios.map((ejercicio) => (
           <li className="exercise-li" key={ejercicio?.id}>
+            {console.log("Ejersisio::", ejercicio)}
             <img
               className="exercise-image"
               src={ejercicio?.imageUrl}
@@ -63,13 +65,14 @@ function ExerciseByMuscle() {
             <h6>{ejercicio?.name}</h6>
             <p>{ejercicio?.description}</p>
             <p>{ejercicio?.typology}</p>
-
             <div>
               {data?.data === "admin" && (
-                <Link to="/updateExercise">
-                  <Button
-                    className="button-update-exercise"
-                    text={"Actualizar"}
+                <Link to={`/updateExercise/${ejercicio?.id}`}>
+                  <img
+                    src={iconoActualizar}
+                    alt="Actualizar ejercicio"
+                    style={{ width: "50px", height: "50px" }}
+                    className="icono-actualizar"
                   />
                 </Link>
               )}

@@ -14,6 +14,7 @@ import EjerciciosHome from "./pages/EjerciciosHome/EjerciciosHome";
 import ExerciseByMuscle from "./pages/ExerciseByMuscle/ExerciseByMuscle";
 import AdminRoute from "./utils/AdminRoute/AdminRoute";
 import AuthRoute from "./utils/AuthRoute/AuthRoute";
+import UpdateExercise from "./pages/UpdateExercise/UpdateExercise";
 
 function App() {
   return (
@@ -35,6 +36,14 @@ function App() {
         />
         <Route path="/Ejercicios/:muscle" element={<ExerciseByMuscle />} />
         <Route path="/EjerciciosHome" element={<EjerciciosHome />} />
+        <Route
+          path="/updateExercise/:exerciseId"
+          element={
+            <AdminRoute>
+              <UpdateExercise />
+            </AdminRoute>
+          }
+        />
         <Route
           path="/CreateExercise"
           element={

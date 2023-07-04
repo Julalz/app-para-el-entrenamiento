@@ -35,7 +35,7 @@
   flex-wrap: wrap;
   gap: 2rem;
   list-style: none;
-  font-size: 25px;
+  font-size: 30px;
 }
 .muscle-container li:hover {
   color: #0aaa92;

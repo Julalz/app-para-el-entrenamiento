@@ -7,6 +7,24 @@ export function createEjercicios(formData, config, token) {
   });
 }
 
+export async function updateEjercicios(
+  exerciseId,
+  exerciseData,
+  config,
+  token
+) {
+  try {
+    const response = await axios.put(
+      `http://localhost:3000/api/v1/exercise/${exerciseId}`,
+      exerciseData,
+      { ...config, headers: { Authorization: `Bearer ${token}` } }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Error fetching exercise by ID", error);
+  }
+}
+
 export async function GetExercisebyMuscle(muscle, token) {
   try {
     const response = await axios.get(
