@@ -12,9 +12,9 @@ import NotFound from "./pages/NotFound/NotFound";
 import CreateExercise from "./pages/CreateExercise/CreateExercise";
 import EjerciciosHome from "./pages/EjerciciosHome/EjerciciosHome";
 import ExerciseByMuscle from "./pages/ExerciseByMuscle/ExerciseByMuscle";
-import UpdateExercise from "./pages/updateExercise/updateExercise";
 import AdminRoute from "./utils/AdminRoute/AdminRoute";
 import AuthRoute from "./utils/AuthRoute/AuthRoute";
+import UpdateExercise from "./pages/UpdateExercise/UpdateExercise";
 
 function App() {
   return (

@@ -1,5 +1,4 @@
 .all-muscle-exercise-container {
-  background-color: black;
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -8,34 +7,36 @@
   justify-content: center;
   color: #0aaa92;
   font-family: "Roboto", sans-serif;
+  background-image: url("../../../public/images/black-texture-backround.jpg");
 }
 
 .title-muscle {
   margin-top: 8rem;
   margin-bottom: 2rem;
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
+  font-family: "Brush-King";
 }
 .exercise-container {
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
-  margin-top: 14px;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin-top: 14px;
 }
 
 .exercise-container li {
-  letter-spacing: 2px;
-  line-height: 14px;
+  font-family: "Roboto";
+  letter-spacing: 1px;
+  line-height: 13px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: 400px;
+  width: 250px;
   height: 400px;
   list-style-type: none;
   border-radius: 5px;
@@ -48,4 +49,10 @@
   transform: scale(1.05);
   box-shadow: 0 0 45px rgba(10, 170, 146, 0.3);
   background-color: rgba(10, 170, 146, 0.3);
+}
+
+.exercise-container li img {
+  width: 250px;
+  padding: 15px;
+  border-radius: 25px;
 }
