@@ -22,22 +22,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 1rem;
   flex-wrap: wrap;
-  margin-top: 14px;
+  margin-bottom: 2rem;
 }
 
 .exercise-container li {
   font-family: "Roboto";
   letter-spacing: 1px;
-  line-height: 13px;
+  /* line-height: 13px; */
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   width: 250px;
-  height: 400px;
+  height: max-content;
   list-style-type: none;
   border-radius: 5px;
   transition: transform 0.3s ease-in-out;
@@ -52,7 +52,14 @@
 }
 
 .exercise-container li img {
+  height: 250px;
   width: 250px;
+  object-fit: fill;
   padding: 15px;
   border-radius: 25px;
+}
+
+.card-buttons-container {
+  display: flex;
+  flex-direction: row;
 }
