@@ -7,12 +7,17 @@ export function createEjercicios(formData, config, token) {
   });
 }
 
-
-export async function updateEjercicios(exerciseId, exerciseData) {
+export async function updateEjercicios(
+  exerciseId,
+  exerciseData,
+  config,
+  token
+) {
   try {
     const response = await axios.put(
       `http://localhost:3000/api/v1/exercise/${exerciseId}`,
-      exerciseData
+      exerciseData,
+      { ...config, headers: { Authorization: `Bearer ${token}` } }
     );
     return response.data;
   } catch (error) {
@@ -20,9 +25,7 @@ export async function updateEjercicios(exerciseId, exerciseData) {
   }
 }
 
-
 export async function GetExercisebyMuscle(muscle, token) {
-
   try {
     const response = await axios.get(
       `http://localhost:3000/api/v1/exercise/muscle/${muscle}`,
