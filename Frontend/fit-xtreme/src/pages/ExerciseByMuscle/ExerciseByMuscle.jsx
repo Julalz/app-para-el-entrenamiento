@@ -5,7 +5,7 @@ import {
 } from "../../services/ejerciciosService";
 import "./exerciseByMuscle.css";
 import { Link, useParams } from "react-router-dom";
-import Button from "../../components/shared/button/Button";
+import iconoActualizar from "../../../public/images/iconos/icono-actualizar.png";
 import { LOCAL_STORAGE_USER } from "../../utils/constanst";
 
 function ExerciseByMuscle() {
@@ -51,7 +51,7 @@ function ExerciseByMuscle() {
   return (
     <section className="all-muscle-exercise-container">
       <div className="title-muscle">
-        <h3>¡Ha llegado el momento Xtreme!</h3>
+        <h3>Ha llegado el momento Xtreme</h3>
       </div>
       <div className="exercise-container">
         {ejercicios.map((ejercicio) => (
@@ -68,9 +68,11 @@ function ExerciseByMuscle() {
             <div>
               {data?.data === "admin" && (
                 <Link to={`/updateExercise/${ejercicio?.id}`}>
-                  <Button
-                    className="button-update-exercise"
-                    text={"Actualizar"}
+                  <img
+                    src={iconoActualizar}
+                    alt="Actualizar ejercicio"
+                    style={{ width: "50px", height: "50px" }}
+                    className="icono-actualizar"
                   />
                 </Link>
               )}
