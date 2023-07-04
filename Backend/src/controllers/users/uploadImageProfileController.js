@@ -19,7 +19,7 @@ const uploadImageProfile = async (req, res) => {
     const { id, role } = req.auth;
 
     const { files } = req;
-    isAdmin(role);
+    // isAdmin(role);
 
     if (!files) {
       throwJsonError(400, "No se ha seleccionado fichero");
