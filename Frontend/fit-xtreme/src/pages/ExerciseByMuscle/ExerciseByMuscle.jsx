@@ -50,8 +50,8 @@ function ExerciseByMuscle() {
 
   return (
     <section className="all-muscle-exercise-container">
-      <div className="title-muscle">
-        <h3>Ha llegado el momento Xtreme</h3>
+      <div>
+        <p className="title-muscle">Ha llegado el momento Xtreme</p>
       </div>
       <div className="exercise-container">
         {ejercicios.map((ejercicio) => (
