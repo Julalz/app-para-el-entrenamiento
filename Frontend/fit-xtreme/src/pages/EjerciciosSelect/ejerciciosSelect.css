@@ -11,12 +11,6 @@
   opacity: 99%;
 }
 
-.ejercicios-container h2 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 40px;
-  text-align: center;
-  color: #0aaa92;
-}
 .video-ejercicios {
   position: absolute;
   width: 100%;
@@ -45,7 +39,10 @@
   text-decoration: none;
   color: white;
 }
-/* .EjerciciosBackground-container h2 {
+.SelectMuscle {
+  font-size: 55px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
   color: transparent;
   -webkit-text-stroke: 1px #ffffff;
   -webkit-user-select: none;
@@ -54,24 +51,19 @@
   user-select: none;
   transition: color 0.2s;
 }
-.EjerciciosBackground-container h2:hover {
+.SelectMuscle:hover {
   color: #0aaa92;
 }
 
-.lis-container-ejercicio {
-  padding: 57px;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 160px;
-  text-align: center;
+.muscle-container button {
+  height: 0;
+  opacity: 0;
+  animation: grow 1s forwards;
 }
-.ul-container-ejercicios {
-  text-align: center;
-  position: absolute;
+
+@keyframes grow {
+  to {
+    height: 200px;
+    opacity: 1;
+  }
 }
-.ul-container-ejercicios button {
-  width: 200px;
-} */

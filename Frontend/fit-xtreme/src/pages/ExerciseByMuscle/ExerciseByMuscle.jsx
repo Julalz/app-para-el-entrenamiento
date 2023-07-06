@@ -88,6 +88,7 @@ function ExerciseByMuscle() {
   useEffect(() => {
     const loadExercises = async () => {
       try {
+        console.log("testing");
         const response = await GetExercisebyMuscle(muscle, token);
         setEjercicios(response.data);
         console.log("Filtrando");
@@ -117,7 +118,7 @@ function ExerciseByMuscle() {
             />
             <h6>{ejercicio?.name}</h6>
             <p>{ejercicio?.description}</p>
-            <p>{ejercicio?.typology}</p>
+            <p>Tipologia: {ejercicio?.typology}</p>
             <div className="card-buttons-container">
               <div className="update-icon">
                 {data?.data === "admin" && (

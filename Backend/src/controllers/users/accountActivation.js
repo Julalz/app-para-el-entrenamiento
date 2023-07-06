@@ -14,12 +14,14 @@ async function activationAccount(req, res) {
     if (verifiedAt) {
       throwJsonError(400, `${name} ya ha sido verificado`);
     }
-    console.log("hola");
     await atVerificationDate(id);
 
     console.log(userData);
     res.status(200);
-    res.send(`${name} bienvenido! Su cuenta ha sido Verificada`);
+    res.send({
+      data: `${name} bienvenido! Su cuenta ha sido Verificada`,
+      userData,
+    });
   } catch (error) {
     createJsonError(error, res);
   }

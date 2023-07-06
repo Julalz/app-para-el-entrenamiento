@@ -8,7 +8,7 @@ function Popup() {
         <li>ENCUENTRA TU GYM</li>
         <li>QUIENES SOMOS</li>
         <li>PRECIOS</li>
-        <li>FRANQUISIAS</li>
+        <li>FRANQUICIAS</li>
       </ul>
       <ul>
         <li>facebook</li>

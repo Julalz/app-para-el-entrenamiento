@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 const SendEmail = async (name, email, code) => {
-  const linkActivated = `${HTTP_SERVER}/api/v1/users/activation/${code}`;
+  const linkActivated = `${HTTP_SERVER}api/v1/users/activation/${code}`;
   console.log(linkActivated);
   const mailData = {
     from: SMTP_FROM,

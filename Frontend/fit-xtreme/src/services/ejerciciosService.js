@@ -105,3 +105,14 @@ export async function deletFavoriteExercise(idWorkout, token) {
 //     headers: { Authorization: `Bearer ${token}` },
 //   });
 // }
+// export async function VerificationCode(Code, token)
+// try {
+//   const response = await axios.get(
+//     `http://localhost:3000/api/v1/users/activation/${Code}`,
+//     token ? { headers: { Authorization: `Bearer ${token}` } } : {}
+//   );
+//   console.log(response)
+// } catch (error) {
+//   throw new Error("Error Codigo de verificacion", error);
+
+// }

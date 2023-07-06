@@ -15,6 +15,7 @@ import ExerciseByMuscle from "./pages/ExerciseByMuscle/ExerciseByMuscle";
 import AdminRoute from "./utils/AdminRoute/AdminRoute";
 import AuthRoute from "./utils/AuthRoute/AuthRoute";
 import UpdateExercise from "./pages/UpdateExercise/UpdateExercise";
+import VerificationAccount from "./pages/VerificationAccount/VerificationAccount";
 
 function App() {
   return (
@@ -25,7 +26,14 @@ function App() {
         <Route path="/join" element={<JoinNow />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <AuthRoute>
+              <Profile />
+            </AuthRoute>
+          }
+        />
         <Route
           path="/Ejercicios"
           element={
@@ -34,8 +42,22 @@ function App() {
             </AuthRoute>
           }
         />
-        <Route path="/Ejercicios/:muscle" element={<ExerciseByMuscle />} />
-        <Route path="/EjerciciosHome" element={<EjerciciosHome />} />
+        <Route
+          path="/Ejercicios/:muscle"
+          element={
+            <AuthRoute>
+              <ExerciseByMuscle />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/EjerciciosHome"
+          element={
+            <AuthRoute>
+              <EjerciciosHome />
+            </AuthRoute>
+          }
+        />
         <Route
           path="/updateExercise/:exerciseId"
           element={
@@ -53,6 +75,7 @@ function App() {
           }
         />
         <Route path="/LocationGym" element={<LocationGym />} />
+        <Route path="/VerificationAccount" element={<VerificationAccoun />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </main>

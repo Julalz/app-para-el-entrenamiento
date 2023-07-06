@@ -38,7 +38,7 @@ function EjerciciosSelect() {
         loop
         muted
       ></video>
-      <h2>¡Hola, Xtremer! Selecciona qué músculos quieres trabajar</h2>
+      <h2 className="SelectMuscle">SELECCIONA QUE MÚSCULOS QUIERES TRABAJAR</h2>
       <div className="muscle-container">
         <ul>
           <Link
@@ -46,49 +46,63 @@ function EjerciciosSelect() {
             className="link-muscle"
             onClick={() => handleClick("pectorales")}
           >
-            <li>Pectorales</li>
+            <li>
+              <Button text={"Pectorales"} />
+            </li>
           </Link>
           <Link
             to="/ejercicios/lumbar"
             className="link-muscle"
             onClick={() => handleClick("lumbar")}
           >
-            <li>Lumbar</li>
+            <li>
+              <Button text={"Lumbar"} />
+            </li>
           </Link>
           <Link
             to="/ejercicios/biceps"
             className="link-muscle"
             onClick={() => handleClick("biceps")}
           >
-            <li>Biceps</li>
+            <li>
+              <Button text={"Biceps"} />
+            </li>
           </Link>
           <Link
             to="/ejercicios/triceps"
             className="link-muscle"
             onClick={() => handleClick("triceps")}
           >
-            <li>Triceps</li>
+            <li>
+              <Button text={"Triceps"} />
+            </li>
           </Link>
           <Link
             to="/ejercicios/abdominales"
             className="link-muscle"
             onClick={() => handleClick("abdominales")}
           >
-            <li>Abdominales</li>
+            <li>
+              <Button text={"Abdominales"} />
+            </li>
           </Link>
           <Link
             to="/ejercicios/cuadriceps"
             className="link-muscle"
             onClick={() => handleClick("cuadriceps")}
           >
-            <li>Cuádriceps</li>
+            <li>
+              <Button text={"Cuádriceps"} />
+            </li>
           </Link>
           <Link
             to="/ejercicios/gemelos"
             className="link-muscle"
             onClick={() => handleClick("gemelos")}
           >
-            <li>Gemelos</li>
+            <li>
+              <Button text={"Gemelos"} />
+            </li>
           </Link>
         </ul>
       </div>

@@ -4,7 +4,7 @@
   font-family: "Roboto";
   width: 100%;
   height: 100vh;
-  background-image: url("../../../public/images/20230627232920_[fpdl.in]_vitrina-productos-foco-fondo-sala-estudio-negro-utilizar-como-montaje-exhibicion-productos-estudio-maquetas_545612-241_large.jpg");
+  background-image: url("../../../public/images/black-texture-backround.jpg");
   background-size: cover;
   background-position: center;
   color: #0aaa92;
@@ -38,7 +38,6 @@
 }
 
 .file-input {
-  /* Establece la opacidad del input en 0 para ocultarlo */
   opacity: 0;
   position: absolute;
   z-index: -1;

@@ -4,16 +4,20 @@ const {
 } = require("../../repositories/exerciseRepository");
 const createJsonError = require("../../errors/createJsonError");
 const throwJsonError = require("../../errors/throwJsonError");
+
+const { findUserByEmail } = require("../../repositories/usersRepository");
+
 const {
   getAllFavoritesExercise,
 } = require("../../repositories/favoritesRepository");
+
 
 const filterExercises = async (req, res) => {
   try {
     const { id: userId } = req.auth;
     const { muscle, typology } = req.params;
     const { HTTP_SERVER } = process.env;
-    console.log(req.params);
+    // console.log(req.params);
 
     let exercises;
     if (typology) {

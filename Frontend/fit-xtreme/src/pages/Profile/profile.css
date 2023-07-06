@@ -7,7 +7,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url("../../../public/images/black-texture-backround.jpg");
 }
+
 .AllInfoProfile-container {
   text-align: center;
   width: 150%;

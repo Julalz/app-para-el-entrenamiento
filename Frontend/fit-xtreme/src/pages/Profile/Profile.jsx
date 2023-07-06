@@ -83,7 +83,6 @@ function Profile() {
         const formData = new FormData();
         formData.append("image", avatar);
 
-        //hacer la peticion
         await axios.put(
           "http://localhost:3000/api/v1/users/profile",
           formData,
