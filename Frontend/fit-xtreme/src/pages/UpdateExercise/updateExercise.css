@@ -8,6 +8,7 @@
   background-size: cover;
   background-position: center;
   color: #0aaa92;
+  overflow: auto;
 }
 .updateExercise-container {
   display: flex;
@@ -46,8 +47,9 @@
   margin-bottom: 20px;
 }
 .imgUpdate {
-  width: 600px;
-  height: 600px;
+  margin-top: 2rem;
+  max-width: 100%;
+  height: auto;
   box-shadow: 0 0 45px #0aaa92;
 }
 .buttonCreate {
@@ -56,4 +58,11 @@
 
 .updated-error {
   color: red;
+}
+
+@media (min-width: 600px) {
+  .imgUpdate {
+    width: 600px;
+    height: 600px;
+  }
 }
