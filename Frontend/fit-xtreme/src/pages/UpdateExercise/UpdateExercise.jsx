@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Button from "../../components/shared/button/Button";
 import { updateEjercicios } from "../../services/ejerciciosService";
@@ -15,9 +15,12 @@ function UpdateExercise() {
   const [image, setImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(imageDefault);
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
   const token = user?.token;
+
+  const navigate = useNavigate();
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -60,7 +63,12 @@ function UpdateExercise() {
         config,
         token
       );
-      console.log("Ejercicio actualizado:", updateExercise);
+
+      setMessage(updateExercise.message);
+
+      setTimeout(() => {
+        navigate("/Ejercicios");
+      }, 2000);
     } catch (error) {
       setError(error.message);
     }
@@ -87,6 +95,9 @@ function UpdateExercise() {
             onChange={(e) => setDescription(e.target.value)}
           />
 
+          <label>Imagen</label>
+          <input type="file" onChange={handleImageChange} />
+
           <label>Tipología</label>
           <input
             type="text"
@@ -101,12 +112,10 @@ function UpdateExercise() {
             onChange={(e) => setMuscle(e.target.value)}
           />
 
-          <label>Imagen</label>
-          <input type="file" onChange={handleImageChange} />
-
           <div className="buttonCreate">
             <Button text="Actualizar" />
-            {error && <p>{error}</p>}
+            {message && !error && <p>{message}</p>}
+            {error && <p className="updated-error">{error}</p>}
           </div>
         </form>
       </div>

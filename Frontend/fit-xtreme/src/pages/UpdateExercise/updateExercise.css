@@ -4,7 +4,7 @@
   font-family: "Roboto";
   width: 100%;
   height: 100vh;
-  background-image: url("../../../public/images/20230627232920_[fpdl.in]_vitrina-productos-foco-fondo-sala-estudio-negro-utilizar-como-montaje-exhibicion-productos-estudio-maquetas_545612-241_large.jpg");
+  background-image: url("../../../public/images/black-texture-backround.jpg");
   background-size: cover;
   background-position: center;
   color: #0aaa92;
@@ -16,7 +16,6 @@
   gap: 45px;
   margin: 0px 34px;
   height: 100%;
-  height: 100%;
   flex-wrap: wrap;
 }
 .FormUpdateExercise {
@@ -24,6 +23,7 @@
   flex-direction: column;
   width: 400px;
   text-align: center;
+  gap: 1.2rem;
 }
 .FormUpdateExercise input {
   outline: none;
@@ -52,4 +52,8 @@
 }
 .buttonCreate {
   text-align: center;
+}
+
+.updated-error {
+  color: red;
 }

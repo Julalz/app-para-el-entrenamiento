@@ -14,6 +14,7 @@ function CreateExercise() {
   const [typology, setTypology] = useState("");
   const [muscle, setMuscle] = useState("");
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
   const token = user?.token;
@@ -27,6 +28,7 @@ function CreateExercise() {
     setImage(URL.createObjectURL(file));
   };
   const handleForm = async (data) => {
+    setMessage("");
     setError("");
     const formData = new FormData();
     formData.append("image", data.image[0]);
@@ -44,14 +46,17 @@ function CreateExercise() {
 
     try {
       const response = await createEjercicios(formData, config, token);
+      console.log(response);
 
-      setError(response.data.data.message);
+      setMessage(response.data.message + ` | ID: ${response.data.data.id}`);
+      console.log(setError);
     } catch (error) {
-      console.log(error);
-      if (error.response.data.status === 409) {
-        setError(error.response.data.error);
+      if (error.response.status === 500) {
+        setError("Error, revise los datos de cada campo");
+      } else if (error.response.status === 422) {
+        setError("Error, rellene algún campo");
       } else {
-        setError(error.response.data.error);
+        setError("Error:", error.config.data.error);
       }
     }
   };
@@ -98,7 +103,8 @@ function CreateExercise() {
           />
           <div className="buttonCreate">
             <Button text="Crear"></Button>
-            {error && <p>{error}</p>}
+            {message && !error && <p>{message}</p>}
+            {error && <p className="error-created">{error}</p>}
           </div>
         </form>
       </div>

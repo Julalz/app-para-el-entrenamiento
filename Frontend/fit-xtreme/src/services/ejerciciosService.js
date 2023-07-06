@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export function createEjercicios(formData, config, token) {
-  return axios.post("http://localhost:3000/api/v1/exercise", formData, {
+export async function createEjercicios(formData, config, token) {
+  return await axios.post("http://localhost:3000/api/v1/exercise", formData, {
     ...config,
     headers: { Authorization: `Bearer ${token}` },
   });
@@ -33,7 +33,13 @@ export async function updateEjercicios(
     );
     return response.data;
   } catch (error) {
-    throw new Error("Error fetching exercise by ID", error);
+    if (error.response.status === 422) {
+      throw new Error("Error, revise el campo que desea actualizar");
+    } else if (error.response.status === 500) {
+      throw new Error("Error, rellene algún campo");
+    } else {
+      throw new Error("Error:", error.config.data.error);
+    }
   }
 }
 
