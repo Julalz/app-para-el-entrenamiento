@@ -24,12 +24,11 @@ function Menuhamburguesa() {
           height="48"
           viewBox="0 0 200 200"
         >
-          {/* Contenido del botón de menú */}
-          <g stroke-width="6.5" stroke-linecap="round">
+          <g strokeWidth="6.5" strokeLinecap="round">
             <path
               d="M72 82.286h28.75"
               fill="#009100"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               stroke="#fff"
             />
             <path
@@ -40,7 +39,7 @@ function Menuhamburguesa() {
             <path
               d="M72 125.143h28.75"
               fill="#009100"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               stroke="#fff"
             />
             <path
@@ -51,13 +50,13 @@ function Menuhamburguesa() {
             <path
               d="M100.75 82.286h28.75"
               fill="#009100"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               stroke="#fff"
             />
             <path
               d="M100.75 125.143h28.75"
               fill="#009100"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               stroke="#fff"
             />
           </g>

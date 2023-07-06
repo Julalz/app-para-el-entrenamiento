@@ -24,6 +24,7 @@ function CardCarrusel({ exercise, onDeleteFavorite }) {
         }}
       >
         <img
+          className="iconheart"
           src={iconoDelete}
           alt="Icono Eliminar"
           style={{ width: "50px", height: "50px" }}

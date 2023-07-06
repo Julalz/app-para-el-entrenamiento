@@ -55,9 +55,9 @@ function Header({ setIsLogged, isLogged }) {
 
   return (
     <header>
-      <h1>
+      <div>
         <NameXtreme />
-      </h1>
+      </div>
       <div className="nav-iconUser-container">
         <nav ref={navHidden}>
           <NavigationMenu isLogged={isLogged} />

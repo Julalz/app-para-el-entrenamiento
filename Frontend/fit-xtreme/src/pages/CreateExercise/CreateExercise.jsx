@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import imageDefault from "../../../public/images/locationGym/recuerdaImagen.png";
 import { createEjercicios } from "../../services/ejerciciosService";
-import "./createExercise.css";
 import { LOCAL_STORAGE_USER } from "../../utils/constanst";
+import "./createExercise.css";
 
 function CreateExercise() {
   const { register, handleSubmit } = useForm();
