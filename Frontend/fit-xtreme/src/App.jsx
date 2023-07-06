@@ -75,7 +75,7 @@ function App() {
           }
         />
         <Route path="/LocationGym" element={<LocationGym />} />
-        <Route path="/VerificationAccount" element={<VerificationAccoun />} />
+        <Route path="/VerificationAccount" element={<VerificationAccount />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </main>

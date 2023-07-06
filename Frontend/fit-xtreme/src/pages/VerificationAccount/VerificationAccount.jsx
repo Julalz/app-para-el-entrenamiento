@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { getProfile } from "../../utils/api";
-import { LOCAL_STORAGE_USER } from "../../utils/constants";
+import { getProfile } from "../../services/ejerciciosService";
+import { LOCAL_STORAGE_USER } from "../../utils/constanst";
 import "./VerificationAccount.css";
 
 function VerificationAccount() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+
+  const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
+  const token = user?.token;
+  console.log(token);
 
   useEffect(() => {
     const fetchVerifyCode = async (code, token) => {
@@ -18,10 +22,6 @@ function VerificationAccount() {
         setError("Error fetching profile");
       }
     };
-
-    const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
-    const token = user?.token;
-    console.log(token);
 
     if (token) {
       fetchVerifyCode(code, token);
