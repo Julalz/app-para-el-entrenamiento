@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
 import Menuhamburguesa from "./Header/Menuhamburguesa/Menuhamburguesa";
 import { LOCAL_STORAGE_USER } from "../utils/constanst";
-import Header from "./Header/Header";
 
-const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
-const token = user?.token;
-
-console.log(token);
-function NavigationMenu() {
+function NavigationMenu({ isLogged }) {
   return (
     <ul>
       <li>
@@ -17,7 +12,7 @@ function NavigationMenu() {
         <Link to={"/EjerciciosHome"}>¿Porque somos Xtreme?</Link>
       </li>
       <li>
-        {token ? (
+        {isLogged ? (
           <Link to={"/Ejercicios"}>Ejercicios</Link>
         ) : (
           <Link to={"/join"}>Registrate</Link>

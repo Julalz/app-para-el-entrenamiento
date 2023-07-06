@@ -5,7 +5,7 @@ import NameXtreme from "./NameXtreme/NameXtreme";
 import { LOCAL_STORAGE_USER } from "../../utils/constanst";
 import "./header.css";
 
-function Header() {
+function Header({ setIsLogged, isLogged }) {
   const navHidden = useRef(null);
   const navigate = useNavigate();
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
@@ -30,6 +30,7 @@ function Header() {
   });
   const handleLogout = () => {
     localStorage.removeItem(LOCAL_STORAGE_USER);
+    setIsLogged(false);
     navigate("/");
   };
   const handleProfileClick = () => {
@@ -59,7 +60,7 @@ function Header() {
       </h1>
       <div className="nav-iconUser-container">
         <nav ref={navHidden}>
-          <NavigationMenu />
+          <NavigationMenu isLogged={isLogged} />
         </nav>
 
         <div
@@ -73,16 +74,13 @@ function Header() {
               alt="User Icon"
             />
           </Link>
-          {
-            (isSubMenuOpen,
-            token && (
-              <div className="submenu">
-                <Link to="/profile">Perfil</Link>
-                <Link to="/configuracion">Configuración</Link>
-                <button onClick={handleLogout}>Cerrar sesión</button>
-              </div>
-            ))
-          }
+          {isSubMenuOpen && token && (
+            <div className="submenu">
+              <Link to="/profile">Perfil</Link>
+              <Link to="/configuracion">Configuración</Link>
+              <button onClick={handleLogout}>Cerrar sesión</button>
+            </div>
+          )}
         </div>
       </div>
     </header>

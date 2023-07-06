@@ -16,16 +16,23 @@ import AdminRoute from "./utils/AdminRoute/AdminRoute";
 import AuthRoute from "./utils/AuthRoute/AuthRoute";
 import UpdateExercise from "./pages/UpdateExercise/UpdateExercise";
 import VerificationAccount from "./pages/VerificationAccount/VerificationAccount";
+import { LOCAL_STORAGE_USER } from "./utils/constanst";
+import { useState } from "react";
 
 function App() {
+  const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
+  const token = user?.token;
+
+  const [isLogged, setIsLogged] = useState(!!token);
+
   return (
     <main>
-      <Header />
+      <Header setIsLogged={setIsLogged} isLogged={isLogged} />
       <Routes>
         <Route path="/" element={<HomePages />} />
         <Route path="/join" element={<JoinNow />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setIsLogged={setIsLogged} />} />
         <Route
           path="/profile"
           element={
@@ -75,7 +82,10 @@ function App() {
           }
         />
         <Route path="/LocationGym" element={<LocationGym />} />
-        <Route path="/VerificationAccount" element={<VerificationAccount />} />
+        <Route
+          path="/VerificationAccount/:code"
+          element={<VerificationAccount />}
+        />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </main>
