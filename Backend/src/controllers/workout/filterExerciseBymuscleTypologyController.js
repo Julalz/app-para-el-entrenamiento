@@ -4,22 +4,36 @@ const {
 } = require("../../repositories/exerciseRepository");
 const createJsonError = require("../../errors/createJsonError");
 const throwJsonError = require("../../errors/throwJsonError");
+const {
+  getAllFavoritesExercise,
+} = require("../../repositories/favoritesRepository");
 
 const filterExercises = async (req, res) => {
   try {
+    const { id: userId } = req.auth;
     const { muscle, typology } = req.params;
     const { HTTP_SERVER } = process.env;
     console.log(req.params);
 
-    let exercise;
+    let exercises;
     if (typology) {
       exercises = await findAllExercisesByTypology(typology);
     } else if (muscle) {
       exercises = await findAllExerciseByMuscle(muscle);
-      console.log(exercise);
+
       exercises.map((exercise) => {
         const url = `${HTTP_SERVER}images/${exercise.image}`;
         exercise.imageUrl = url;
+      });
+
+      const isFavorite = await getAllFavoritesExercise(userId);
+      exercises.forEach((exercise) => {
+        const favoriteByLoggedUser = isFavorite.find(
+          (favorite) => favorite.id === exercise.id
+        );
+        exercise.favoriteByLoggedUser = favoriteByLoggedUser
+          ? favoriteByLoggedUser.favoriteByLoggedUser
+          : 0;
       });
     } else {
       throwJsonError(400, "Ejercicio no existente");
