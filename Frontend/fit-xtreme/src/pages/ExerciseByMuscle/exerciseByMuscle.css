@@ -63,3 +63,17 @@
   display: flex;
   flex-direction: row;
 }
+
+.favorite-icon {
+  display: inline-block;
+}
+
+.iconheart {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.iconheart:hover {
+  transform: scale(1.5);
+}

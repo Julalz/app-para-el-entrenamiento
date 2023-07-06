@@ -1,29 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/shared/button/Button";
 import EjerciciosLis from "./../../../public/videos/EjerciciosLis.mp4";
-import { GetExercisebyMuscle } from "../../services/ejerciciosService";
+
 import "./ejerciciosselect.css";
-import ExerciseByMuscle from "../ExerciseByMuscle/ExerciseByMuscle";
+
 function EjerciciosSelect() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [ejercicios, setEjercicios] = useState([]);
-
-  useEffect(() => {
-    const loadExercises = async () => {
-      try {
-        console.log("seteando");
-        const response = await GetExercisebyMuscle(muscle);
-        setEjercicios(response);
-        console.log("response");
-      } catch (error) {
-        setError(error.response.data.error);
-      }
-    };
-
-    loadExercises();
-  }, []);
 
   const handleClick = (muscle) => {
     navigate(`/ejercicios/${muscle}`);
@@ -56,7 +41,7 @@ function EjerciciosSelect() {
             onClick={() => handleClick("lumbar")}
           >
             <li>
-              <Button text={"Lumbar"} />
+              <Button text={"Lumbares"} />
             </li>
           </Link>
           <Link

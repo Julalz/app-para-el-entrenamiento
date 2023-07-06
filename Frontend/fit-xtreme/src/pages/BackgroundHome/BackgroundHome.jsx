@@ -3,10 +3,10 @@ function BackgroundHome() {
   return (
     <>
       <div className="Background-container">
-        <p className="Polvo-container">
+        <div className="Polvo-container">
           Deja polvo en lo que te apaXiona
-          <p className="FitXtremeHome">FitXtreme</p>
-        </p>
+          <div className="FitXtremeHome">FitXtreme</div>
+        </div>
 
         <img
           className="img-background"

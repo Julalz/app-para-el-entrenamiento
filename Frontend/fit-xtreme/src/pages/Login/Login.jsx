@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../services";
+import { login } from "../../services/authService";
 import Button from "../../components/shared/button/Button";
 import "./login.css";
 import { LOCAL_STORAGE_USER } from "../../utils/constanst";

@@ -124,6 +124,7 @@ function ExerciseByMuscle() {
                 {data?.data === "admin" && (
                   <Link to={`/updateExercise/${ejercicio?.id}`}>
                     <img
+                      className="iconheart"
                       src={iconoActualizar}
                       alt="Actualizar ejercicio"
                       style={{ width: "50px", height: "50px" }}
@@ -135,6 +136,7 @@ function ExerciseByMuscle() {
                 <Link onClick={() => handleToggleFavorite(ejercicio?.id)}>
                   {ejercicio?.favoriteByLoggedUser === 0 && (
                     <img
+                      className="iconheart"
                       src={iconoFavoritos}
                       alt="Añadir a favoritos"
                       style={{ width: "50px", height: "50px" }}
@@ -152,6 +154,7 @@ function ExerciseByMuscle() {
                 {data?.data === "admin" && (
                   <Link onClick={() => handleDeleteExercise(ejercicio?.id)}>
                     <img
+                      className="iconheart"
                       src={iconoEliminar}
                       alt="Eliminar ejercicio"
                       style={{ width: "50px", height: "50px" }}
