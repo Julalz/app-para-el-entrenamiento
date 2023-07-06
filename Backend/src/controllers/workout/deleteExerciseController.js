@@ -7,6 +7,9 @@ const {
 const throwJsonError = require("../../errors/throwJsonError");
 const { isAdmin } = require("../../helpers/utils");
 const deleteImg = require("../../helpers/deleteImages");
+const {
+  removeExerciseFromFavorites,
+} = require("../../repositories/favoritesRepository");
 
 const schema = Joi.number().integer().positive().required();
 
@@ -21,6 +24,8 @@ const deleteExerciseById = async (req, res) => {
     if (!exercise) {
       throwJsonError(400, "Ejercicio no existente");
     }
+
+    await removeExerciseFromFavorites(id);
 
     await removeExerciseId(id);
     deleteImg(exercise.image);

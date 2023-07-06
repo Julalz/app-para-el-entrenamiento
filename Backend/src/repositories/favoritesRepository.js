@@ -47,9 +47,18 @@ const removeFavoriteByWorkoutAndUser = async (workoutId, userId) => {
   return deleteFav;
 };
 
+const removeExerciseFromFavorites = async (workoutId) => {
+  const pool = await getPool();
+  const sql = "DELETE FROM favorites WHERE workout_id = ?";
+  const [deleteFav] = await pool.query(sql, [workoutId]);
+
+  return deleteFav;
+};
+
 module.exports = {
   getAllFavoritesExercise,
   addExerciseToFavorites,
   removeFavoriteByWorkoutAndUser,
   getFavoriteByWorkoutAndUser,
+  removeExerciseFromFavorites,
 };
