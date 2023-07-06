@@ -16,6 +16,7 @@ import iconoRellenoFav from "../../../public/images/iconos/filled-favorite-icon.
 function ExerciseByMuscle() {
   const { muscle } = useParams();
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [ejercicios, setEjercicios] = useState([]);
   const [data, setData] = useState(null);
 
@@ -35,10 +36,14 @@ function ExerciseByMuscle() {
           (ejercicio) => ejercicio.id !== id
         );
         setEjercicios(updatedEjercicios);
-        console.log("Ejercicio eliminado:", response);
+        setMessage(response.message);
+
+        setTimeout(() => {
+          setMessage("");
+        }, 4000);
       }
     } catch (error) {
-      setError("Error deleting exercise");
+      setError("Error al borrar el ejercicio");
     }
   };
 
@@ -46,10 +51,16 @@ function ExerciseByMuscle() {
     try {
       if (token) {
         const response = await addFavoriteExercise(id, token);
-        console.log("Ejercicio agregado a favoritos:", response.data);
+        setMessage("Ejercicio agregado a favoritos");
+        setTimeout(() => {
+          setMessage("");
+        }, 4000);
       }
     } catch (error) {
-      setError("Error adding exercise to favorites");
+      setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
   };
 
@@ -66,7 +77,10 @@ function ExerciseByMuscle() {
         setEjercicios(updatedEjercicios);
       }
     } catch (error) {
-      setError("Error adding exercise to favorites");
+      setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
   };
 
@@ -107,6 +121,10 @@ function ExerciseByMuscle() {
       <div>
         <p className="title-muscle">Ha llegado el momento Xtreme</p>
       </div>
+      {message && !error && (
+        <p className="delete-exercise-message">{message}</p>
+      )}
+      {error && <p className="error-delete-exercise">{error}</p>}
       <div className="exercise-container">
         {ejercicios.map((ejercicio) => (
           <li className="exercise-li" key={ejercicio?.id}>

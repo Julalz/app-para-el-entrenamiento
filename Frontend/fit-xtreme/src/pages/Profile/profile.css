@@ -82,3 +82,11 @@
 .avatar {
   border-radius: 5px;
 }
+
+.error-favorites-delete {
+  color: lightcoral;
+}
+
+.message-favorites-delete {
+  color: lightgoldenrodyellow;
+}
