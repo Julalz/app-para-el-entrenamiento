@@ -1,0 +1,14 @@
+.VideoNoUser {
+  position: relative;
+}
+.NoUserParrafo {
+  font-family: "Roboto";
+  font-size: 45px;
+  top: 40%;
+  left: 20%;
+  position: absolute;
+}
+.NoUserBttn {
+  top: 40%;
+  position: absolute;
+}

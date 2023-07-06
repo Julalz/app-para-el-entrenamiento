@@ -14,7 +14,7 @@ const transporter2 = nodemailer.createTransport({
 });
 
 const SendEmailVerificationRemember = async (name, email, code) => {
-  const linkActivated = `${HTTP_SERVER}/api/v1/users/activation/${code}`;
+  const linkActivated = `${HTTP_SERVER}api/v1/users/activation/${code}`;
   console.log(linkActivated);
   const mailData = {
     from: SMTP_FROM,
@@ -22,8 +22,8 @@ const SendEmailVerificationRemember = async (name, email, code) => {
     subject: `Hey😎 are you ${name}?. Please confirm your account`,
     text: `Hi ${name} to verify your account, please follow ${linkActivated}
       If you didn't request this code, you can ignore this message.
-      Trainning App Support Team ❤
-      Trainning App Help Center: https://support.prueba.com/`,
+      FitXtreme Support Team ❤
+      FitXtreme App Help Center: https://support.fitXtreme.com/`,
   };
   const data = await transporter2.sendMail(mailData);
   console.log("data", data);
