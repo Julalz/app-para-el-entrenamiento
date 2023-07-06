@@ -67,7 +67,24 @@ export async function getFavoriteExercise(token) {
     console.log(response.data);
     return response.data;
   } catch (error) {
-    throw new Error("Error fetching Favorites", error);
+    throw new Error("Error fetching favorites", error);
+  }
+}
+
+export async function addFavoriteExercise(idWorkout, token) {
+  try {
+    const response = await axios.post(
+      `http://localhost:3000/api/v1/users/profile/${idWorkout}/favorites`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Error fetching favorites", error);
   }
 }
 
@@ -78,7 +95,9 @@ export async function deletFavoriteExercise(idWorkout, token) {
       token ? { headers: { Authorization: `Bearer ${token}` } } : {}
     );
     return response;
-  } catch (error) {}
+  } catch (error) {
+    throw new Error("Error fetching favorites", error);
+  }
 }
 
 // export async function UploadAvatar(token) {

@@ -63,6 +63,7 @@ function Profile() {
       try {
         if (token) {
           const response = await getFavoriteExercise(token);
+          console.log("Respuesta:", response.data);
           setCarouselImages(response.data);
           console.log(response);
         }

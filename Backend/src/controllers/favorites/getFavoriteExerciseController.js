@@ -13,13 +13,17 @@ const getUserExerciseFavorites = async (req, res) => {
     console.log(userId, "id usuario");
 
     const favoritesExercises = await getAllFavoritesExercise(userId);
-    favoritesExercises.map((exercise) => {
+
+    const filteredExercises = favoritesExercises.filter(
+      (exercise) => exercise.favoriteByLoggedUser === 1
+    );
+
+    filteredExercises.forEach((exercise) => {
       const url = `${HTTP_SERVER}images/${exercise.image}`;
       exercise.imageUrl = url;
     });
 
-    res.status(200);
-    res.send({ data: favoritesExercises });
+    res.status(200).json({ data: filteredExercises });
   } catch (error) {
     createJsonError(error, res);
   }
