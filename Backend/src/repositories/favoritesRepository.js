@@ -23,7 +23,7 @@ const getAllFavoritesExercise = async (userId) => {
     LEFT JOIN 
     favorites f ON w.id = f.workout_id 
     LEFT JOIN
-     favorites f2 ON w.id = f2.workout_id AND f2.user_id = 1 
+     favorites f2 ON w.id = f2.workout_id AND f2.user_id = ? 
     GROUP BY
      w.id;
     `;
