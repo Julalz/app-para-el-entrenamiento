@@ -53,3 +53,7 @@
 .buttonCreate {
   text-align: center;
 }
+
+.error-created {
+  color: red;
+}
