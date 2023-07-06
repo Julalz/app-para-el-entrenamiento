@@ -5,7 +5,7 @@ import Button from "../../components/shared/button/Button";
 import "./login.css";
 import { LOCAL_STORAGE_USER } from "../../utils/constanst";
 
-function Login() {
+function Login({ setIsLogged }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -20,6 +20,8 @@ function Login() {
       //setError(response.data.message);
       //setError(null);
       localStorage.setItem(LOCAL_STORAGE_USER, JSON.stringify(response.data));
+
+      setIsLogged(true);
       navigate("/profile");
     } catch (error) {
       console.log(error);
