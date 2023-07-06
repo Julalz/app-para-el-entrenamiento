@@ -93,7 +93,6 @@ const updateExerciseImagesByIdWorkout = async (id, name) => {
 
   return true;
 };
-const pool = require("../infrastructure/database");
 
 const deleteExerciseImageFromWorkoutById = async (exerciseId) => {
   const pool = await getPool();

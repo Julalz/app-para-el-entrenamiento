@@ -14,11 +14,23 @@ const addExerciseToFavorites = async (user_id, workout_id) => {
 
 const getAllFavoritesExercise = async (userId) => {
   const pool = await getPool();
-  const sql =
-    "SELECT w.* FROM favorites f INNER JOIN workout w ON f.workout_id = w.id WHERE f.user_id = ?";
+  const sql = `SELECT 
+    w.*,
+    COUNT(f.id) AS favoritesCount,
+    COUNT(DISTINCT f2.id) AS favoriteByLoggedUser 
+    FROM 
+    workout w 
+    LEFT JOIN 
+    favorites f ON w.id = f.workout_id 
+    LEFT JOIN
+     favorites f2 ON w.id = f2.workout_id AND f2.user_id = ? 
+    GROUP BY
+     w.id;
+    `;
   const [favExercises] = await pool.query(sql, [userId]);
   return favExercises;
 };
+
 const getFavoriteByWorkoutAndUser = async (workoutId, userId) => {
   const pool = await getPool();
   const sql = `SELECT * FROM favorites WHERE workout_id = ? AND user_id = ?`;

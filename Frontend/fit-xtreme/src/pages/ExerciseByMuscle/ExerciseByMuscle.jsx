@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   GetExercisebyMuscle,
+  addFavoriteExercise,
   deleteExercise,
   getProfile,
 } from "../../services/ejerciciosService";
@@ -10,6 +11,7 @@ import iconoActualizar from "../../../public/images/iconos/icono-actualizar.png"
 import { LOCAL_STORAGE_USER } from "../../utils/constanst";
 import iconoEliminar from "../../../public/images/iconos/icono-eliminar.png";
 import iconoFavoritos from "../../../public/images/iconos/favorite-icon.png";
+import iconoRellenoFav from "../../../public/images/iconos/filled-favorite-icon.png";
 
 function ExerciseByMuscle() {
   const { muscle } = useParams();
@@ -37,6 +39,34 @@ function ExerciseByMuscle() {
       }
     } catch (error) {
       setError("Error deleting exercise");
+    }
+  };
+
+  const handleAddToFavorites = async (id) => {
+    try {
+      if (token) {
+        const response = await addFavoriteExercise(id, token);
+        console.log("Ejercicio agregado a favoritos:", response.data);
+      }
+    } catch (error) {
+      setError("Error adding exercise to favorites");
+    }
+  };
+
+  const handleToggleFavorite = async (id) => {
+    try {
+      if (token) {
+        await handleAddToFavorites(id);
+        const updatedEjercicios = ejercicios.map((ejercicio) => {
+          if (ejercicio.id === id) {
+            return { ...ejercicio, favoriteByLoggedUser: 1 };
+          }
+          return ejercicio;
+        });
+        setEjercicios(updatedEjercicios);
+      }
+    } catch (error) {
+      setError("Error adding exercise to favorites");
     }
   };
 
@@ -102,12 +132,20 @@ function ExerciseByMuscle() {
                 )}
               </div>
               <div className="favorite-icon">
-                <Link>
-                  <img
-                    src={iconoFavoritos}
-                    alt="Añadir a favoritos"
-                    style={{ width: "50px", height: "50px" }}
-                  />
+                <Link onClick={() => handleToggleFavorite(ejercicio?.id)}>
+                  {ejercicio?.favoriteByLoggedUser === 0 && (
+                    <img
+                      src={iconoFavoritos}
+                      alt="Añadir a favoritos"
+                      style={{ width: "50px", height: "50px" }}
+                    />
+                  )}
+                  {ejercicio?.favoriteByLoggedUser === 1 && (
+                    <img
+                      src={iconoRellenoFav}
+                      style={{ width: "50px", height: "50px" }}
+                    />
+                  )}
                 </Link>
               </div>
               <div className="eliminar-icon">
