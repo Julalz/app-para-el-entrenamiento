@@ -16,12 +16,11 @@ function Profile() {
   const [carouselImages, setCarouselImages] = useState([]);
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [avatar, setAvatar] = useState();
 
   const user = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
   const token = user?.token;
-
-  console.log(token);
 
   const handleDeleteFavorite = async (id) => {
     try {
@@ -30,10 +29,15 @@ function Profile() {
         setCarouselImages((prevImages) =>
           prevImages.filter((exercise) => exercise.id !== id)
         );
-        console.log(response);
+        setMessage(response.data.message);
+
+        setTimeout(() => {
+          setMessage("");
+        }, 5000);
       }
     } catch (error) {
-      setError("Error deleting favorite exercise");
+      setError("Error al borrar de favoritos");
+      setMessage("");
     }
   };
 
@@ -171,7 +175,10 @@ function Profile() {
         <section className="FavoriteExercise-container">
           <p> ¿Quieres repetir un ejercicio y darle caña?</p>
           <p>TU LISTA DE FAVORITOS</p>
-
+          {message && !error && (
+            <p className="message-favorites-delete">{message}</p>
+          )}
+          {error && <p className="error-favorites-delete">{error}</p>}
           <div className="carrousel-container">
             {carouselImages.map((exercise, index) => (
               <CardCarrusel

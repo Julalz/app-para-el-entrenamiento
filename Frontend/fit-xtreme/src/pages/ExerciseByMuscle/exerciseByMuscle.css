@@ -77,3 +77,15 @@
 .iconheart:hover {
   transform: scale(1.5);
 }
+
+.delete-exercise-message {
+  color: lightgoldenrodyellow;
+  margin-bottom: 1rem;
+  font-size: 20px;
+}
+
+.error-delete-exercise {
+  color: lightcoral;
+  margin-bottom: 1rem;
+  font-size: 20px;
+}

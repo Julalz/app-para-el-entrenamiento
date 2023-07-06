@@ -90,6 +90,9 @@ export async function addFavoriteExercise(idWorkout, token) {
     );
     return response.data;
   } catch (error) {
+    if (error.response.data.status === 403) {
+      throw new Error("Este ejercicio ya está en favoritos");
+    } else;
     throw new Error("Error fetching favorites", error);
   }
 }
