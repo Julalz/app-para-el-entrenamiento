@@ -183,7 +183,6 @@ function ExerciseByMuscle() {
             </div>
           </li>
         ))}
-        {error && <p>{error}</p>}
       </div>
     </section>
   );
