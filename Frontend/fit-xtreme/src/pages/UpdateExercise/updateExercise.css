@@ -57,7 +57,7 @@
 }
 
 .updated-error {
-  color: red;
+  color: coral;
 }
 
 @media (min-width: 600px) {

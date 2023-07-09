@@ -3,8 +3,8 @@ import { useState } from "react";
 import Button from "../../components/shared/button/Button";
 import { updateEjercicios } from "../../services/ejerciciosService";
 import imageDefault from "../../../public/images/locationGym/recuerdaImagen.png";
-import "./updateExercise.css";
 import { LOCAL_STORAGE_USER } from "../../utils/constanst";
+import "./updateExercise.css";
 
 function UpdateExercise() {
   const { exerciseId } = useParams();
